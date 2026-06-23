@@ -1,0 +1,8 @@
+# SEO: /dll-generator-ilaw redirects to /
+/dll-generator-ilaw / 301
+
+# Legal: .html extension stripping
+/privacy /privacy.html 200
+/terms /terms.html 200
+/refund /refund.html 200
+/contact /contact.html 200

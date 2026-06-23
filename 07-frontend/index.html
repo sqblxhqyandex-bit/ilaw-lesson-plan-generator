@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ILAW Lesson Plan Generator — Free DepEd MATATAG DLL Maker</title>
+  <meta name="description" content="Generate DepEd ILAW lesson plans for free. Select your grade and subject, fill the blanks, and download a ready-to-submit Word or PPT. No sign-up needed.">
+  <link rel="canonical" href="https://ilaw-lesson-plan-generator.pages.dev/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Google tag (gtag.js) placeholder — uncomment and add GA ID -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+</head>
+<body>
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <svg class="nav__logo-svg" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="#2563EB"/>
+          <path d="M11.5 12H20.5M11.5 16H20.5M11.5 20H16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="22" cy="22" r="6" fill="#EA580C"/>
+          <path d="M20.5 22.5L21.5 23.5L24 21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="nav__logo-text">ILAW<span class="nav__logo-accent">Plan</span></span>
+      </a>
+      <div class="nav__links" id="navLinks">
+        <a href="/ilaw-format" class="nav__link">What is ILAW?</a>
+        <a href="/how-to-make-ilaw-lesson-plan" class="nav__link">Guide</a>
+        <a href="/ilaw-lesson-plan-template" class="nav__link">Templates</a>
+        <a href="/ilaw-lesson-plan-sample" class="nav__link">Samples</a>
+        <a href="#" class="nav__link nav__link--login" id="loginBtn">Sign In</a>
+        <a href="#" class="btn btn--accent nav__btn" id="subscribeBtn">Support This Tool</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <h1 class="hero__title">Create Your DepEd ILAW Lesson Plan in Minutes — No Sign-Up Required</h1>
+        <p class="hero__subtitle">Fill in the blanks, preview your lesson plan, and download a ready-to-submit Word or PPT file. Built for the MATATAG curriculum.</p>
+        <div class="hero__actions">
+          <a href="#tool-section" class="btn btn--primary btn--lg">→ Start Planning</a>
+          <a href="/ilaw-format" class="btn btn--ghost btn--lg">What is ILAW Format?</a>
+        </div>
+        <div class="hero__trust">
+          <span>Aligned with DepEd Order 16 s.2026</span>
+          <span>•</span>
+          <span>Free for all Filipino teachers</span>
+        </div>
+      </div>
+      <div class="hero__visual">
+        <div class="hero__preview">
+          <div class="hero__preview-header">
+            <span>ILAW Lesson Plan Preview</span>
+          </div>
+          <div class="hero__preview-body">
+            <div class="hero__preview-section">
+              <span class="hero__preview-label">I — Intentions</span>
+              <span class="hero__preview-value">Identify learning objectives aligned with MATATAG CG...</span>
+            </div>
+            <div class="hero__preview-section">
+              <span class="hero__preview-label">L — Learning Experiences</span>
+              <span class="hero__preview-value">Design activities that develop competencies...</span>
+            </div>
+            <div class="hero__preview-section">
+              <span class="hero__preview-label">A — Assessment</span>
+              <span class="hero__preview-value">Plan checks for understanding...</span>
+            </div>
+            <div class="hero__preview-section">
+              <span class="hero__preview-label">W — Ways Forward</span>
+              <span class="hero__preview-value">Determine next steps and remediation...</span>
+            </div>
+          </div>
+          <div class="hero__preview-badge">ILAW Format ✓</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BENEFITS STRIP ========== -->
+  <section class="benefits">
+    <div class="benefits__inner">
+      <div class="benefits__item">
+        <div class="benefits__icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#DBEAFE"/><path d="M15 24L21 30L33 18" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="benefits__title">Save Hours</h3>
+        <p class="benefits__desc">Skip the formatting work. Your ILAW structure — Intentions, Learning Experiences, Assessment, Ways Forward — is built automatically.</p>
+      </div>
+      <div class="benefits__item">
+        <div class="benefits__icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#DBEAFE"/><path d="M16 28V18C16 15.7909 17.7909 14 20 14H28C30.2091 14 32 15.7909 32 18V28M16 28L14 34H34L32 28M16 28H32M22 21H26M22 25H26" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="benefits__title">No Sign-Up</h3>
+        <p class="benefits__desc">Create as many lesson plans as you need. No account, no payment, no limits.</p>
+      </div>
+      <div class="benefits__item">
+        <div class="benefits__icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#DBEAFE"/><path d="M16 24H32M24 16V32" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="benefits__title">One-Click Download</h3>
+        <p class="benefits__desc">Export as Word (.docx) or PowerPoint (.pptx). Ready to submit — no manual formatting required.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section class="how-it-works">
+    <div class="how-it-works__inner">
+      <h2 class="section-title">Save Hours on Lesson Planning — Here's How</h2>
+      <div class="steps">
+        <div class="steps__item"><div class="steps__number">1</div><h3 class="steps__title">Select</h3><p class="steps__desc">Choose your grade level, subject, term, and Learning Competency code from the MATATAG CG.</p></div>
+        <div class="steps__arrow">→</div>
+        <div class="steps__item"><div class="steps__number">2</div><h3 class="steps__title">Fill</h3><p class="steps__desc">Enter your learning objectives, activities, and assessment ideas. The ILAW structure is pre-formatted for you.</p></div>
+        <div class="steps__arrow">→</div>
+        <div class="steps__item"><div class="steps__number">3</div><h3 class="steps__title">Download</h3><p class="steps__desc">Preview in real-time, then download as .docx or .pptx. Each section follows the official ILAW format.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TOOL SECTION ========== -->
+  <section class="tool" id="tool-section">
+    <div class="tool__inner">
+      <h2 class="section-title">Create Your ILAW Lesson Plan</h2>
+      <div class="tool__layout">
+        <!-- Form -->
+        <div class="tool__form" id="toolForm">
+          <div class="form__group">
+            <label class="form__label">Grade Level <span class="form__required">*</span></label>
+            <select class="form__select" id="gradeLevel">
+              <option value="">Select grade level...</option>
+              <option value="k3">K-3 (Key Stage 1)</option>
+              <option value="g4-6">Grades 4-6 (Key Stage 2)</option>
+              <option value="g7-10">Grades 7-10 (Key Stage 3)</option>
+              <option value="shs">SHS (Senior High School)</option>
+            </select>
+            <span class="form__error" id="gradeError"></span>
+          </div>
+          <div class="form__group">
+            <label class="form__label">Subject <span class="form__required">*</span></label>
+            <select class="form__select" id="subject">
+              <option value="">Select subject...</option>
+              <option value="english">English</option>
+              <option value="math">Math</option>
+              <option value="science">Science</option>
+              <option value="filipino">Filipino</option>
+              <option value="ap">Araling Panlipunan</option>
+              <option value="mapeh">MAPEH</option>
+              <option value="values">Values Education</option>
+              <option value="other">Other</option>
+            </select>
+            <span class="form__error" id="subjectError"></span>
+          </div>
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label">Term</label>
+              <select class="form__select" id="term">
+                <option value="1">Term 1</option>
+                <option value="2">Term 2</option>
+                <option value="3">Term 3</option>
+                <option value="4">Term 4</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label class="form__label">Week</label>
+              <select class="form__select" id="week">
+                <option value="1">Week 1</option>
+                <option value="2">Week 2</option>
+                <option value="3">Week 3</option>
+                <option value="4">Week 4</option>
+              </select>
+            </div>
+          </div>
+          <div class="form__group">
+            <label class="form__label">Learning Competency (LC Code)</label>
+            <input type="text" class="form__input" id="lcCode" placeholder="e.g. EN4LC-Ia-1.1">
+          </div>
+          <div class="form__group">
+            <label class="form__label">Learning Objectives</label>
+            <textarea class="form__textarea" id="objectives" rows="3" placeholder="Enter 2-3 learning objectives..."></textarea>
+          </div>
+          <div class="form__group">
+            <label class="form__label">Choose Learning Design Principles</label>
+            <div class="form__checkboxes">
+              <label class="form__checkbox"><input type="checkbox" class="design-principle" value="Clear Goals"> Clear Goals</label>
+              <label class="form__checkbox"><input type="checkbox" class="design-principle" value="Scaffolding"> Scaffolding</label>
+              <label class="form__checkbox"><input type="checkbox" class="design-principle" value="Checks for Understanding"> Checks for Understanding</label>
+              <label class="form__checkbox"><input type="checkbox" class="design-principle" value="Active Retrieval"> Active Retrieval</label>
+              <label class="form__checkbox"><input type="checkbox" class="design-principle" value="Social Learning"> Social Learning</label>
+              <label class="form__checkbox"><input type="checkbox" class="design-principle" value="Values & Purpose"> Values & Purpose</label>
+              <label class="form__checkbox"><input type="checkbox" class="design-principle" value="Inclusion"> Inclusion</label>
+            </div>
+          </div>
+          <button class="btn btn--primary btn--full" id="generateBtn">
+            🔄 Generate ILAW Plan
+          </button>
+        </div>
+
+        <!-- Preview -->
+        <div class="tool__preview">
+          <div class="tool__preview-header">
+            <span>Preview</span>
+            <div class="tool__preview-actions">
+              <button class="btn btn--outline btn--sm" id="editBtn" disabled>📝 Edit</button>
+              <button class="btn btn--outline btn--sm" id="wordBtn" disabled>📥 Word</button>
+              <button class="btn btn--outline btn--sm" id="pptBtn" disabled>📥 PPT</button>
+            </div>
+          </div>
+          <div class="tool__preview-body" id="previewBody">
+            <div class="tool__preview-empty" id="emptyState">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="6" width="32" height="38" rx="4" stroke="#CBD5E1" stroke-width="2"/><line x1="14" y1="16" x2="34" y2="16" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round"/><line x1="14" y1="22" x2="34" y2="22" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round"/><line x1="14" y1="28" x2="28" y2="28" stroke="#E2E8F0" stroke-width="2" stroke-linecap="round"/></svg>
+              <p class="tool__empty-text">Fill in the form and click "Generate ILAW Plan" to see your preview.</p>
+            </div>
+            <div class="tool__preview-loading" id="loadingState">
+              <div class="tool__loader"></div>
+              <p>Generating your lesson plan...</p>
+            </div>
+            <div class="tool__preview-result" id="resultState"></div>
+            <div class="tool__preview-error" id="errorState">
+              <div class="tool__error-icon">⚠️</div>
+              <p class="tool__error-text">Something went wrong. Please refresh the page and try again.</p>
+              <button class="btn btn--outline btn--sm" onclick="location.reload()">Refresh Page</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AD PLACEMENT ========== -->
+  <section class="ad-section">
+    <div class="ad-section__inner">
+      <div class="ad-placeholder">AdSense Unit — Sidebar / Bottom</div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section class="faq">
+    <div class="faq__inner">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq__list">
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">What is an ILAW lesson plan?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><p>ILAW stands for Intentions, Learning Experiences, Assessment, and Ways Forward — the four sections of a DepEd lesson plan under DO 16 s.2026. It replaces the older DLL/DLP format under the MATATAG curriculum.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">Is this tool free?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><p>Yes. The template generator is completely free — no sign-up, no payment, no limits on how many plans you create. If you want an ad-free experience and batch generation, you can subscribe to the Supporter plan.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">Do I need to create an account?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><p>No. You can create and download individual lesson plans without any account. An account is only needed if you subscribe to the Supporter plan for ad-free and batch features.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">What grade levels and subjects are supported?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><p>All K-12 levels under the MATATAG curriculum — K-3, Grades 4-6, 7-10 (JHS), and SHS. Subjects include English, Math, Science, Filipino, Araling Panlipunan, MAPEH, Values Education, and more.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">Can I download as Word and PowerPoint?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><p>Yes. Export your lesson plan as .docx for submission or .pptx for classroom presentations. Both follow the official ILAW format.</p></div>
+        </div>
+        <div class="faq__item">
+          <button class="faq__question" aria-expanded="false">Does this tool replace my lesson planning?<span class="faq__icon">+</span></button>
+          <div class="faq__answer"><p>This tool helps you format and structure your plan faster. Review the output for accuracy before submission — you know your class best.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="final-cta">
+    <div class="final-cta__inner">
+      <h2 class="final-cta__title">Ready to save time on lesson planning?</h2>
+      <a href="#tool-section" class="btn btn--primary btn--lg">→ Start Planning — Free, No Sign-Up Needed</a>
+      <p class="final-cta__note">❤️ Free for all Filipino teachers. <a href="#" class="final-cta__link">Support this tool →</a></p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__col">
+        <h4 class="footer__heading">ILAW Lesson Plan Generator</h4>
+        <p class="footer__text">The fastest way to create DepEd ILAW lesson plans. Free for all Filipino teachers.</p>
+        <div class="footer__disclaimer">ILAW Lesson Plan Generator is an independent tool created for educators.<br>We are not affiliated with, endorsed by, or sponsored by the Department of Education (DepEd).</div>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Resources</h4>
+        <ul class="footer__links">
+          <li><a href="/ilaw-format">What is ILAW Format?</a></li>
+          <li><a href="/how-to-make-ilaw-lesson-plan">How to Make ILAW LP</a></li>
+          <li><a href="/ilaw-lesson-plan-template">Free Templates</a></li>
+          <li><a href="/ilaw-lesson-plan-sample">Sample Plans</a></li>
+          <li><a href="/deped-order-16-s2026">DO 16 s.2026 Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 class="footer__heading">Legal</h4>
+        <ul class="footer__links">
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+          <li><a href="/refund">Refund Policy</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom"><p>&copy; 2026 ILAW Lesson Plan Generator. All rights reserved.</p></div>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq__question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        const answer = btn.nextElementSibling;
+        answer.style.maxHeight = expanded ? '0' : answer.scrollHeight + 'px';
+      });
+    });
+
+    // Hamburger menu
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('nav__links--open');
+    });
+
+    // Preview panel state management
+    const previewBody = document.getElementById('previewBody');
+    const emptyState = document.getElementById('emptyState');
+    const loadingState = document.getElementById('loadingState');
+    const resultState = document.getElementById('resultState');
+    const errorState = document.getElementById('errorState');
+    const generateBtn = document.getElementById('generateBtn');
+    const editBtn = document.getElementById('editBtn');
+    const wordBtn = document.getElementById('wordBtn');
+    const pptBtn = document.getElementById('pptBtn');
+
+    function showState(state) {
+      [emptyState, loadingState, resultState, errorState].forEach(el => el.style.display = 'none');
+      if (state) state.style.display = '';
+    }
+    showState(emptyState);
+
+    // Form validation
+    function validateForm() {
+      const grade = document.getElementById('gradeLevel').value;
+      const subject = document.getElementById('subject').value;
+      const gradeError = document.getElementById('gradeError');
+      const subjectError = document.getElementById('subjectError');
+      let valid = true;
+      gradeError.textContent = '';
+      subjectError.textContent = '';
+      if (!grade) { gradeError.textContent = 'Please select a grade level'; valid = false; }
+      if (!subject) { subjectError.textContent = 'Please select a subject'; valid = false; }
+      return valid;
+    }
+
+    // Generate ILAW Plan (template-based, no AI)
+    generateBtn.addEventListener('click', () => {
+      if (!validateForm()) return;
+      showState(loadingState);
+      generateBtn.disabled = true;
+      generateBtn.textContent = '⟳ Generating...';
+
+      setTimeout(() => {
+        try {
+          const grade = document.getElementById('gradeLevel').value;
+          const subject = document.getElementById('subject').value;
+          const lcCode = document.getElementById('lcCode').value || 'EN4LC-XX-1.1';
+          const objectives = document.getElementById('objectives').value || 'Identify main ideas\nDemonstrate understanding\nApply concepts in new contexts';
+          const checked = [...document.querySelectorAll('.design-principle:checked')].map(c => c.value);
+          const principles = checked.length > 0 ? checked.join(', ') : 'Clear Goals, Scaffolding';
+
+          const ilawHtml = `
+            <div class="preview-content">
+              <div class="preview-section">
+                <div class="preview-section__label">I — Intentions</div>
+                <div class="preview-section__body">
+                  <p><strong>Grade:</strong> ${document.getElementById('gradeLevel').options[document.getElementById('gradeLevel').selectedIndex].text}</p>
+                  <p><strong>Subject:</strong> ${document.getElementById('subject').options[document.getElementById('subject').selectedIndex].text}</p>
+                  <p><strong>LC Code:</strong> ${lcCode}</p>
+                  <p><strong>Objectives:</strong> ${objectives.replace(/\n/g, '<br>')}</p>
+                </div>
+              </div>
+              <div class="preview-section">
+                <div class="preview-section__label">L — Learning Experiences</div>
+                <div class="preview-section__body">
+                  <p>Activities designed using: ${principles}</p>
+                  <p>Preliminary, Group Work, and Individual tasks building toward competency.</p>
+                </div>
+              </div>
+              <div class="preview-section">
+                <div class="preview-section__label">A — Assessment</div>
+                <div class="preview-section__body">
+                  <p>Formative checks throughout the lesson. Summative assessment aligned with learning objectives.</p>
+                </div>
+              </div>
+              <div class="preview-section">
+                <div class="preview-section__label">W — Ways Forward</div>
+                <div class="preview-section__body">
+                  <p>Remediation for students needing additional support. Enrichment activities for advanced learners.</p>
+                </div>
+              </div>
+            </div>
+          `;
+
+          resultState.innerHTML = ilawHtml;
+          showState(resultState);
+          editBtn.disabled = false;
+          wordBtn.disabled = false;
+          pptBtn.disabled = false;
+        } catch (e) {
+          showState(errorState);
+        }
+        generateBtn.disabled = false;
+        generateBtn.textContent = '🔄 Generate ILAW Plan';
+      }, 800);
+    });
+
+    // Export buttons (placeholder)
+    wordBtn.addEventListener('click', () => {
+      alert('Word export (.docx) via docx.js will be implemented in a future update. The template-based structure is ready for integration.');
+    });
+    pptBtn.addEventListener('click', () => {
+      alert('PowerPoint export (.pptx) via PptxGenJS will be implemented in a future update. The template-based structure is ready for integration.');
+    });
+    editBtn.addEventListener('click', () => {
+      showState(emptyState);
+      editBtn.disabled = true;
+      wordBtn.disabled = true;
+      pptBtn.disabled = true;
+    });
+
+    // Auth buttons (placeholder — will integrate with Cloudflare Functions)
+    document.getElementById('loginBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = '/api/auth/google';
+    });
+    document.getElementById('subscribeBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      // Check if user is logged in — if not, redirect to auth first
+      window.location.href = '/api/auth/google?redirect=/api/paypal/create-order';
+    });
+  </script>
+</body>
+</html>

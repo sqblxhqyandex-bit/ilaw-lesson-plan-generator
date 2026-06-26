@@ -1,0 +1,34 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1E3A5F"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#EA580C"/>
+      <stop offset="100%" stop-color="#F97316"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" rx="0"/>
+  <!-- Decorative circles -->
+  <circle cx="1050" cy="100" r="200" fill="#2563EB" opacity="0.15"/>
+  <circle cx="150" cy="500" r="150" fill="#1E40AF" opacity="0.12"/>
+  <!-- Checkmark icon area -->
+  <rect x="60" y="60" width="80" height="80" rx="16" fill="url(#accent)"/>
+  <path d="M75 100l12 12 26-26" stroke="white" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Title -->
+  <text x="60" y="210" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="52" font-weight="700" fill="white">ILAW Lesson Plan Generator</text>
+  <!-- Subtitle -->
+  <text x="60" y="280" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="28" font-weight="500" fill="#93C5FD">Free DepEd MATATAG DLL Maker</text>
+  <!-- Divider -->
+  <rect x="60" y="320" width="80" height="4" rx="2" fill="url(#accent)"/>
+  <!-- Features -->
+  <text x="60" y="375" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="22" fill="#BFDBFE">✦ Select your grade &amp; subject</text>
+  <text x="60" y="420" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="22" fill="#BFDBFE">✦ Fill in the ILAW details</text>
+  <text x="60" y="465" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="22" fill="#BFDBFE">✦ Download Word or PPT — No sign-up needed</text>
+  <!-- URL -->
+  <text x="60" y="560" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="24" font-weight="600" fill="#FCD34D">ilawlessonplan.net</text>
+  <!-- Pill badge -->
+  <rect x="800" y="60" width="140" height="36" rx="18" fill="none" stroke="#60A5FA" stroke-width="1.5"/>
+  <text x="870" y="84" font-family="'Plus Jakarta Sans', 'Segoe UI', system-ui, sans-serif" font-size="16" fill="#60A5FA" text-anchor="middle">🇵🇭 For Filipino Teachers</text>
+</svg>

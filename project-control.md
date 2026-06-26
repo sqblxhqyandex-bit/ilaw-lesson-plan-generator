@@ -28,11 +28,12 @@
 | 04-Compliance | ✅ **DONE** | `compliance-report.md`, `STAGE-HANDOFF.md` | 禁用词/法律页/Cookie/中国 geo-block |
 | 05-Copy | ✅ **DONE** | `01-landing-copy.md`, `02-seo-copy-freeze-package.md`, `03-faq-schema-copy.md`, `04-cta-copy.md`, `05-prohibited-word-scan.md`, `06-stage-handoff.md` | 9 页 SEO-Copy Freeze 完成，全站禁词扫描通过 |
 | 06-Design | ✅ **DONE** | `01-visual-style-rationale.md`, `02-design-system.md`, `index.html`, `styles.css`, `content-page-template.html`, `legal-page-template.html`, `06-interaction-states.md`, `07-mobile-audit.md`, `08-anti-ai-audit.md`, `09-stage-handoff.md` | 现代工具风·教师定制版，蓝+暖橙配色，HTML/CSS 真源交付，16 个关键状态覆盖，反 AI 味 10 项全通过 |
-| 07-Frontend | ⏳ 待启动 | — | 需读取设计系统 + SEO-Copy Freeze + Data Contract |
-| 08-SEO | ⏳ 待启动 | — |
-| 09-QA | ⏳ 待启动 | — | — |
-| 10-Launch | ⏳ 待启动 | — | — |
-| 11-Data-Review | ⏳ 待启动 | — | — |
+| 07-Frontend | ✅ **DONE** | `index.html`, `ilaw-format.html`, `ilaw-lesson-plan-template.html`, `free-ilaw-template.html`, `how-to-make-ilaw-lesson-plan.html`, `deped-order-16-s2026.html`, `ilaw-lesson-plan-sample.html`, `ilaw-lesson-plan-grade-4.html`, `dll-generator-ilaw.html`, `privacy.html`, `terms.html`, `refund.html`, `contact.html`, `styles.css`, `_redirects`, `_headers`, `sitemap.xml`, `robots.txt`, `logo.svg`, `functions/`, `assets/og-image.svg` | 14 页 HTML + SEO + Cloudflare 部署完成。另含 Sitemap/robots 域名修正、9 页 schema/OG/Twitter Cards、GSC meta 部署。线上：https://ilawlessonplan.net |
+| 08-Backend | ✅ **DONE** | `architecture.md`, `api-contract.md`, `data-contract.json`, `wrangler.toml`, `migrations/001_create_tables.sql`, D1 remote migration 完成, functions/api/auth/*.js (5 endpoints), functions/api/paypal/*.js (3 endpoints), functions/_middleware.js, functions/_paypal.js, functions/_utils.js | Google OAuth + PayPal + D1 全流程代码已部署，secrets 已写入，Google OAuth 回调已验证生效
+| 09-SEO | ✅ **DONE** | `stage-handoff.md` | 9 页 SEO 复核通过：schema/OG/Twitter/sitemap/robots/canonical 全部到位。GSC/Bing 提交归属 11-Launch |
+| 10-QA | 🟡 REPAIRING | `systematic-audit-2026-06-26.md` | P0 修复完成；P1 修复中 |
+| 11-Launch | ⏳ 待启动 | — | — |
+| 12-Data-Review | ⏳ 待启动 | — | — |
 
 ---
 

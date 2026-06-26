@@ -3,18 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="google-site-verification=7_VCUtM-2IwrzLn9DUkUaL1l6PdABJYnikubpeRlM2E" />
   <title>ILAW Lesson Plan Generator — Free DepEd MATATAG DLL Maker</title>
   <meta name="description" content="Generate DepEd ILAW lesson plans for free. Select your grade and subject, fill the blanks, and download a ready-to-submit Word or PPT. No sign-up needed.">
-  <link rel="canonical" href="https://ilaw-lesson-plan-generator.pages.dev/">
+  <link rel="canonical" href="https://ilawlessonplan.net/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
-  <!-- Google tag (gtag.js) placeholder — uncomment and add GA ID -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+  <!-- Export libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js" defer></script>
+  <!-- Analytics — loaded only after user consent (RA 10173 / GDPR compliant) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+
+    function loadAnalytics() {
+      // GA4
+      var ga = document.createElement('script');
+      ga.async = true; ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-0BBSP2HKG8';
+      document.head.appendChild(ga);
+      gtag('js', new Date()); gtag('config', 'G-0BBSP2HKG8');
+
+      // Ahrefs
+      var ah = document.createElement('script');
+      ah.async = true; ah.src = 'https://analytics.ahrefs.com/analytics.js';
+      ah.setAttribute('data-key', 'oJrxW+hDynMrUL2zu+HGrQ');
+      document.head.appendChild(ah);
+
+      // Plausible (privacy-friendly, loaded as analytics)
+      var pl = document.createElement('script');
+      pl.defer = true; pl.src = 'https://plausible.shipsolo.io/js/pa-KCt71znIPM8P7wfD2ax0e.js';
+      document.head.appendChild(pl);
+      window.plausible = window.plausible || function(){(plausible.q=plausible.q||[]).push(arguments)};
+      plausible.init = plausible.init || function(i){plausible.o=i||{}};
+      plausible.init();
+    }
+
+    function applyConsent(consented) {
+      if (consented) {
+        localStorage.setItem('cookie_consent', 'accepted');
+        loadAnalytics();
+      } else {
+        localStorage.setItem('cookie_consent', 'declined');
+      }
+      document.getElementById('cookieBanner')?.remove();
+    }
+
+    // Check consent on page load
+    (function() {
+      var consent = localStorage.getItem('cookie_consent');
+      if (consent === 'accepted') { loadAnalytics(); }
+      if (consent) { return; } // declined or accepted — banner not needed
+      // Show banner when DOM ready
+      document.addEventListener('DOMContentLoaded', function() {
+        var banner = document.getElementById('cookieBanner');
+        if (banner) banner.style.display = 'block';
+      });
+    })();
+  </script>
+  <!-- End analytics consent block -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ILAW Lesson Plan Generator",
+  "url": "https://ilawlessonplan.net/",
+  "description": "Generate DepEd ILAW lesson plans for free. Select your grade and subject, fill the blanks, and download a ready-to-submit Word or PPT.",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "All",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Create an ILAW Lesson Plan",
+  "step": [
+    {"@type": "HowToStep", "text": "Select your grade level and subject"},
+    {"@type": "HowToStep", "text": "Fill in the ILAW details (Intentions, Learning Experiences, Assessment, Ways Forward)"},
+    {"@type": "HowToStep", "text": "Preview and download as Word or PPT in one click"}
+  ]
+}
+</script>
+
+<meta property="og:title" content="ILAW Lesson Plan Generator — Free DepEd MATATAG DLL Maker" />
+<meta property="og:description" content="Generate DepEd ILAW lesson plans for free. Select your grade and subject, fill the blanks, and download a ready-to-submit Word or PPT. No sign-up needed." />
+<meta property="og:url" content="https://ilawlessonplan.net/" />
+<meta property="og:image" content="https://ilawlessonplan.net/assets/og-image.svg" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ILAW Lesson Plan Generator — Free DepEd MATATAG DLL Maker" />
+<meta name="twitter:description" content="Generate DepEd ILAW lesson plans for free. Select your grade and subject, fill the blanks, and download a ready-to-submit Word or PPT. No sign-up needed." />
+<meta name="twitter:image" content="https://ilawlessonplan.net/assets/og-image.svg" />
 </head>
 <body>
+  <!-- Cookie Consent Banner (RA 10173 compliant) -->
+  <div id="cookieBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a2e;color:#f8fafc;padding:1rem 1.5rem;box-shadow:0 -4px 20px rgba(0,0,0,.3);font-size:0.9rem;line-height:1.5;">
+    <div style="max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:1rem;">
+      <div style="flex:1;min-width:200px;">
+        <strong style="color:#60a5fa;">🍪 We Use Analytics</strong>
+        <p style="margin:0.25rem 0 0;color:#94a3b8;font-size:0.85rem;">
+          We use Google Analytics, Ahrefs, and Plausible to understand how teachers use this tool and improve it. These are performance analytics, not ad tracking.
+          <a href="/privacy" style="color:#60a5fa;text-decoration:underline;">Learn more</a>
+        </p>
+      </div>
+      <div style="display:flex;gap:0.75rem;flex-shrink:0;">
+        <button onclick="applyConsent(false)" style="background:transparent;color:#94a3b8;border:1px solid #475569;padding:0.5rem 1.2rem;border-radius:6px;cursor:pointer;font-size:0.9rem;">Decline</button>
+        <button onclick="applyConsent(true)" style="background:#2563EB;color:white;border:none;padding:0.5rem 1.5rem;border-radius:6px;cursor:pointer;font-weight:600;font-size:0.9rem;">Accept</button>
+      </div>
+    </div>
+  </div>
+  <!-- End Cookie Banner -->
+
   <!-- ========== NAVIGATION ========== -->
   <nav class="nav">
     <div class="nav__inner">
@@ -32,8 +139,8 @@
         <a href="/how-to-make-ilaw-lesson-plan" class="nav__link">Guide</a>
         <a href="/ilaw-lesson-plan-template" class="nav__link">Templates</a>
         <a href="/ilaw-lesson-plan-sample" class="nav__link">Samples</a>
-        <a href="#" class="nav__link nav__link--login" id="loginBtn">Sign In</a>
-        <a href="#" class="btn btn--accent nav__btn" id="subscribeBtn">Support This Tool</a>
+        <a href="/api/auth/google" class="nav__link nav__link--login" id="loginBtn">Sign In</a>
+        <a href="/support" class="btn btn--accent nav__btn" id="subscribeBtn">Support This Tool</a>
       </div>
       <button class="nav__hamburger" id="hamburger" aria-label="Menu">☰</button>
     </div>
@@ -279,7 +386,7 @@
     <div class="final-cta__inner">
       <h2 class="final-cta__title">Ready to save time on lesson planning?</h2>
       <a href="#tool-section" class="btn btn--primary btn--lg">→ Start Planning — Free, No Sign-Up Needed</a>
-      <p class="final-cta__note">❤️ Free for all Filipino teachers. <a href="#" class="final-cta__link">Support this tool →</a></p>
+      <p class="final-cta__note">❤️ Free for all Filipino teachers. <a href="/support" class="final-cta__link">Support this tool →</a></p>
     </div>
   </section>
 
@@ -423,12 +530,179 @@
       }, 800);
     });
 
-    // Export buttons (placeholder)
-    wordBtn.addEventListener('click', () => {
-      alert('Word export (.docx) via docx.js will be implemented in a future update. The template-based structure is ready for integration.');
+    // Export to Word (.docx)
+    wordBtn.addEventListener('click', async () => {
+      const preview = document.querySelector('#resultState .preview-content');
+      if (!preview) return;
+
+      wordBtn.disabled = true;
+      wordBtn.textContent = '⟳ Generating...';
+
+      try {
+        const grade = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(1)')?.textContent?.replace('Grade:', '').trim() || '';
+        const subject = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(2)')?.textContent?.replace('Subject:', '').trim() || '';
+        const lcCode = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(3)')?.textContent?.replace('LC Code:', '').trim() || '';
+        const objectives = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(4) strong')?.parentElement?.innerHTML?.replace(/<strong>Objectives:<\/strong>\s*/i, '').replace(/<br\s*\/?>/gi, '\n') || '';
+
+        const sections = [];
+        document.querySelectorAll('#resultState .preview-section').forEach(sec => {
+          const label = sec.querySelector('.preview-section__label')?.textContent?.trim() || '';
+          const body = sec.querySelector('.preview-section__body')?.innerHTML || '';
+          sections.push({ label, body });
+        });
+
+        const htmlContent = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.5; max-width: 8.5in; margin: 1in auto; color: #1a1a2e; }
+h1 { font-size: 16pt; color: #2563EB; border-bottom: 2px solid #2563EB; padding-bottom: 6px; margin-bottom: 20px; text-align: center; }
+h2 { font-size: 13pt; color: #1a1a2e; margin-top: 20px; margin-bottom: 8px; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+table td { border: 1px solid #d1d5db; padding: 10px; vertical-align: top; }
+table td:first-child { background-color: #eff6ff; font-weight: 600; width: 30%; color: #2563EB; font-size: 12pt; }
+.info-table td:first-child { font-weight: 700; color: #1a1a2e; background: #f9fafb; width: 20%; }
+p { margin: 4px 0; }
+ul, ol { margin: 4px 0; padding-left: 20px; }
+.footer { margin-top: 30px; font-size: 9pt; color: #6b7280; text-align: center; border-top: 1px solid #d1d5db; padding-top: 10px; }
+</style>
+</head>
+<body>
+<h1>ILAW Lesson Plan</h1>
+<table class="info-table">
+<tr><td>Grade</td><td>${grade}</td></tr>
+<tr><td>Subject</td><td>${subject}</td></tr>
+<tr><td>LC Code</td><td>${lcCode}</td></tr>
+<tr><td>Objectives</td><td>${objectives.replace(/\n/g, '<br>')}</td></tr>
+</table>
+${sections.slice(1).map(s => `
+<table>
+<tr><td>${s.label}</td><td>${s.body}</td></tr>
+</table>
+`).join('\n')}
+<div class="footer">Generated by ILAW Lesson Plan Generator (ilawlessonplan.net) — Independent tool for Filipino educators</div>
+</body>
+</html>`;
+
+        const blob = new Blob([htmlContent], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ILAW-Lesson-Plan-${grade.replace(/\s+/g, '-')}-${subject.replace(/\s+/g, '-')}.doc`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } catch (e) {
+        alert('Error generating Word file. Please try again.');
+        console.error('Word export error:', e);
+      }
+
+      wordBtn.disabled = false;
+      wordBtn.textContent = '📥 Word';
     });
-    pptBtn.addEventListener('click', () => {
-      alert('PowerPoint export (.pptx) via PptxGenJS will be implemented in a future update. The template-based structure is ready for integration.');
+
+    // Export to PowerPoint (.pptx) using PptxGenJS
+    pptBtn.addEventListener('click', async () => {
+      if (typeof PptxGenJS === 'undefined') {
+        alert('PowerPoint library is still loading. Please try again in a moment.');
+        return;
+      }
+
+      pptBtn.disabled = true;
+      pptBtn.textContent = '⟳ Generating...';
+
+      try {
+        const grade = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(1)')?.textContent?.replace('Grade:', '').trim() || '';
+        const subject = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(2)')?.textContent?.replace('Subject:', '').trim() || '';
+        const lcCode = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(3)')?.textContent?.replace('LC Code:', '').trim() || '';
+        const objectives = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(4)')?.textContent?.replace('Objectives:', '').trim() || '';
+
+        const pres = new PptxGenJS();
+        pres.defineLayout({ name: 'WIDE', width: 13.333, height: 7.5 });
+        pres.layout = 'WIDE';
+
+        // Title slide
+        const titleSlide = pres.addSlide();
+        titleSlide.background = { fill: '#2563EB' };
+        titleSlide.addText('ILAW Lesson Plan', {
+          x: 1, y: 1.5, w: 11.333, h: 1.5,
+          fontSize: 40, color: 'FFFFFF', bold: true, align: 'center', fontFace: 'Calibri'
+        });
+        titleSlide.addText(`Grade: ${grade}  •  Subject: ${subject}`, {
+          x: 1, y: 3.2, w: 11.333, h: 0.8,
+          fontSize: 20, color: 'DBEAFE', align: 'center', fontFace: 'Calibri'
+        });
+        titleSlide.addText(`LC Code: ${lcCode}`, {
+          x: 1, y: 4, w: 11.333, h: 0.6,
+          fontSize: 16, color: 'BFDBFE', align: 'center', fontFace: 'Calibri'
+        });
+
+        // Objectives slide
+        const objSlide = pres.addSlide();
+        objSlide.background = { fill: 'FFFFFF' };
+        objSlide.addText('Learning Objectives', {
+          x: 0.5, y: 0.3, w: 12.333, h: 1,
+          fontSize: 28, color: '2563EB', bold: true, fontFace: 'Calibri'
+        });
+        objSlide.addShape(pres.ShapeType.rect, {
+          x: 0.5, y: 1.1, w: 12.333, h: 0.05, fill: { color: '2563EB' }
+        });
+        objSlide.addText(objectives, {
+          x: 0.5, y: 1.5, w: 12.333, h: 5,
+          fontSize: 18, color: '1F2937', fontFace: 'Calibri', lineSpacingMultiple: 1.5
+        });
+
+        // Content slides for each ILAW section
+        const sectionColors = ['#2563EB', '#059669', '#D97706', '#7C3AED'];
+        document.querySelectorAll('#resultState .preview-section').forEach((sec, idx) => {
+          const label = sec.querySelector('.preview-section__label')?.textContent?.trim() || '';
+          const bodyEls = sec.querySelector('.preview-section__body');
+          let bodyText = bodyEls?.textContent?.trim() || '';
+          // Strip "Grade: ... Subject: ... LC Code: ..." from first section
+          if (idx === 0) {
+            const paragraphs = bodyText.split(/\n+/).filter(s => s.trim());
+            bodyText = paragraphs.filter(p => !/^(Grade|Subject|LC Code|Objectives):/i.test(p.trim())).join('\n') ||
+                       paragraphs.slice(3).join('\n');
+          }
+
+          const slide = pres.addSlide();
+          slide.background = { fill: 'FFFFFF' };
+          slide.addText(label, {
+            x: 0.5, y: 0.3, w: 12.333, h: 1,
+            fontSize: 28, color: sectionColors[idx % sectionColors.length], bold: true, fontFace: 'Calibri'
+          });
+          slide.addShape(pres.ShapeType.rect, {
+            x: 0.5, y: 1.1, w: 12.333, h: 0.05, fill: { color: sectionColors[idx % sectionColors.length] }
+          });
+          slide.addText(bodyText, {
+            x: 0.5, y: 1.5, w: 12.333, h: 5,
+            fontSize: 18, color: '1F2937', fontFace: 'Calibri', lineSpacingMultiple: 1.5,
+            valign: 'top'
+          });
+        });
+
+        // Footer slide
+        const footerSlide = pres.addSlide();
+        footerSlide.background = { fill: '#1E293B' };
+        footerSlide.addText('Generated by ILAW Lesson Plan Generator', {
+          x: 1, y: 2.5, w: 11.333, h: 1,
+          fontSize: 18, color: '94A3B8', align: 'center', fontFace: 'Calibri'
+        });
+        footerSlide.addText('ilawlessonplan.net', {
+          x: 1, y: 3.5, w: 11.333, h: 0.8,
+          fontSize: 14, color: '64748B', align: 'center', fontFace: 'Calibri'
+        });
+
+        pres.writeFile({ fileName: `ILAW-Lesson-Plan-${grade.replace(/\s+/g, '-')}-${subject.replace(/\s+/g, '-')}.pptx` });
+      } catch (e) {
+        alert('Error generating PowerPoint file. Please try again.');
+        console.error('PPT export error:', e);
+      }
+
+      pptBtn.disabled = false;
+      pptBtn.textContent = '📥 PPT';
     });
     editBtn.addEventListener('click', () => {
       showState(emptyState);
@@ -437,15 +711,64 @@
       pptBtn.disabled = true;
     });
 
-    // Auth buttons (placeholder — will integrate with Cloudflare Functions)
+    // Auth state — show signed-in user after Google OAuth returns to the site
+    function escapeHtml(value) {
+      return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    async function refreshAuthState() {
+      const loginBtn = document.getElementById('loginBtn');
+      const subscribeBtn = document.getElementById('subscribeBtn');
+      if (!loginBtn) return;
+
+      try {
+        const response = await fetch('/api/auth/me', {
+          credentials: 'include',
+          cache: 'no-store',
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) return;
+
+        const data = await response.json();
+        const user = data && data.user;
+        if (!user) return;
+
+        const displayName = user.name || user.email || 'Account';
+        const avatar = user.avatar_url
+          ? `<img src="${escapeHtml(user.avatar_url)}" alt="" style="width:24px;height:24px;border-radius:999px;vertical-align:middle;margin-right:8px;object-fit:cover;">`
+          : '';
+
+        loginBtn.href = '/api/auth/logout';
+        loginBtn.classList.add('nav__link--user');
+        loginBtn.title = `Signed in as ${displayName}. Click to sign out.`;
+        loginBtn.innerHTML = `${avatar}<span>${escapeHtml(displayName)}</span>`;
+
+        if (subscribeBtn) {
+          subscribeBtn.href = '/support';
+        }
+      } catch (error) {
+        console.warn('Unable to refresh auth state', error);
+      }
+    }
+
+    refreshAuthState();
+
+    // Auth buttons: href works even if JavaScript is blocked; these handlers only keep behavior explicit.
     document.getElementById('loginBtn').addEventListener('click', (e) => {
+      const href = e.currentTarget.getAttribute('href') || '/api/auth/google';
+      if (href === '/api/auth/logout') return;
       e.preventDefault();
-      window.location.href = '/api/auth/google';
+      window.location.href = href;
     });
     document.getElementById('subscribeBtn').addEventListener('click', (e) => {
+      const href = e.currentTarget.getAttribute('href') || '/support';
       e.preventDefault();
-      // Check if user is logged in — if not, redirect to auth first
-      window.location.href = '/api/auth/google?redirect=/api/paypal/create-order';
+      window.location.href = href;
     });
   </script>
 </body>

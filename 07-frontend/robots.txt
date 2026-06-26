@@ -5,4 +5,4 @@ Disallow: /terms
 Disallow: /refund
 Disallow: /contact
 
-Sitemap: https://ilaw-lesson-plan-generator.pages.dev/sitemap.xml
+Sitemap: https://ilawlessonplan.net/sitemap.xml

@@ -1,0 +1,128 @@
+{
+  "api_version": "1.0.0",
+  "project": "ILAW Lesson Plan Generator",
+  "base_url": "https://ilawlessonplan.net",
+  "database": {
+    "name": "ilaw-db",
+    "binding": "ilaw_db",
+    "tables": {
+      "users": {
+        "columns": [
+          {"name": "id", "type": "TEXT (UUID)", "pk": true, "description": "用户唯一标识"},
+          {"name": "email", "type": "TEXT", "unique": true, "description": "Google OAuth 邮箱"},
+          {"name": "name", "type": "TEXT", "description": "显示名"},
+          {"name": "avatar_url", "type": "TEXT", "nullable": true, "description": "Google 头像URL"},
+          {"name": "plan", "type": "ENUM('free','supporter','pro')", "default": "free", "description": "当前套餐"},
+          {"name": "plan_expires_at", "type": "TEXT (ISO datetime)", "nullable": true, "description": "套餐到期时间"},
+          {"name": "ad_free", "type": "INTEGER (0/1)", "default": 0, "description": "去广告标记"},
+          {"name": "created_at", "type": "TEXT", "description": "创建时间"},
+          {"name": "updated_at", "type": "TEXT", "description": "更新时间"}
+        ],
+        "seed_data": {
+          "note": "生产环境无种子数据，由 Google OAuth 首次登录时自动创建"
+        }
+      },
+      "payments": {
+        "columns": [
+          {"name": "id", "type": "TEXT (UUID)", "pk": true, "description": "支付记录唯一标识"},
+          {"name": "user_id", "type": "TEXT", "fk": "users.id", "description": "用户ID"},
+          {"name": "plan", "type": "ENUM('supporter','pro')", "description": "购买的套餐"},
+          {"name": "amount", "type": "REAL", "description": "金额（USD）"},
+          {"name": "currency", "type": "TEXT", "default": "USD", "description": "币种"},
+          {"name": "paypal_order_id", "type": "TEXT", "unique": true, "description": "PayPal 订单ID"},
+          {"name": "paypal_capture_id", "type": "TEXT", "nullable": true, "description": "PayPal 捕获ID"},
+          {"name": "status", "type": "ENUM('pending','completed','refunded','failed')", "default": "pending", "description": "支付状态"},
+          {"name": "created_at", "type": "TEXT", "description": "创建时间"},
+          {"name": "updated_at", "type": "TEXT", "description": "更新时间"}
+        ],
+        "seed_data": {
+          "note": "生产环境无种子数据，由 PayPal 支付成功时自动写入"
+        }
+      }
+    }
+  },
+  "endpoints": [
+    {
+      "path": "GET /api/auth/me",
+      "auth": "cookie (session=...)",
+      "request": {},
+      "response_200": {"user": {"id": "uuid", "email": "string", "name": "string", "avatar_url": "string|null", "plan": "free|supporter|pro", "ad_free": 0|1}},
+      "response_200_noauth": {"user": null},
+      "frontend_usage": "调用此端点判断用户登录状态和当前套餐"
+    },
+    {
+      "path": "GET /api/auth/google?redirect=/path",
+      "auth": "none",
+      "request": {},
+      "response": "302 → Google OAuth 授权页",
+      "frontend_usage": "window.location.href = '/api/auth/google?redirect=/'"
+    },
+    {
+      "path": "GET /api/auth/callback?code=...&state=...",
+      "auth": "none（Google 回调）",
+      "request": {},
+      "response": "302 → redirect 参数指定的路径（带 session cookie）",
+      "frontend_usage": "由 Google OAuth 流程自动调用，前端无需处理"
+    },
+    {
+      "path": "GET /api/auth/logout",
+      "auth": "cookie",
+      "request": {},
+      "response": "302 → /",
+      "frontend_usage": "window.location.href = '/api/auth/logout'"
+    },
+    {
+      "path": "POST /api/auth/upgrade",
+      "auth": "cookie",
+      "request_body": {"plan": "supporter|pro"},
+      "response_200": {"success": true, "plan": "supporter"},
+      "response_400": {"error": "Invalid plan"},
+      "response_401": {"success": false, "error": "Not logged in"},
+      "frontend_usage": "管理员/测试用，非用户可见功能"
+    },
+    {
+      "path": "POST /api/paypal/create-order",
+      "auth": "cookie",
+      "request_body": {},
+      "response_200": {"id": "PAYPAL_ORDER_ID", "status": "CREATED", "links": [{"href": "...", "rel": "approve", "method": "GET"}]},
+      "response_400": {"error": "Already a supporter"},
+      "response_401": {"error": "Not logged in"},
+      "frontend_usage": "fetch('/api/paypal/create-order', {method:'POST'}) → 获取 orderId → 跳转 PayPal 确认"
+    },
+    {
+      "path": "POST /api/paypal/capture-order",
+      "auth": "cookie",
+      "request_body": {"orderId": "PAYPAL_ORDER_ID"},
+      "response_200": {"status": "COMPLETED", "id": "CAPTURE_ID", "purchase_units": [...]},
+      "response_500": {"error": "..."},
+      "frontend_usage": "用户在 PayPal 确认后 → fetch('/api/paypal/capture-order', {method:'POST', body: JSON.stringify({orderId})})"
+    },
+    {
+      "path": "POST /api/paypal/webhook",
+      "auth": "PayPal 签名验证",
+      "request_body": "PayPal webhook event",
+      "response": {"received": true},
+      "frontend_usage": "后端专用，前端不调用"
+    }
+  ],
+  "error_codes": {
+    "401": {"message": "Not logged in", "action": "引导用户点击 Sign In"},
+    "400": {"message": "Already a supporter", "action": "显示\"您已是 Supporter\""},
+    "400": {"message": "Invalid plan", "action": "显示\"无效套餐\""},
+    "500": {"message": "PayPal config error", "action": "显示\"支付暂时不可用，请稍后再试\""},
+    "500": {"message": "Google OAuth not configured", "action": "显示\"登录暂不可用\""}
+  },
+  "entitlement_rules": [
+    {"plan": "free", "features": ["template-generate", "word-download", "ppt-download"], "limits": {"rate": "unlimited"}},
+    {"plan": "supporter", "features": ["template-generate", "word-download", "ppt-download", "weekly-batch-5", "zip-export", "lc-code-expand", "template-preset-local", "ad-free"], "limits": {"rate": "unlimited"}},
+    {"plan": "pro", "features": ["template-generate", "word-download", "ppt-download", "weekly-batch-5", "semester-batch-50", "zip-export", "lc-code-expand", "template-preset-cloud", "ad-free", "ai-generate-500"], "limits": {"ai_generations": "500/month"}}
+  ],
+  "environment_variables": {
+    "GOOGLE_CLIENT_ID": {"source": "wrangler secret", "status": "✅ configured"},
+    "GOOGLE_CLIENT_SECRET": {"source": "wrangler secret", "status": "✅ configured"},
+    "PAYPAL_CLIENT_ID": {"source": "wrangler secret", "status": "✅ configured"},
+    "PAYPAL_CLIENT_SECRET": {"source": "wrangler secret", "status": "✅ configured"},
+    "APP_URL": {"source": "wrangler secret", "value": "https://ilawlessonplan.net", "status": "✅ configured"},
+    "SESSION_SECRET": {"source": "wrangler secret", "status": "✅ configured"}
+  }
+}

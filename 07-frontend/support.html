@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support ILAW Lesson Plan Generator — Teacher Supporter</title>
+  <link rel="canonical" href="https://ilawlessonplan.net/support">
+  <link rel="stylesheet" href="/styles.css">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#2563EB"/><path d="M11.5 12H20.5M11.5 16H20.5M11.5 20H16" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="22" cy="22" r="6" fill="#EA580C"/><path d="M20.5 22.5L21.5 23.5L24 21" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="nav__logo-text">ILAW<span class="nav__logo-accent">Plan</span></span>
+      </a>
+      <div class="nav__links">
+        <a href="/" class="nav__link">← Back to Generator</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="content-page" style="min-height:70vh;">
+    <div class="content-page__inner" style="max-width:680px;margin:0 auto;padding:2rem 1rem;">
+
+      <!-- Loading / Initial state -->
+      <div id="supportLoading" style="text-align:center;padding:4rem 0;">
+        <p style="font-size:1.2rem;color:#6b7280;">Loading...</p>
+      </div>
+
+      <!-- Error state -->
+      <div id="supportError" style="display:none;text-align:center;padding:4rem 0;">
+        <div style="font-size:3rem;margin-bottom:1rem;">⚠️</div>
+        <h1 style="font-size:1.5rem;color:#dc2626;margin-bottom:0.5rem;">Something went wrong</h1>
+        <p id="errorMessage" style="color:#6b7280;margin-bottom:1.5rem;"></p>
+        <a href="/support" class="btn btn--primary">Try Again</a>
+      </div>
+
+      <!-- Already supporter -->
+      <div id="alreadySupporter" style="display:none;text-align:center;padding:3rem 0;">
+        <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
+        <h1 style="font-size:1.8rem;color:#059669;margin-bottom:0.5rem;">You're a Supporter!</h1>
+        <p style="color:#6b7280;margin-bottom:1.5rem;">Thank you for supporting ILAW Lesson Plan Generator. Your ad-free experience is active.</p>
+        <a href="/" class="btn btn--primary btn--lg">→ Back to Generator</a>
+      </div>
+
+      <!-- PayPal processing overlay -->
+      <div id="paypalProcessing" style="display:none;text-align:center;padding:4rem 0;">
+        <div style="font-size:2rem;margin-bottom:1rem;">⟳</div>
+        <h2 style="font-size:1.5rem;margin-bottom:0.5rem;">Redirecting to PayPal...</h2>
+        <p style="color:#6b7280;">You'll be taken to PayPal to complete your payment.</p>
+      </div>
+
+      <!-- Subscribe form -->
+      <div id="subscribeForm" style="display:none;">
+        <h1 style="font-size:2rem;color:#1a1a2e;margin-bottom:0.5rem;">Support This Tool</h1>
+        <p style="color:#6b7280;margin-bottom:2rem;line-height:1.6;">
+          Your support keeps ILAW Lesson Plan Generator free for all Filipino teachers.
+          Subscribe for <strong>$1.99/month</strong> and unlock:
+        </p>
+
+        <div style="background:#f8fafc;border-radius:12px;padding:1.5rem;margin-bottom:2rem;">
+          <h3 style="font-size:1.1rem;color:#2563EB;margin-bottom:1rem;">✅ Supporter Benefits</h3>
+          <ul style="list-style:none;padding:0;margin:0;">
+            <li style="padding:0.5rem 0;border-bottom:1px solid #e5e7eb;">✓ <strong>Ad-free experience</strong> — no banner ads while generating</li>
+            <li style="padding:0.5rem 0;border-bottom:1px solid #e5e7eb;">✓ <strong>Batch generate</strong> up to 5 plans per week</li>
+            <li style="padding:0.5rem 0;border-bottom:1px solid #e5e7eb;">✓ <strong>ZIP export</strong> — download all plans at once</li>
+            <li style="padding:0.5rem 0;border-bottom:1px solid #e5e7eb;">✓ <strong>LC Code auto-expand</strong> — see full descriptions</li>
+            <li style="padding:0.5rem 0;">✓ <strong>Template presets</strong> — save your favorite formats</li>
+          </ul>
+        </div>
+
+        <button id="subscribeBtn" class="btn btn--primary btn--lg" style="width:100%;font-size:1.2rem;padding:1rem;"
+          onclick="startSubscription()">💰 Subscribe $1.99/month via PayPal</button>
+
+        <p style="text-align:center;color:#9ca3af;font-size:0.9rem;margin-top:1rem;">
+          Cancel anytime. Benefits continue until end of billing period.
+        </p>
+      </div>
+
+      <!-- Completed state -->
+      <div id="completedState" style="display:none;text-align:center;padding:3rem 0;">
+        <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+        <h1 style="font-size:1.8rem;color:#059669;margin-bottom:0.5rem;">Payment Successful!</h1>
+        <p style="color:#6b7280;margin-bottom:0.5rem;">Thank you for becoming a Supporter 🎉</p>
+        <p id="completedDetail" style="color:#9ca3af;margin-bottom:1.5rem;"></p>
+        <a href="/" class="btn btn--primary btn--lg">→ Start Using Supporter Features</a>
+      </div>
+
+      <!-- Cancelled state -->
+      <div id="cancelledState" style="display:none;text-align:center;padding:3rem 0;">
+        <div style="font-size:3rem;margin-bottom:1rem;">↩️</div>
+        <h1 style="font-size:1.8rem;color:#6b7280;margin-bottom:0.5rem;">Payment Cancelled</h1>
+        <p style="color:#9ca3af;margin-bottom:1.5rem;">No charges were made. You can try again anytime.</p>
+        <a href="/support" class="btn btn--primary">Try Again</a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer__bottom"><p>&copy; 2026 ILAW Lesson Plan Generator.</p></div>
+  </footer>
+
+  <script>
+    // Helper: get URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    const status = urlParams.get('status');
+    const token = urlParams.get('token');
+
+    // Show a specific section
+    function show(id) {
+      ['supportLoading','supportError','alreadySupporter','subscribeForm','paypalProcessing','completedState','cancelledState']
+        .forEach(elId => {
+          const el = document.getElementById(elId);
+          if (el) el.style.display = (elId === id) ? '' : 'none';
+        });
+    }
+
+    // Check auth state & handle redirects / capture
+    async function init() {
+      // Handle PayPal return scenarios
+      if (status === 'completed' && token) {
+        await captureOrder(token);
+        return;
+      }
+      if (status === 'cancelled') {
+        show('cancelledState');
+        return;
+      }
+
+      // Check login & plan status
+      try {
+        const res = await fetch('/api/auth/me', { credentials: 'include', cache: 'no-store' });
+        const data = await res.json();
+        const user = data && data.user;
+
+        if (!user) {
+          // Not logged in — redirect to Google OAuth with return to /support
+          window.location.href = '/api/auth/google?redirect=/support';
+          return;
+        }
+
+        if (user.plan === 'supporter' || user.plan === 'pro') {
+          show('alreadySupporter');
+          return;
+        }
+
+        show('subscribeForm');
+      } catch (e) {
+        document.getElementById('errorMessage').textContent = 'Unable to check your login status. Please try again.';
+        show('supportError');
+      }
+    }
+
+    // Start subscription — create PayPal order and redirect
+    async function startSubscription() {
+      const btn = document.getElementById('subscribeBtn');
+      btn.disabled = true;
+      btn.textContent = '⟳ Connecting to PayPal...';
+      show('paypalProcessing');
+
+      try {
+        const res = await fetch('/api/paypal/create-order', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        const data = await res.json();
+
+        if (data.error) {
+          document.getElementById('errorMessage').textContent = data.error;
+          show('supportError');
+          btn.disabled = false;
+          btn.textContent = '💰 Subscribe $1.99/month via PayPal';
+          return;
+        }
+
+        if (data.links) {
+          const approveLink = data.links.find(l => l.rel === 'approve');
+          if (approveLink && approveLink.href) {
+            window.location.href = approveLink.href;
+            return;
+          }
+        }
+
+        document.getElementById('errorMessage').textContent = 'Could not create PayPal order. Please try again.';
+        show('supportError');
+        btn.disabled = false;
+        btn.textContent = '💰 Subscribe $1.99/month via PayPal';
+      } catch (e) {
+        document.getElementById('errorMessage').textContent = 'Network error. Please try again.';
+        show('supportError');
+        btn.disabled = false;
+        btn.textContent = '💰 Subscribe $1.99/month via PayPal';
+      }
+    }
+
+    // Capture completed PayPal order
+    async function captureOrder(orderId) {
+      show('paypalProcessing');
+      document.querySelector('#paypalProcessing h2').textContent = 'Completing payment...';
+
+      try {
+        const res = await fetch('/api/paypal/capture-order', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderId }),
+        });
+
+        const data = await res.json();
+
+        if (data.status === 'COMPLETED') {
+          document.getElementById('completedDetail').textContent =
+            `PayPal Transaction: ${data.id || 'completed'}`;
+          show('completedState');
+        } else {
+          document.getElementById('errorMessage').textContent =
+            'Payment was completed but we could not confirm it. Please contact support with your PayPal transaction ID.';
+          show('supportError');
+        }
+      } catch (e) {
+        document.getElementById('errorMessage').textContent = 'Error confirming payment. Please contact support.';
+        show('supportError');
+      }
+    }
+
+    // Start
+    init();
+  </script>
+</body>
+</html>

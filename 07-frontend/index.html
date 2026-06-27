@@ -705,10 +705,13 @@ ${sections.slice(1).map(s => `
       pptBtn.textContent = '📥 PPT';
     });
     editBtn.addEventListener('click', () => {
-      showState(emptyState);
-      editBtn.disabled = true;
-      wordBtn.disabled = true;
-      pptBtn.disabled = true;
+      // Keep the generated preview intact. "Edit" means return to the form,
+      // adjust current inputs, then click Generate again to refresh preview.
+      const firstEditable = document.getElementById('lcCode') || document.getElementById('objectives');
+      document.getElementById('tool-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        if (firstEditable) firstEditable.focus({ preventScroll: true });
+      }, 350);
     });
 
     // Auth state — show signed-in user after Google OAuth returns to the site

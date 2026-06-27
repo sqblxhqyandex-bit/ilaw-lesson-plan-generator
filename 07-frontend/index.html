@@ -519,6 +519,7 @@
 
           resultState.innerHTML = ilawHtml;
           showState(resultState);
+          setPreviewEditMode(false);
           editBtn.disabled = false;
           wordBtn.disabled = false;
           pptBtn.disabled = false;
@@ -547,7 +548,9 @@
         const sections = [];
         document.querySelectorAll('#resultState .preview-section').forEach(sec => {
           const label = sec.querySelector('.preview-section__label')?.textContent?.trim() || '';
-          const body = sec.querySelector('.preview-section__body')?.innerHTML || '';
+          const body = (sec.querySelector('.preview-section__body')?.innerHTML || '')
+            .replace(/\scontenteditable="(?:true|false)"/gi, '')
+            .replace(/\sspellcheck="true"/gi, '');
           sections.push({ label, body });
         });
 
@@ -704,14 +707,38 @@ ${sections.slice(1).map(s => `
       pptBtn.disabled = false;
       pptBtn.textContent = '📥 PPT';
     });
+    let previewEditMode = false;
+
+    function setPreviewEditMode(enabled) {
+      previewEditMode = enabled;
+      const preview = document.querySelector('#resultState .preview-content');
+      if (!preview) return;
+
+      preview.classList.toggle('preview-content--editing', enabled);
+      preview.querySelectorAll('.preview-section__body p').forEach(p => {
+        p.setAttribute('contenteditable', enabled ? 'true' : 'false');
+        p.setAttribute('spellcheck', 'true');
+      });
+
+      editBtn.textContent = enabled ? '✅ Done' : '📝 Edit';
+      editBtn.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+
+      if (enabled) {
+        const firstParagraph = preview.querySelector('.preview-section__body p');
+        if (firstParagraph) {
+          firstParagraph.focus();
+          const range = document.createRange();
+          range.selectNodeContents(firstParagraph);
+          range.collapse(false);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+        }
+      }
+    }
+
     editBtn.addEventListener('click', () => {
-      // Keep the generated preview intact. "Edit" means return to the form,
-      // adjust current inputs, then click Generate again to refresh preview.
-      const firstEditable = document.getElementById('lcCode') || document.getElementById('objectives');
-      document.getElementById('tool-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setTimeout(() => {
-        if (firstEditable) firstEditable.focus({ preventScroll: true });
-      }, 350);
+      setPreviewEditMode(!previewEditMode);
     });
 
     // Auth state — show signed-in user after Google OAuth returns to the site

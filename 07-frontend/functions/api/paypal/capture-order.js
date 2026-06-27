@@ -1,5 +1,5 @@
 // Capture PayPal payment after buyer approval
-import { getPayPalAccessToken } from '../../_paypal';
+import { getPayPalAccessToken, getPayPalApiBase } from '../../_paypal';
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -27,7 +27,8 @@ export async function onRequest(context) {
   }
 
   // Capture the order
-  const response = await fetch(`https://api-m.paypal.com/v2/checkout/orders/${orderId}/capture`, {
+  const paypalBase = getPayPalApiBase(env);
+  const response = await fetch(`${paypalBase}/v2/checkout/orders/${orderId}/capture`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

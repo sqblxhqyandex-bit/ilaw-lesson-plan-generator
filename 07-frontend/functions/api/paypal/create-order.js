@@ -1,6 +1,6 @@
 // Create PayPal order for Supporter subscription ($1.99/month)
 import { getSessionUser } from '../../_utils';
-import { getPayPalAccessToken } from '../../_paypal';
+import { getPayPalAccessToken, getPayPalApiBase } from '../../_paypal';
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -38,7 +38,8 @@ export async function onRequest(context) {
 
   // Create order
   const appUrl = env.APP_URL || 'https://ilawlessonplan.net';
-  const response = await fetch('https://api-m.paypal.com/v2/checkout/orders', {
+  const paypalBase = getPayPalApiBase(env);
+  const response = await fetch(`${paypalBase}/v2/checkout/orders`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

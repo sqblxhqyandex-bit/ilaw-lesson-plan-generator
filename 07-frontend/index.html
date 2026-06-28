@@ -139,6 +139,7 @@
         <a href="/how-to-make-ilaw-lesson-plan" class="nav__link">Guide</a>
         <a href="/ilaw-lesson-plan-template" class="nav__link">Templates</a>
         <a href="/ilaw-lesson-plan-sample" class="nav__link">Samples</a>
+        <a href="/budget-of-work" class="nav__link">Budget of Work</a>
         <a href="/api/auth/google" class="nav__link nav__link--login" id="loginBtn">Sign In</a>
         <a href="/support" class="btn btn--accent nav__btn" id="subscribeBtn">Support This Tool</a>
       </div>
@@ -405,6 +406,7 @@
           <li><a href="/how-to-make-ilaw-lesson-plan">How to Make ILAW LP</a></li>
           <li><a href="/ilaw-lesson-plan-template">Free Templates</a></li>
           <li><a href="/ilaw-lesson-plan-sample">Sample Plans</a></li>
+          <li><a href="/budget-of-work">Budget of Work Downloads</a></li>
           <li><a href="/deped-order-16-s2026">DO 16 s.2026 Guide</a></li>
         </ul>
       </div>
@@ -515,6 +517,9 @@
                 </div>
               </div>
             </div>
+            <div style="margin-top:1rem;padding:0.75rem 1rem;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;font-size:0.85rem;color:#166534;text-align:center;">
+              ✅ Your ILAW lesson plan is ready! Need another subject or grade? Just change the options above and generate again.
+            </div>
           `;
 
           resultState.innerHTML = ilawHtml;
@@ -606,7 +611,7 @@ ${sections.slice(1).map(s => `
       wordBtn.textContent = '📥 Word';
     });
 
-    // Export to PowerPoint (.pptx) using PptxGenJS
+    // Export to PowerPoint (.pptx) using PptxGenJS — full classroom presentation
     pptBtn.addEventListener('click', async () => {
       if (typeof PptxGenJS === 'undefined') {
         alert('PowerPoint library is still loading. Please try again in a moment.');
@@ -614,7 +619,7 @@ ${sections.slice(1).map(s => `
       }
 
       pptBtn.disabled = true;
-      pptBtn.textContent = '⟳ Generating...';
+      pptBtn.textContent = '⟳ Generating slides...';
 
       try {
         const grade = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(1)')?.textContent?.replace('Grade:', '').trim() || '';
@@ -622,83 +627,210 @@ ${sections.slice(1).map(s => `
         const lcCode = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(3)')?.textContent?.replace('LC Code:', '').trim() || '';
         const objectives = document.querySelector('#resultState .preview-section:nth-child(1) p:nth-child(4)')?.textContent?.replace('Objectives:', '').trim() || '';
 
+        // Subject-specific vocabulary
+        function getVocabulary(s) {
+          var maps = {
+            'Math': ['Addend', 'Denominator', 'Integer', 'Variable', 'Equation', 'Perimeter', 'Probability', 'Proportion'],
+            'Science': ['Hypothesis', 'Variable', 'Molecule', 'Ecosystem', 'Condensation', 'Photosynthesis', 'Gravity', 'Conductor'],
+            'English': ['Noun', 'Verb', 'Adjective', 'Simile', 'Metaphor', 'Alliteration', 'Protagonist', 'Climax'],
+            'Filipino': ['Pangngalan', 'Pandiwa', 'Pang-uri', 'Pang-abay', 'Sanhi', 'Bunga', 'Simuno', 'Panaguri'],
+            'MAPEH': ['Rhythm', 'Texture', 'Balance', 'Endurance', 'Flexibility', 'Nutrients', 'Melody', 'Choreography'],
+            'AP': ['Soberanya', 'Demokrasya', 'Kultura', 'Ekonomiya', 'Teritoryo', 'Konstitusyon', 'Pamahalaan', 'Republika']
+          };
+          for (var key in maps) {
+            if (s.toLowerCase().indexOf(key.toLowerCase()) > -1) return maps[key];
+          }
+          return ['Concept', 'Analysis', 'Process', 'Application', 'Evaluate', 'Example', 'Compare', 'Define'];
+        }
+
+        function getMotivation(s) {
+          var ideas = {
+            'Math': 'Present a real-world word problem and ask students how they would solve it.',
+            'Science': 'Show an image or phenomenon and ask "What do you think is happening here?"',
+            'English': 'Read a short passage and ask students to predict what happens next.',
+            'Filipino': 'Magpakita ng larawan at magtanong "Ano kaya ang ipinapahiwatig nito?"',
+            'MAPEH': 'Play a short music clip or show an artwork. Ask students how it makes them feel.',
+            'AP': 'Magpakita ng larawan ng isang sitwasyon at magtanong "Ano ang iyong opinyon dito?"'
+          };
+          for (var key in ideas) {
+            if (s.toLowerCase().indexOf(key.toLowerCase()) > -1) return ideas[key];
+          }
+          return 'Show an engaging picture or short video related to the topic and ask guiding questions.';
+        }
+
+        var vocab = getVocabulary(subject);
+        var motivation = getMotivation(subject);
+
         const pres = new PptxGenJS();
         pres.defineLayout({ name: 'WIDE', width: 13.333, height: 7.5 });
         pres.layout = 'WIDE';
+        var C = {
+          navy: '1E3A8A', blue: '2563EB', teal: '0F766E', gold: 'F59E0B',
+          white: 'FFFFFF', light: 'F1F5F9', mint: 'CCFBF1', amber: 'FEF3C7',
+          green: '15803D', red: 'DC2626', text: '111827', muted: '6B7280',
+          accent: '0D9488', dark: '1E293B'
+        };
 
-        // Title slide
-        const titleSlide = pres.addSlide();
-        titleSlide.background = { fill: '#2563EB' };
-        titleSlide.addText('ILAW Lesson Plan', {
-          x: 1, y: 1.5, w: 11.333, h: 1.5,
-          fontSize: 40, color: 'FFFFFF', bold: true, align: 'center', fontFace: 'Calibri'
+        // === 1. Title Slide ===
+        var sl = pres.addSlide();
+        sl.background = { fill: '#' + C.navy };
+        sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.28, fill:{color:'#'+C.gold}, line:{color:'#'+C.gold} });
+        sl.addShape(pres.ShapeType.rect, { x:0, y:7.22, w:13.333, h:0.28, fill:{color:'#'+C.teal}, line:{color:'#'+C.teal} });
+        sl.addText('ILAW Lesson Plan', {
+          x:1, y:1.5, w:11.333, h:1.5, fontSize:44, color:'FFFFFF', bold:true, align:'center', fontFace:'Calibri'
         });
-        titleSlide.addText(`Grade: ${grade}  •  Subject: ${subject}`, {
-          x: 1, y: 3.2, w: 11.333, h: 0.8,
-          fontSize: 20, color: 'DBEAFE', align: 'center', fontFace: 'Calibri'
+        sl.addText('Grade: ' + grade + '  •  Subject: ' + subject, {
+          x:1, y:3.2, w:11.333, h:0.8, fontSize:22, color:'DBEAFE', align:'center', fontFace:'Calibri'
         });
-        titleSlide.addText(`LC Code: ${lcCode}`, {
-          x: 1, y: 4, w: 11.333, h: 0.6,
-          fontSize: 16, color: 'BFDBFE', align: 'center', fontFace: 'Calibri'
+        sl.addText('LC Code: ' + lcCode, {
+          x:1, y:4.0, w:11.333, h:0.6, fontSize:16, color:'BFDBFE', align:'center', fontFace:'Calibri'
         });
-
-        // Objectives slide
-        const objSlide = pres.addSlide();
-        objSlide.background = { fill: 'FFFFFF' };
-        objSlide.addText('Learning Objectives', {
-          x: 0.5, y: 0.3, w: 12.333, h: 1,
-          fontSize: 28, color: '2563EB', bold: true, fontFace: 'Calibri'
-        });
-        objSlide.addShape(pres.ShapeType.rect, {
-          x: 0.5, y: 1.1, w: 12.333, h: 0.05, fill: { color: '2563EB' }
-        });
-        objSlide.addText(objectives, {
-          x: 0.5, y: 1.5, w: 12.333, h: 5,
-          fontSize: 18, color: '1F2937', fontFace: 'Calibri', lineSpacingMultiple: 1.5
+        sl.addText('DRAFT — Review and adapt for your learners', {
+          x:1, y:6.5, w:11.333, h:0.5, fontSize:13, color:'94A3B8', align:'center', fontFace:'Calibri', italic:true
         });
 
-        // Content slides for each ILAW section
-        const sectionColors = ['#2563EB', '#059669', '#D97706', '#7C3AED'];
-        document.querySelectorAll('#resultState .preview-section').forEach((sec, idx) => {
-          const label = sec.querySelector('.preview-section__label')?.textContent?.trim() || '';
-          const bodyEls = sec.querySelector('.preview-section__body');
-          let bodyText = bodyEls?.textContent?.trim() || '';
-          // Strip "Grade: ... Subject: ... LC Code: ..." from first section
+        // === 2. Learning Objectives ===
+        sl = pres.addSlide(); sl.background = { fill:'FFFFFF' };
+        sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.55, fill:{color:'#'+C.navy}, line:{color:'#'+C.navy} });
+        sl.addText('Learning Objectives', { x:0.3, y:0, w:12.7, h:0.55, fontSize:22, bold:true, color:'FFFFFF', valign:'middle', fontFace:'Calibri' });
+        var objLines = objectives.split(/\n+/).filter(function(l){return l.trim();});
+        if (objLines.length <= 1 && /^\d+[\.\)]/.test(objectives)) {
+          objLines = objectives.split(/(?=\d+[\.\)])/).filter(function(l){return l.trim();});
+        }
+        objLines.forEach(function(obj, i) {
+          var clean = obj.replace(/^\s*\d+[\.\)]\s*/, '').trim() || obj.trim();
+          if (!clean) return;
+          sl.addShape(pres.ShapeType.rect, { x:0.5, y:0.85 + i*1.35, w:0.5, h:0.5, fill:{color:'#'+C.teal}, rectRadius:0.08 });
+          sl.addText('' + (i+1), { x:0.5, y:0.85 + i*1.35, w:0.5, h:0.5, fontSize:16, bold:true, color:'FFFFFF', align:'center', valign:'middle', fontFace:'Calibri' });
+          sl.addText(clean, {
+            x:1.2, y:0.9 + i*1.35, w:11.5, h:0.7, fontSize:16, color:'1F2937', valign:'middle', fontFace:'Calibri', wrap:true
+          });
+        });
+
+        // === 3. Vocabulary / Key Terms ===
+        sl = pres.addSlide(); sl.background = { fill:'FFFFFF' };
+        sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.55, fill:{color:'#'+C.teal}, line:{color:'#'+C.teal} });
+        sl.addText('Vocabulary / Key Terms', { x:0.3, y:0, w:12.7, h:0.55, fontSize:22, bold:true, color:'FFFFFF', valign:'middle', fontFace:'Calibri' });
+        vocab.forEach(function(word, i) {
+          var y = 0.8 + i * 0.82;
+          sl.addShape(pres.ShapeType.rect, { x:0.4, y:y, w:12.5, h:0.72, fill:{color:'#'+C.light}, rectRadius:0.06 });
+          sl.addText(word, { x:0.55, y:y + 0.06, w:4, h:0.6, fontSize:16, bold:true, color:'#'+C.navy, valign:'middle', fontFace:'Calibri' });
+        });
+
+        // === 4. Motivation ===
+        sl = pres.addSlide(); sl.background = { fill:'FFFFFF' };
+        sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.55, fill:{color:'#'+C.accent}, line:{color:'#'+C.accent} });
+        sl.addText('Motivation / Opening Activity', { x:0.3, y:0, w:12.7, h:0.55, fontSize:22, bold:true, color:'FFFFFF', valign:'middle', fontFace:'Calibri' });
+        sl.addShape(pres.ShapeType.rect, { x:0.4, y:0.75, w:12.5, h:4.5, fill:{color:'#'+C.amber}, rectRadius:0.1 });
+        sl.addText(motivation, {
+          x:0.65, y:0.95, w:12.1, h:2, fontSize:16, color:'92400E', wrap:true, fontFace:'Calibri', valign:'top'
+        });
+        sl.addText('Discussion Questions:', {
+          x:0.65, y:3.1, w:12.1, h:0.4, fontSize:15, bold:true, color:'#'+C.navy, fontFace:'Calibri'
+        });
+        sl.addText('1. What do you already know about this topic?\n2. Why is this topic important in real life?', {
+          x:0.65, y:3.5, w:12.1, h:1.5, fontSize:14, color:'78350F', wrap:true, fontFace:'Calibri'
+        });
+
+        // === 5. ILAW Content Slides ===
+        const sectionColors = ['#'+C.blue, '#'+C.green, '#'+C.gold, '#'+C.accent];
+        document.querySelectorAll('#resultState .preview-section').forEach(function(sec, idx) {
+          var label = sec.querySelector('.preview-section__label')?.textContent?.trim() || '';
+          var bodyEls = sec.querySelector('.preview-section__body');
+          var bodyText = bodyEls?.textContent?.trim() || '';
           if (idx === 0) {
-            const paragraphs = bodyText.split(/\n+/).filter(s => s.trim());
-            bodyText = paragraphs.filter(p => !/^(Grade|Subject|LC Code|Objectives):/i.test(p.trim())).join('\n') ||
-                       paragraphs.slice(3).join('\n');
+            var paragraphs = bodyText.split(/\n+/).filter(function(s) { return s.trim(); });
+            bodyText = paragraphs.filter(function(p) { return !/^(Grade|Subject|LC Code|Objectives):/i.test(p.trim()); }).join('\n') || paragraphs.slice(3).join('\n');
           }
-
-          const slide = pres.addSlide();
-          slide.background = { fill: 'FFFFFF' };
-          slide.addText(label, {
-            x: 0.5, y: 0.3, w: 12.333, h: 1,
-            fontSize: 28, color: sectionColors[idx % sectionColors.length], bold: true, fontFace: 'Calibri'
-          });
-          slide.addShape(pres.ShapeType.rect, {
-            x: 0.5, y: 1.1, w: 12.333, h: 0.05, fill: { color: sectionColors[idx % sectionColors.length] }
-          });
-          slide.addText(bodyText, {
-            x: 0.5, y: 1.5, w: 12.333, h: 5,
-            fontSize: 18, color: '1F2937', fontFace: 'Calibri', lineSpacingMultiple: 1.5,
-            valign: 'top'
+          sl = pres.addSlide(); sl.background = { fill:'FFFFFF' };
+          sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.55, fill:{color:sectionColors[idx % sectionColors.length]}, line:{color:sectionColors[idx % sectionColors.length]} });
+          sl.addText(label, { x:0.3, y:0, w:12.7, h:0.55, fontSize:22, bold:true, color:'FFFFFF', valign:'middle', fontFace:'Calibri' });
+          sl.addText(bodyText, {
+            x:0.5, y:0.8, w:12.333, h:6.2, fontSize:16, color:'1F2937', fontFace:'Calibri', lineSpacingMultiple:1.5, valign:'top', wrap:true
           });
         });
 
-        // Footer slide
-        const footerSlide = pres.addSlide();
-        footerSlide.background = { fill: '#1E293B' };
-        footerSlide.addText('Generated by ILAW Lesson Plan Generator', {
-          x: 1, y: 2.5, w: 11.333, h: 1,
-          fontSize: 18, color: '94A3B8', align: 'center', fontFace: 'Calibri'
-        });
-        footerSlide.addText('ilawlessonplan.net', {
-          x: 1, y: 3.5, w: 11.333, h: 0.8,
-          fontSize: 14, color: '64748B', align: 'center', fontFace: 'Calibri'
+        // === 6. Sample Quiz: Multiple Choice ===
+        var mcqs = [
+          {q:'Which of the following best describes the main concept?', a:'A', opts:'A) First option\nB) Second option\nC) Third option\nD) Fourth option'},
+          {q:'What is the primary reason for the concept we discussed?', a:'C', opts:'A) Reason one\nB) Reason two\nC) Reason three\nD) Reason four'},
+          {q:'Which statement is correct based on today\'s lesson?', a:'B', opts:'A) Statement one\nB) Statement two\nC) Statement three\nD) Statement four'}
+        ];
+        sl = pres.addSlide(); sl.background = { fill:'FFFFFF' };
+        sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.55, fill:{color:'#'+C.teal}, line:{color:'#'+C.teal} });
+        sl.addText('Formative Assessment — Multiple Choice', { x:0.3, y:0, w:12.7, h:0.55, fontSize:22, bold:true, color:'FFFFFF', valign:'middle', fontFace:'Calibri' });
+        mcqs.forEach(function(item, i) {
+          var y = 0.75 + i * 1.7;
+          sl.addShape(pres.ShapeType.rect, { x:0.4, y:y, w:12.5, h:1.55, fill:{color:'#'+C.light}, rectRadius:0.08 });
+          sl.addText((i+1) + '. ' + item.q, { x:0.6, y:y+0.05, w:12, h:0.45, fontSize:14, bold:true, color:'#'+C.navy, wrap:true, fontFace:'Calibri' });
+          sl.addText(item.opts, { x:0.6, y:y+0.5, w:10, h:0.9, fontSize:13, color:'1F2937', wrap:true, fontFace:'Calibri' });
+          sl.addText('Ans: ' + item.a, { x:11.5, y:y+0.5, w:1.2, h:0.4, fontSize:11, bold:true, color:'#'+C.green, fontFace:'Calibri' });
         });
 
-        pres.writeFile({ fileName: `ILAW-Lesson-Plan-${grade.replace(/\s+/g, '-')}-${subject.replace(/\s+/g, '-')}.pptx` });
+        // === 7. True or False ===
+        sl = pres.addSlide(); sl.background = { fill:'FFFFFF' };
+        sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.55, fill:{color:'#'+C.accent}, line:{color:'#'+C.accent} });
+        sl.addText('True or False', { x:0.3, y:0, w:12.7, h:0.55, fontSize:22, bold:true, color:'FFFFFF', valign:'middle', fontFace:'Calibri' });
+        var tof = [
+          'The main idea was clearly explained in today\'s lesson.',
+          'This concept is not related to real-world applications.',
+          'Understanding this topic helps in future lessons.'
+        ];
+        tof.forEach(function(stmt, i) {
+          var y = 0.8 + i * 1.1;
+          sl.addShape(pres.ShapeType.rect, { x:0.4, y:y, w:12.5, h:0.95, fill:{color:'#'+C.white}, rectRadius:0.08 });
+          sl.addText((i+1) + '.  ' + stmt, { x:0.6, y:y+0.1, w:9.5, h:0.7, fontSize:15, color:'1F2937', valign:'middle', wrap:true, fontFace:'Calibri' });
+          sl.addShape(pres.ShapeType.rect, { x:10.5, y:y+0.15, w:2.2, h:0.65, fill:{color:'#'+C.mint}, rectRadius:0.06 });
+          sl.addText('TRUE / FALSE', { x:10.5, y:y+0.15, w:2.2, h:0.65, fontSize:12, bold:true, color:'#'+C.teal, align:'center', valign:'middle', fontFace:'Calibri' });
+        });
+
+        // === 8. Summary ===
+        sl = pres.addSlide(); sl.background = { fill:'FFFFFF' };
+        sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.55, fill:{color:'#'+C.navy}, line:{color:'#'+C.navy} });
+        sl.addText('Summary — What We Learned Today', { x:0.3, y:0, w:12.7, h:0.55, fontSize:22, bold:true, color:'FFFFFF', valign:'middle', fontFace:'Calibri' });
+        var summaryPoints = [
+          'Today we explored key concepts in ' + subject + ' for Grade ' + grade + '.',
+          'We discussed the learning objectives and how they connect to real-world applications.',
+          'We practiced applying these concepts through activities and formative assessment.',
+          'Remember to review the key terms and vocabulary covered in this lesson.'
+        ];
+        summaryPoints.forEach(function(pt, i) {
+          var y = 0.9 + i * 1.15;
+          sl.addShape(pres.ShapeType.rect, { x:0.4, y:y, w:12.5, h:1, fill:{color:'#'+C.light}, rectRadius:0.08 });
+          sl.addShape(pres.ShapeType.rect, { x:0.4, y:y, w:0.15, h:1, fill:{color:'#'+C.blue} });
+          sl.addText(pt, { x:0.75, y:y+0.1, w:11.8, h:0.8, fontSize:15, color:'1F2937', valign:'middle', wrap:true, fontFace:'Calibri' });
+        });
+
+        // === 9. Assignment ===
+        sl = pres.addSlide(); sl.background = { fill:'FFFFFF' };
+        sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.55, fill:{color:'#'+C.teal}, line:{color:'#'+C.teal} });
+        sl.addText('Assignment / Homework', { x:0.3, y:0, w:12.7, h:0.55, fontSize:22, bold:true, color:'FFFFFF', valign:'middle', fontFace:'Calibri' });
+        sl.addShape(pres.ShapeType.rect, { x:0.4, y:0.8, w:12.5, h:4, fill:{color:'#'+C.amber}, rectRadius:0.1 });
+        sl.addText('Your Assignment:', { x:0.65, y:0.95, w:12, h:0.45, fontSize:18, bold:true, color:'#'+C.navy, fontFace:'Calibri' });
+        sl.addText(
+          '1. Review the key terms and concepts discussed today.\n\n' +
+          '2. Complete the practice exercises related to ' + subject + '.\n\n' +
+          '3. Prepare one question about today\'s topic for our next meeting.\n\n' +
+          '4. Read the next section in preparation for the next lesson.',
+          { x:0.65, y:1.5, w:12, h:3, fontSize:15, color:'78350F', wrap:true, valign:'top', fontFace:'Calibri' }
+        );
+
+        // === 10. Closing / Inspiration ===
+        sl = pres.addSlide();
+        sl.background = { fill:'#' + C.navy };
+        sl.addShape(pres.ShapeType.rect, { x:0, y:0, w:13.333, h:0.28, fill:{color:'#'+C.gold}, line:{color:'#'+C.gold} });
+        sl.addShape(pres.ShapeType.rect, { x:0, y:7.22, w:13.333, h:0.28, fill:{color:'#'+C.teal}, line:{color:'#'+C.teal} });
+        sl.addText('"Every lesson learned today is a step toward a brighter future."', {
+          x:0.6, y:1.5, w:12.1, h:1.5, fontSize:20, italic:true, color:'CCFBF1', align:'center', wrap:true, fontFace:'Calibri'
+        });
+        sl.addShape(pres.ShapeType.rect, { x:2, y:3.2, w:9.333, h:0.08, fill:{color:'#'+C.gold} });
+        sl.addText('Thank You!', { x:0.5, y:3.45, w:12.333, h:1, fontSize:36, bold:true, color:'FFFFFF', align:'center', fontFace:'Calibri' });
+        sl.addText(subject + ' • Grade ' + grade, { x:0.5, y:4.5, w:12.333, h:0.5, fontSize:14, color:'94A3B8', align:'center', fontFace:'Calibri' });
+        sl.addText('Generated by ilawlessonplan.net', {
+          x:1, y:5.5, w:11.333, h:0.5, fontSize:12, color:'64748B', align:'center', fontFace:'Calibri', italic:true
+        });
+
+        pres.writeFile({ fileName: 'ILAW-Lesson-Plan-' + grade.replace(/\s+/g, '-') + '-' + subject.replace(/\s+/g, '-') + '.pptx' });
       } catch (e) {
         alert('Error generating PowerPoint file. Please try again.');
         console.error('PPT export error:', e);

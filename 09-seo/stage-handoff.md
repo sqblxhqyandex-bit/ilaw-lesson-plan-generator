@@ -1,11 +1,15 @@
 # SEO 上线与收录配置 — 交接摘要
 
+> ⚠️ **【已废弃 — 2026-06-28】** 本文档记录的是原始 9 页 SEO 状态。实际网站已扩展至 11+ 页面。
+> 以后**代码即事实源**，SEO 状态直接看 `07-frontend/sitemap.xml` 和 Google Search Console。
+> 不再维护此文档。
+
 ## 当前结论
-- **状态**: [DONE]
-- **一句话结论**: 全站 9 个 indexable 页面的 SEO 基础已就位，GSC meta 已部署，但需你手动提交 GSC+Bing
+- **状态**: [DONE] → **【已废弃，见代码】**
+- **一句话结论**: 全站 ~~9~~ **11+** 个 indexable 页面的 SEO 基础已就位，GSC meta 已部署，但需你手动提交 GSC+Bing
 
 ## 本阶段交付物
-- SEO 复核：9 页矩阵对账通过，schema/OG/Twitter/GSC 全部到位
+- ~~SEO 复核：9 页矩阵对账通过~~ **【已废弃】** → 当前 11+ 页，见 sitemap.xml
 - 技术修复：sitemap 域名修正、robots 域名修正、canonical 全部指向 ilawlessonplan.net
 - 结构化数据：首页 WebApplication+HowTo，内容页 Article+HowTo，其余 Article
 

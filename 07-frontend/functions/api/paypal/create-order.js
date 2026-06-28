@@ -48,10 +48,10 @@ export async function onRequest(context) {
     body: JSON.stringify({
       intent: 'CAPTURE',
       purchase_units: [{
-        description: 'ILAW Lesson Plan Generator — Teacher Supporter (1 month)',
+        description: 'Support ILAW Lesson Plan Generator ☕',
         amount: {
           currency_code: 'USD',
-          value: '1.99',
+          value: '1.00',
         },
       }],
       application_context: {
@@ -74,7 +74,7 @@ export async function onRequest(context) {
       crypto.randomUUID(),
       user?.id || 'pending',
       'supporter',
-      1.99,
+      1.00,
       'USD',
       order.id,
       'pending'

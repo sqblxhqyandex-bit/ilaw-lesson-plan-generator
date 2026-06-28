@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support ILAW Lesson Plan Generator — Teacher Supporter</title>
+  <title>Support — ILAW Lesson Plan Generator</title>
   <link rel="canonical" href="https://ilawlessonplan.net/support">
   <link rel="stylesheet" href="/styles.css">
   <meta name="robots" content="noindex">
@@ -22,14 +22,14 @@
   </nav>
 
   <section class="content-page" style="min-height:70vh;">
-    <div class="content-page__inner" style="max-width:680px;margin:0 auto;padding:2rem 1rem;">
+    <div class="content-page__inner" style="max-width:600px;margin:0 auto;padding:2rem 1rem;">
 
-      <!-- Loading / Initial state -->
+      <!-- Loading -->
       <div id="supportLoading" style="text-align:center;padding:4rem 0;">
         <p style="font-size:1.2rem;color:#6b7280;">Loading...</p>
       </div>
 
-      <!-- Error state -->
+      <!-- Error -->
       <div id="supportError" style="display:none;text-align:center;padding:4rem 0;">
         <div style="font-size:3rem;margin-bottom:1rem;">⚠️</div>
         <h1 style="font-size:1.5rem;color:#dc2626;margin-bottom:0.5rem;">Something went wrong</h1>
@@ -37,62 +37,59 @@
         <a href="/support" class="btn btn--primary">Try Again</a>
       </div>
 
-      <!-- Already supporter -->
+      <!-- Already tipped -->
       <div id="alreadySupporter" style="display:none;text-align:center;padding:3rem 0;">
         <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
-        <h1 style="font-size:1.8rem;color:#059669;margin-bottom:0.5rem;">You're a Supporter!</h1>
-        <p style="color:#6b7280;margin-bottom:1.5rem;">Thank you for supporting ILAW Lesson Plan Generator. Your ad-free experience is active.</p>
+        <h1 style="font-size:1.8rem;color:#059669;margin-bottom:0.5rem;">You're Awesome!</h1>
+        <p style="color:#6b7280;margin-bottom:1.5rem;">Thank you for supporting ILAW Lesson Plan Generator. Your contribution means a lot!</p>
         <a href="/" class="btn btn--primary btn--lg">→ Back to Generator</a>
       </div>
 
-      <!-- PayPal processing overlay -->
+      <!-- PayPal processing -->
       <div id="paypalProcessing" style="display:none;text-align:center;padding:4rem 0;">
         <div style="font-size:2rem;margin-bottom:1rem;">⟳</div>
         <h2 style="font-size:1.5rem;margin-bottom:0.5rem;">Redirecting to PayPal...</h2>
         <p style="color:#6b7280;">You'll be taken to PayPal to complete your payment.</p>
       </div>
 
-      <!-- Subscribe form -->
+      <!-- Tip form -->
       <div id="subscribeForm" style="display:none;">
-        <h1 style="font-size:2rem;color:#1a1a2e;margin-bottom:0.5rem;">Support This Tool</h1>
-        <p style="color:#6b7280;margin-bottom:2rem;line-height:1.6;">
-          Your support keeps ILAW Lesson Plan Generator free for all Filipino teachers.
-          Subscribe for <strong>$1.99/month</strong> and unlock:
-        </p>
+        <div style="text-align:center;margin-bottom:2rem;">
+          <div style="font-size:3rem;margin-bottom:0.5rem;">☕</div>
+          <h1 style="font-size:2rem;color:#1a1a2e;margin-bottom:0.5rem;">Buy Me a Coffee</h1>
+          <p style="color:#6b7280;line-height:1.6;">
+            I built this tool for Filipino teachers — free, no strings attached.
+            If it saved you time, a small tip keeps it running.
+          </p>
+        </div>
 
-        <div style="background:#f8fafc;border-radius:12px;padding:1.5rem;margin-bottom:2rem;">
-          <h3 style="font-size:1.1rem;color:#2563EB;margin-bottom:1rem;">✅ Supporter Benefits</h3>
-          <ul style="list-style:none;padding:0;margin:0;">
-            <li style="padding:0.5rem 0;border-bottom:1px solid #e5e7eb;">✓ <strong>Ad-free experience</strong> — no banner ads while generating</li>
-            <li style="padding:0.5rem 0;border-bottom:1px solid #e5e7eb;">✓ <strong>Batch generate</strong> up to 5 plans per week</li>
-            <li style="padding:0.5rem 0;border-bottom:1px solid #e5e7eb;">✓ <strong>ZIP export</strong> — download all plans at once</li>
-            <li style="padding:0.5rem 0;border-bottom:1px solid #e5e7eb;">✓ <strong>LC Code auto-expand</strong> — see full descriptions</li>
-            <li style="padding:0.5rem 0;">✓ <strong>Template presets</strong> — save your favorite formats</li>
-          </ul>
+        <div style="background:#f8fafc;border-radius:12px;padding:2rem;margin-bottom:2rem;text-align:center;">
+          <p style="font-size:1.5rem;font-weight:700;color:#0F172A;margin-bottom:0.5rem;">$1.00</p>
+          <p style="color:#64748B;font-size:0.95rem;">One-time tip via PayPal</p>
         </div>
 
         <button id="subscribeBtn" class="btn btn--primary btn--lg" style="width:100%;font-size:1.2rem;padding:1rem;"
-          onclick="startSubscription()">💰 Subscribe $1.99/month via PayPal</button>
+          onclick="startSubscription()">☕ Send $1.00 via PayPal</button>
 
         <p style="text-align:center;color:#9ca3af;font-size:0.9rem;margin-top:1rem;">
-          Cancel anytime. Benefits continue until end of billing period.
+          No account needed. No recurring charges.
         </p>
       </div>
 
-      <!-- Completed state -->
+      <!-- Completed -->
       <div id="completedState" style="display:none;text-align:center;padding:3rem 0;">
-        <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
-        <h1 style="font-size:1.8rem;color:#059669;margin-bottom:0.5rem;">Payment Successful!</h1>
-        <p style="color:#6b7280;margin-bottom:0.5rem;">Thank you for becoming a Supporter 🎉</p>
+        <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
+        <h1 style="font-size:1.8rem;color:#059669;margin-bottom:0.5rem;">Thank You! 🙏</h1>
+        <p style="color:#6b7280;margin-bottom:0.5rem;">Your tip keeps this tool free for all Filipino teachers.</p>
         <p id="completedDetail" style="color:#9ca3af;margin-bottom:1.5rem;"></p>
-        <a href="/" class="btn btn--primary btn--lg">→ Start Using Supporter Features</a>
+        <a href="/" class="btn btn--primary btn--lg">→ Back to Generator</a>
       </div>
 
-      <!-- Cancelled state -->
+      <!-- Cancelled -->
       <div id="cancelledState" style="display:none;text-align:center;padding:3rem 0;">
         <div style="font-size:3rem;margin-bottom:1rem;">↩️</div>
-        <h1 style="font-size:1.8rem;color:#6b7280;margin-bottom:0.5rem;">Payment Cancelled</h1>
-        <p style="color:#9ca3af;margin-bottom:1.5rem;">No charges were made. You can try again anytime.</p>
+        <h1 style="font-size:1.8rem;color:#6b7280;margin-bottom:0.5rem;">No Worries</h1>
+        <p style="color:#9ca3af;margin-bottom:1.5rem;">The tool stays free either way. Come back anytime!</p>
         <a href="/support" class="btn btn--primary">Try Again</a>
       </div>
 
@@ -104,12 +101,10 @@
   </footer>
 
   <script>
-    // Helper: get URL params
     const urlParams = new URLSearchParams(window.location.search);
     const status = urlParams.get('status');
     const token = urlParams.get('token');
 
-    // Show a specific section
     function show(id) {
       ['supportLoading','supportError','alreadySupporter','subscribeForm','paypalProcessing','completedState','cancelledState']
         .forEach(elId => {
@@ -118,9 +113,7 @@
         });
     }
 
-    // Check auth state & handle redirects / capture
     async function init() {
-      // Handle PayPal return scenarios
       if (status === 'completed' && token) {
         await captureOrder(token);
         return;
@@ -130,14 +123,12 @@
         return;
       }
 
-      // Check login & plan status
       try {
         const res = await fetch('/api/auth/me', { credentials: 'include', cache: 'no-store' });
         const data = await res.json();
         const user = data && data.user;
 
         if (!user) {
-          // Not logged in — redirect to Google OAuth with return to /support
           window.location.href = '/api/auth/google?redirect=/support';
           return;
         }
@@ -154,7 +145,6 @@
       }
     }
 
-    // Start subscription — create PayPal order and redirect
     async function startSubscription() {
       const btn = document.getElementById('subscribeBtn');
       btn.disabled = true;
@@ -174,7 +164,7 @@
           document.getElementById('errorMessage').textContent = data.error;
           show('supportError');
           btn.disabled = false;
-          btn.textContent = '💰 Subscribe $1.99/month via PayPal';
+          btn.textContent = '☕ Send $1.00 via PayPal';
           return;
         }
 
@@ -189,16 +179,15 @@
         document.getElementById('errorMessage').textContent = 'Could not create PayPal order. Please try again.';
         show('supportError');
         btn.disabled = false;
-        btn.textContent = '💰 Subscribe $1.99/month via PayPal';
+        btn.textContent = '☕ Send $1.00 via PayPal';
       } catch (e) {
         document.getElementById('errorMessage').textContent = 'Network error. Please try again.';
         show('supportError');
         btn.disabled = false;
-        btn.textContent = '💰 Subscribe $1.99/month via PayPal';
+        btn.textContent = '☕ Send $1.00 via PayPal';
       }
     }
 
-    // Capture completed PayPal order
     async function captureOrder(orderId) {
       show('paypalProcessing');
       document.querySelector('#paypalProcessing h2').textContent = 'Completing payment...';
@@ -228,7 +217,6 @@
       }
     }
 
-    // Start
     init();
   </script>
 </body>

@@ -34,7 +34,7 @@ export async function onRequest(context) {
 
   // --- Verify webhook signature (optional in Sandbox, required in Production) ---
   // For Sandbox testing, skip strict verification
-  const mode = env.PAYPAL_MODE || 'production';
+  const mode = env.PAYPAL_MODE || 'sandbox';
   if (mode === 'production') {
     const webhookId = env.PAYPAL_WEBHOOK_ID;
     if (!webhookId) {

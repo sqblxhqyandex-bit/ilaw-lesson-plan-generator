@@ -2,7 +2,7 @@
 export async function getPayPalAccessToken(env) {
   const clientId = env.PAYPAL_CLIENT_ID;
   const clientSecret = env.PAYPAL_CLIENT_SECRET;
-  const mode = env.PAYPAL_MODE || 'production'; // 'sandbox' or 'production'
+  const mode = env.PAYPAL_MODE || 'sandbox'; // 'sandbox' or 'production'
 
   if (!clientId || !clientSecret) {
     throw new Error('PayPal not configured');
@@ -33,7 +33,7 @@ export async function getPayPalAccessToken(env) {
 
 // Get PayPal API base URL
 export function getPayPalApiBase(env) {
-  const mode = env.PAYPAL_MODE || 'production';
+  const mode = env.PAYPAL_MODE || 'sandbox';
   return mode === 'sandbox'
     ? 'https://api-m.sandbox.paypal.com'
     : 'https://api-m.paypal.com';

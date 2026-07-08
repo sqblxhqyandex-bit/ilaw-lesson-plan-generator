@@ -6,12 +6,13 @@
 //   PAYPAL_WEBHOOK_ID — from PayPal Developer Dashboard > Webhooks
 //
 // Events handled:
-//   PAYMENT.CAPTURE.COMPLETED  — capture the order if not already captured
-//   CHECKOUT.ORDER.APPROVED    — log the approval
+//   PAYMENT.CAPTURE.COMPLETED  — capture the order if not already captured; grant credits for credit packs
+//   CHECKOUT.ORDER.APPROVED    — log the approval (not a capture event; do NOT grant credits here)
 //   PAYMENT.CAPTURE.DENIED     — mark payment as failed
-//   PAYMENT.CAPTURE.REFUNDED   — downgrade user plan
+//   PAYMENT.CAPTURE.REFUNDED   — downgrade user plan / reverse granted credit pack
 
 import { getPayPalAccessToken, getPayPalApiBase, verifyPayPalWebhookSignature } from '../../_paypal';
+import { getCreditPack } from '../../_credits';
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -52,19 +53,17 @@ export async function onRequest(context) {
       || (resource.links || []).find(l => l.rel === 'up')?.href?.split('/').pop();
 
     if (!orderId) {
-      // Try looking up by capture ID in payments table
       return new Response(JSON.stringify({ received: true, orderId: null }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' },
       });
     }
 
-    await processCompletedCapture(env, orderId, captureId);
+    await processCompletedCapture(env, orderId, captureId, resource);
   }
 
   else if (eventType === 'CHECKOUT.ORDER.APPROVED') {
-    // User approved payment on PayPal — optionally auto-capture
-    // (Our redirect flow already handles this)
+    // NOT a credit-granting event. Only captures finalize money movement.
     console.log(`Order approved: ${resource.id}`);
   }
 
@@ -74,12 +73,11 @@ export async function onRequest(context) {
       const db = env.ilaw_db;
       await db.prepare('UPDATE payments SET status = ?, updated_at = ? WHERE paypal_order_id = ?')
         .bind(eventType === 'PAYMENT.CAPTURE.DENIED' ? 'denied' : 'refunded', new Date().toISOString(), orderId).run();
+      await markCreditPurchaseFailedOrRefunded(db, orderId, eventType === 'PAYMENT.CAPTURE.REFUNDED');
     }
   }
 
   else if (eventType === 'BILLING.SUBSCRIPTION.CANCELLED') {
-    // Handle subscription cancellation
-    // (Future use when we implement recurring billing)
     console.log(`Subscription cancelled: ${resource.id}`);
   }
 
@@ -90,27 +88,72 @@ export async function onRequest(context) {
   });
 }
 
-// Process a completed capture — update payment record and upgrade user
-async function processCompletedCapture(env, orderId, captureId) {
+// Process a completed capture — update payment record, upgrade user, and idempotently grant credit packs.
+async function processCompletedCapture(env, orderId, captureId, resource) {
   const db = env.ilaw_db;
+  const now = new Date().toISOString();
 
-  // Check if already processed
+  // Legacy payment record (subscription/one-time plan purchases)
   const existing = await db.prepare('SELECT id, status FROM payments WHERE paypal_order_id = ?')
     .bind(orderId).first();
-  if (!existing || existing.status === 'completed') return;
+  if (existing && existing.status !== 'completed') {
+    await db.prepare('UPDATE payments SET status = ?, paypal_capture_id = ?, updated_at = ? WHERE paypal_order_id = ?')
+      .bind('completed', captureId, now, orderId).run();
 
-  // Update payment record
-  await db.prepare('UPDATE payments SET status = ?, paypal_capture_id = ?, updated_at = ? WHERE paypal_order_id = ?')
-    .bind('completed', captureId, new Date().toISOString(), orderId).run();
-
-  // Update user plan if we have a user_id
-  if (existing && existing.id) {
-    const payment = await db.prepare('SELECT user_id FROM payments WHERE id = ?').bind(existing.id).first();
-    if (payment && payment.user_id && payment.user_id !== 'pending') {
-      const expiresAt = new Date();
-      expiresAt.setMonth(expiresAt.getMonth() + 1);
-      await db.prepare('UPDATE users SET plan = ?, ad_free = 1, plan_expires_at = ?, updated_at = ? WHERE id = ?')
-        .bind('supporter', expiresAt.toISOString(), new Date().toISOString(), payment.user_id).run();
+    if (existing.id) {
+      const payment = await db.prepare('SELECT user_id FROM payments WHERE id = ?').bind(existing.id).first();
+      if (payment && payment.user_id && payment.user_id !== 'pending') {
+        const expiresAt = new Date();
+        expiresAt.setMonth(expiresAt.getMonth() + 1);
+        await db.prepare('UPDATE users SET plan = ?, ad_free = 1, plan_expires_at = ?, updated_at = ? WHERE id = ?')
+          .bind('supporter', expiresAt.toISOString(), now, payment.user_id).run();
+      }
     }
   }
+
+  // AI credit pack purchases (idempotent grant)
+  const creditPurchase = await db.prepare(
+    'SELECT * FROM credit_purchases WHERE paypal_order_id = ?'
+  ).bind(orderId).first();
+
+  if (creditPurchase) {
+    if (creditPurchase.status === 'completed') {
+      console.log(`Credit purchase already granted: ${orderId}`);
+      return;
+    }
+
+    const pack = getCreditPack(creditPurchase.sku);
+    if (!pack) {
+      console.error(`Unknown credit pack SKU: ${creditPurchase.sku}`);
+      return;
+    }
+
+    const customId = resource.purchase_units?.[0]?.custom_id || '';
+    const expectedCustomId = `${creditPurchase.user_id}:${creditPurchase.sku}`;
+    if (customId && customId !== expectedCustomId) {
+      console.error(`Custom ID mismatch for order ${orderId}: got ${customId}, expected ${expectedCustomId}`);
+      return;
+    }
+
+    await db.prepare(
+      `UPDATE credit_purchases
+       SET status = 'completed', credits_granted = ?, paypal_capture_id = ?, updated_at = ?
+       WHERE paypal_order_id = ? AND status != 'completed'`
+    ).bind(pack.credits, captureId, now, orderId).run();
+
+    await db.prepare(
+      'UPDATE users SET ai_credits_remaining = COALESCE(ai_credits_remaining, 0) + ?, credits_updated_at = ?, updated_at = ? WHERE id = ?'
+    ).bind(pack.credits, now, now, creditPurchase.user_id).run();
+
+    console.log(`Granted ${pack.credits} credits for order ${orderId}`);
+  }
+}
+
+async function markCreditPurchaseFailedOrRefunded(db, orderId, isRefunded) {
+  const now = new Date().toISOString();
+  const newStatus = isRefunded ? 'refunded' : 'failed';
+
+  await db.prepare(
+    `UPDATE credit_purchases SET status = ?, updated_at = ? WHERE paypal_order_id = ? AND status != ?`
+  ).bind(newStatus, now, orderId, newStatus).run();
 }

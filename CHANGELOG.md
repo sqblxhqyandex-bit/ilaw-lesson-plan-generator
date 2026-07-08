@@ -5,7 +5,26 @@
 
 ---
 
-## 2026-06-29
+## 2026-07-08 — Recipe Engine + AI Credit 定价 v2
+
+### 新增（Recipe 引擎）
+- **Recipe 内容配方系统** | `07-frontend/index.html` (inline) | 替换原固定模板生成器，按 4年级×8科目×设计原则 输出差异化教案
+- **定价报告 v2** | `03-pricing/pricing-report-v2-ai-credits.md` | AI 积分制方案
+- **后端契约 v2** | `08-backend/api-contract-v2-credits.md` | AI 生成 API、积分扣减、PayPal 积分购买
+- **定价页文案** | `05-copy/07-pricing-page-copy-ai-credits.md` | 4 套餐文案、转化场景
+- **合规条款更新** | `04-compliance/legal-pages/terms-of-service-v2-credits.md` | 积分包条款
+- **PRD v2** | `02-prd/PRD-v2-ai-credits.md` | AI 生成 + 积分系统增量 PRD
+
+### 改进
+- **生成器升级** | `07-frontend/index.html` | 模板生成 → Recipe 引擎（差异化输出）
+- **Word/PPT 导出** | `07-frontend/index.html` | 改为从表单字段读取数据
+- **部署修复** | `07-frontend/` | 修复 _worker.bundle 干扰静态文件路由
+
+### 配置
+- **API Token** | `~/.wrangler/config.json` | 20260411 版 API Token
+- **D1 迁移脚本** | `migrations/002_credit_system.sql` (计划) | 积分系统表结构
+
+---
 
 ### 首页大幅 Enrichment
 - **H1/Hero 改版** | `07-frontend/index.html` | 改为 "Free ILAW Lesson Plan Generator for Filipino Teachers — No Sign-Up Needed"

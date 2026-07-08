@@ -5,6 +5,20 @@
 
 ---
 
+## 2026-07-08 — AI Detailed Draft Form v2.1
+
+### 新增
+- **PRD v2.1** | `02-prd/PRD-v2.1-ai-detailed-draft-form.md` | 基于 ilawplanner.com / lessonplansph.com 竞品字段实操，确定 Free Recipe + AI Detailed Draft 双模式
+- **API Contract v2.1** | `08-backend/api-contract-v2.1-ai-detailed-draft-inputs.md` | AI 生成输入扩展：exactGrade、targetCompetency、sessionLength、sessions、language、framework、learnerContext、materials
+- **Copy v2.1** | `05-copy/08-ai-detailed-draft-form-copy-v2.1.md` | AI Detailed Draft 字段说明、错误提示、模式文案
+
+### 决策
+- Free Recipe 继续默认极简，保护 SEO 首访转化。
+- AI 付费/试用层增加专业字段，提升输出质量和付费感知。
+- 暂不做 lessonplansph 的 BYOK Gemini Key / file upload / URL reference，避免复杂度过高。
+
+---
+
 ## 2026-07-08 — Recipe Engine + AI Credit 定价 v2
 
 ### 新增（Recipe 引擎）

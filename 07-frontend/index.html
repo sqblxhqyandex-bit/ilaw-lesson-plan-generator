@@ -1154,6 +1154,95 @@ if (typeof window !== "undefined") {
             <label class="form__label">Learning Objectives</label>
             <textarea class="form__textarea" id="objectives" rows="3" placeholder="Enter 2-3 learning objectives..."></textarea>
           </div>
+          <div class="ai-detail-panel" id="aiDetailPanel">
+            <div class="ai-detail-panel__head">
+              <div>
+                <div class="ai-detail-panel__label">AI Detailed Draft</div>
+                <p>For better AI output, add exact grade, actual competency, session length, and language. Uses 1 AI credit.</p>
+              </div>
+              <span class="ai-detail-panel__badge">Optional until you use AI</span>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label">Exact Grade Level <span style="color:#DC2626;">*</span></label>
+                <select class="form__select" id="exactGrade">
+                  <option value="">Select exact grade...</option>
+                  <option value="Kindergarten">Kindergarten</option>
+                  <option value="Grade 1">Grade 1</option>
+                  <option value="Grade 2">Grade 2</option>
+                  <option value="Grade 3">Grade 3</option>
+                  <option value="Grade 4">Grade 4</option>
+                  <option value="Grade 5">Grade 5</option>
+                  <option value="Grade 6">Grade 6</option>
+                  <option value="Grade 7">Grade 7</option>
+                  <option value="Grade 8">Grade 8</option>
+                  <option value="Grade 9">Grade 9</option>
+                  <option value="Grade 10">Grade 10</option>
+                  <option value="Grade 11">Grade 11</option>
+                  <option value="Grade 12">Grade 12</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label class="form__label">Session Length</label>
+                <select class="form__select" id="sessionLength">
+                  <option value="45 minutes">45 minutes</option>
+                  <option value="50 minutes">50 minutes</option>
+                  <option value="1 hour">1 hour</option>
+                  <option value="1.5 hours">1.5 hours</option>
+                </select>
+              </div>
+            </div>
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label">Number of Sessions</label>
+                <select class="form__select" id="aiSessions">
+                  <option value="1">1 session</option>
+                  <option value="2">2 sessions</option>
+                  <option value="3">3 sessions</option>
+                  <option value="4">4 sessions</option>
+                  <option value="5">5 sessions</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label class="form__label">Instructional Language</label>
+                <select class="form__select" id="instructionalLanguage">
+                  <option value="English">English</option>
+                  <option value="Filipino">Filipino</option>
+                  <option value="Bilingual / English-Filipino">Bilingual / English-Filipino</option>
+                </select>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="form__label">Target Learning Competency <span style="color:#DC2626;">*</span></label>
+              <textarea class="form__textarea" id="targetCompetency" rows="3" placeholder="Best practice: paste the actual learning competency from your DepEd curriculum guide. e.g. Describe the functions of the different parts of a plant."></textarea>
+            </div>
+            <details class="ai-advanced">
+              <summary>Advanced options for more classroom-ready drafts</summary>
+              <div class="form__row">
+                <div class="form__group">
+                  <label class="form__label">Teaching Framework</label>
+                  <select class="form__select" id="teachingFramework">
+                    <option value="Auto">Auto — let AI choose</option>
+                    <option value="4A's">4A's</option>
+                    <option value="5Es">5Es</option>
+                    <option value="Explicit Teaching">Explicit Teaching</option>
+                  </select>
+                </div>
+                <div class="form__group">
+                  <label class="form__label">Teacher / Designer Name</label>
+                  <input type="text" class="form__input" id="teacherName" placeholder="optional">
+                </div>
+              </div>
+              <div class="form__group">
+                <label class="form__label">Learner Context</label>
+                <input type="text" class="form__input" id="learnerContext" placeholder="e.g. mixed ability class, large class, struggling readers">
+              </div>
+              <div class="form__group">
+                <label class="form__label">Materials Available</label>
+                <input type="text" class="form__input" id="materials" placeholder="e.g. real plant, picture cards, worksheets, projector">
+              </div>
+            </details>
+          </div>
           <div class="form__group">
             <label class="form__label">Choose Learning Design Principles</label>
             <div class="form__checkboxes">
@@ -1501,14 +1590,24 @@ if (typeof window !== "undefined") {
     function getSelectedFormData() {
       const gradeSelect = document.getElementById('gradeLevel');
       const subjectSelect = document.getElementById('subject');
+      const exactGradeEl = document.getElementById('exactGrade');
       return {
         gradeLevel: gradeSelect.value,
         gradeLabel: gradeSelect.options[gradeSelect.selectedIndex]?.text || '',
+        exactGrade: exactGradeEl?.value || '',
         subject: subjectSelect.value,
         subjectLabel: subjectSelect.options[subjectSelect.selectedIndex]?.text || '',
         topic: document.getElementById('lessonTopic')?.value || '',
-        competency: document.getElementById('lcCode').value || '',
+        competency: document.getElementById('targetCompetency')?.value || '',
+        lcCode: document.getElementById('lcCode').value || '',
         objectives: document.getElementById('objectives').value || '',
+        sessionLength: document.getElementById('sessionLength')?.value || '45 minutes',
+        sessions: document.getElementById('aiSessions')?.value || '1',
+        language: document.getElementById('instructionalLanguage')?.value || 'English',
+        teachingFramework: document.getElementById('teachingFramework')?.value || 'Auto',
+        teacherName: document.getElementById('teacherName')?.value || '',
+        learnerContext: document.getElementById('learnerContext')?.value || '',
+        materials: document.getElementById('materials')?.value || '',
         principles: [...document.querySelectorAll('.design-principle:checked')].map(c => c.value),
       };
     }
@@ -1580,11 +1679,20 @@ if (typeof window !== "undefined") {
     }
     refreshCredits();
 
+    function syncExactGradeFromBand() {
+      const band = document.getElementById('gradeLevel')?.value;
+      const exact = document.getElementById('exactGrade');
+      if (!exact || exact.value) return;
+      const defaults = { 'k3': 'Grade 1', 'g4-6': 'Grade 4', 'g7-10': 'Grade 7', 'shs': 'Grade 11' };
+      if (defaults[band]) exact.value = defaults[band];
+    }
+    document.getElementById('gradeLevel')?.addEventListener('change', syncExactGradeFromBand);
+
     aiGenerateBtn.addEventListener('click', async () => {
       if (!validateForm()) return;
       const form = getSelectedFormData();
-      if (!form.topic && !form.objectives) {
-        alert('Please enter a Lesson Topic or Learning Objectives before using AI generation.');
+      if (!form.exactGrade || !form.topic || !form.competency) {
+        alert('Please add Exact Grade Level, Lesson Topic, and Target Learning Competency before using AI generation.');
         return;
       }
       try { plausible('AI Generate Click', { props: { grade: form.gradeLevel, subject: form.subject } }); } catch(e) {}
@@ -1764,6 +1872,7 @@ ul, ol { margin: 4px 0; padding-left: 20px; }
 
 .ai-credit-banner{margin:0.75rem 0;padding:0.75rem 1rem;border:1px solid #BFDBFE;background:#EFF6FF;border-radius:12px;color:#1E3A8A;font-size:0.9rem;display:flex;gap:0.5rem;justify-content:space-between;align-items:center;flex-wrap:wrap}.ai-credit-banner a{color:#1D4ED8;font-weight:700}.upgrade-prompt,.credits-empty{margin-top:1rem;padding:1rem;border:1px solid #FED7AA;background:#FFF7ED;border-radius:12px;color:#7C2D12}.upgrade-prompt .btn,.credits-empty .btn{margin-top:.5rem}.ai-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .5rem;border-radius:999px;background:#EEF2FF;color:#3730A3;font-size:.75rem;font-weight:700;margin-left:.5rem}
 
+.ai-detail-panel{margin:1rem 0;padding:1rem;border:1px solid #C7D2FE;background:#F8FAFF;border-radius:16px}.ai-detail-panel__head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;margin-bottom:1rem}.ai-detail-panel__label{font-weight:800;color:#3730A3}.ai-detail-panel__head p{margin:.25rem 0 0;color:#475569;font-size:.9rem}.ai-detail-panel__badge{font-size:.72rem;font-weight:800;color:#4338CA;background:#E0E7FF;border-radius:999px;padding:.3rem .6rem;white-space:nowrap}.ai-advanced{margin-top:.75rem;border-top:1px solid #E2E8F0;padding-top:.75rem}.ai-advanced summary{cursor:pointer;font-weight:700;color:#334155;margin-bottom:.75rem}@media(max-width:640px){.ai-detail-panel__head{display:block}.ai-detail-panel__badge{display:inline-flex;margin-top:.5rem}}
 </style>
 </head>
 <body>

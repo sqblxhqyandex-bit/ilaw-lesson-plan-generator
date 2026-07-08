@@ -10,11 +10,19 @@ function sanitizeInput(input = {}) {
 
   return {
     gradeLevel: allowedGrades.has(gradeLevel) ? gradeLevel : gradeLevel.slice(0, 40),
+    exactGrade: String(input.exactGrade || input.grade || '').trim().slice(0, 40),
     subject: allowedSubjects.has(subject) ? subject : subject.slice(0, 80),
-    topic: String(input.topic || '').trim().slice(0, 180),
-    competency: String(input.competency || input.lcCode || '').trim().slice(0, 120),
+    topic: String(input.topic || '').trim().slice(0, 220),
+    competency: String(input.competency || input.targetCompetency || '').trim().slice(0, 700),
+    lcCode: String(input.lcCode || '').trim().slice(0, 120),
     objectives: String(input.objectives || '').trim().slice(0, 1200),
-    language: String(input.language || 'en').trim().slice(0, 20),
+    sessionLength: String(input.sessionLength || '45 minutes').trim().slice(0, 80),
+    sessions: String(input.sessions || '1').trim().slice(0, 20),
+    language: String(input.language || 'English').trim().slice(0, 80),
+    teachingFramework: String(input.teachingFramework || 'Auto').trim().slice(0, 120),
+    teacherName: String(input.teacherName || '').trim().slice(0, 120),
+    learnerContext: String(input.learnerContext || '').trim().slice(0, 300),
+    materials: String(input.materials || '').trim().slice(0, 300),
     principles: Array.isArray(input.principles) ? input.principles.slice(0, 7).map((p) => String(p).slice(0, 80)) : [],
   };
 }
@@ -38,8 +46,8 @@ export async function onRequest(context) {
     return jsonResponse({ ok: false, error: 'invalid_json' }, { status: 400 });
   }
 
-  if (!input.gradeLevel || !input.subject || (!input.topic && !input.objectives)) {
-    return jsonResponse({ ok: false, error: 'missing_required_fields' }, { status: 400 });
+  if (!input.gradeLevel || !input.subject || !input.topic || !input.competency) {
+    return jsonResponse({ ok: false, error: 'missing_required_fields', required: ['gradeLevel', 'subject', 'topic', 'competency'] }, { status: 400 });
   }
 
   const db = env.ilaw_db;
@@ -71,7 +79,7 @@ export async function onRequest(context) {
       input.gradeLevel,
       input.subject,
       input.topic,
-      input.competency,
+      input.lcCode || input.competency,
       result.model,
       Number(usage.prompt_tokens || 0),
       Number(usage.completion_tokens || 0),
@@ -99,7 +107,7 @@ export async function onRequest(context) {
       input.gradeLevel,
       input.subject,
       input.topic,
-      input.competency,
+      input.lcCode || input.competency,
       env.DEEPSEEK_MODEL || 'deepseek-chat',
       debit.source,
       String(e.message || e).slice(0, 500),

@@ -1,4 +1,7 @@
-# 定价与商业模型校准报告 — ILAW Lesson Plan Generator
+# 定价与商业模型报告 — ILAW Lesson Plan Generator
+
+> ⚠️ **历史文档告示**：本报告是 03-pricing 阶段的原始调研成果。最终冻结的定价模型见 `03-pricing/STAGE-HANDOFF.md`（摘要）和本仓库的 CHANGELOG。
+> **当前实际模型：** Free（完全免费无限次） + $1 一次性打赏（无功能解锁），PayPal 沙箱模式暂未转正。
 
 > 本文档是 ShipSolo 做站流水线 03-pricing 阶段的完整交付物。
 > 执行严格按 site-pricing-calibration Skill v2.3.0 的 6 个阶段流程产出。

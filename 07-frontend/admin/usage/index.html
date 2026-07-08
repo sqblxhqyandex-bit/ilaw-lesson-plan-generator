@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Usage Analytics — ILAW Admin</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    body { background:#f8fafc; color:#0f172a; }
+    .admin-wrap{max-width:1120px;margin:0 auto;padding:32px 20px 64px;}
+    .admin-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:24px;}
+    .admin-head h1{font-size:32px;margin:0 0 8px;}
+    .muted{color:#64748b;font-size:14px;}
+    .controls{display:flex;gap:8px;align-items:center;}
+    select,button{border:1px solid #cbd5e1;border-radius:10px;padding:10px 12px;background:white;font:inherit;}
+    button{cursor:pointer;background:#2563eb;color:white;border-color:#2563eb;font-weight:700;}
+    .cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:20px 0 24px;}
+    .card{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:18px;box-shadow:0 1px 2px rgba(15,23,42,.04);}
+    .card .label{font-size:12px;color:#64748b;text-transform:uppercase;letter-spacing:.04em;font-weight:700;}
+    .card .value{font-size:30px;font-weight:800;margin-top:8px;}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .panel{background:white;border:1px solid #e2e8f0;border-radius:16px;padding:18px;margin-bottom:16px;box-shadow:0 1px 2px rgba(15,23,42,.04);}
+    .panel h2{font-size:18px;margin:0 0 14px;}
+    table{width:100%;border-collapse:collapse;font-size:14px;}
+    th,td{text-align:left;padding:10px;border-bottom:1px solid #f1f5f9;}
+    th{color:#475569;font-size:12px;text-transform:uppercase;letter-spacing:.04em;}
+    .status{padding:14px 16px;border-radius:12px;background:#eff6ff;border:1px solid #bfdbfe;margin-bottom:16px;}
+    .error{background:#fef2f2;border-color:#fecaca;color:#991b1b;}
+    .empty{color:#64748b;padding:20px;text-align:center;}
+    @media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.admin-head{display:block}.controls{margin-top:16px}.card .value{font-size:24px}}
+  </style>
+</head>
+<body>
+  <main class="admin-wrap">
+    <div class="admin-head">
+      <div>
+        <h1>Usage Analytics</h1>
+        <div class="muted">Real product usage from Cloudflare D1. Page is noindex and admin-only.</div>
+      </div>
+      <div class="controls">
+        <select id="days">
+          <option value="7">Last 7 days</option>
+          <option value="30" selected>Last 30 days</option>
+          <option value="90">Last 90 days</option>
+        </select>
+        <button id="refresh">Refresh</button>
+      </div>
+    </div>
+
+    <div id="status" class="status">Loading usage data...</div>
+
+    <section class="cards">
+      <div class="card"><div class="label">Unique users</div><div id="uniqueUsers" class="value">—</div></div>
+      <div class="card"><div class="label">Total events</div><div id="totalEvents" class="value">—</div></div>
+      <div class="card"><div class="label">Generate</div><div id="generatePlan" class="value">—</div></div>
+      <div class="card"><div class="label">Word</div><div id="downloadWord" class="value">—</div></div>
+      <div class="card"><div class="label">PPT</div><div id="downloadPpt" class="value">—</div></div>
+    </section>
+
+    <section class="grid">
+      <div class="panel"><h2>Events</h2><div id="events"></div></div>
+      <div class="panel"><h2>Top Subjects</h2><div id="subjects"></div></div>
+      <div class="panel"><h2>Top Grades</h2><div id="grades"></div></div>
+      <div class="panel"><h2>Top Source Paths</h2><div id="paths"></div></div>
+    </section>
+
+    <section class="panel">
+      <h2>Daily Trend</h2>
+      <div id="daily"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Recent Events</h2>
+      <div id="recent"></div>
+    </section>
+  </main>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    function n(v){ return Number(v || 0).toLocaleString(); }
+    function esc(v){ return String(v ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
+    function table(rows, cols, empty='No data yet'){
+      if(!rows || rows.length === 0) return `<div class="empty">${empty}</div>`;
+      return `<table><thead><tr>${cols.map(c=>`<th>${esc(c.label)}</th>`).join('')}</tr></thead><tbody>`+
+        rows.map(r=>`<tr>${cols.map(c=>`<td>${esc(c.render ? c.render(r) : r[c.key])}</td>`).join('')}</tr>`).join('')+
+        `</tbody></table>`;
+    }
+    function eventLabel(name){
+      return {generate_plan:'Generate Plan', download_word:'Download Word', download_ppt:'Download PPT'}[name] || name;
+    }
+    async function load(){
+      $('status').className = 'status';
+      $('status').textContent = 'Loading usage data...';
+      try {
+        const days = $('days').value;
+        const res = await fetch(`/api/admin/usage?days=${encodeURIComponent(days)}`, { credentials:'include' });
+        const data = await res.json();
+        if(!res.ok || !data.ok){
+          const msg = data.error === 'login_required'
+            ? 'Login required. Please sign in with the admin Google account first.'
+            : data.error === 'admin_required'
+              ? 'Admin permission required. Your logged-in email is not in ADMIN_EMAILS.'
+              : (data.error || 'Failed to load usage data');
+          throw new Error(msg);
+        }
+        $('status').textContent = `Loaded ${data.days}-day usage summary. Admin: ${data.admin}`;
+        const o = data.overview || {};
+        $('uniqueUsers').textContent = n(o.unique_users);
+        $('totalEvents').textContent = n(o.total_events);
+        $('generatePlan').textContent = n(o.generate_plan);
+        $('downloadWord').textContent = n(o.download_word);
+        $('downloadPpt').textContent = n(o.download_ppt);
+
+        $('events').innerHTML = table(data.events, [
+          {label:'Event', render:r=>eventLabel(r.event_name)}, {label:'Count', key:'count'}, {label:'Users', key:'unique_users'}
+        ]);
+        $('subjects').innerHTML = table(data.subjects, [
+          {label:'Subject', key:'subject'}, {label:'Count', key:'count'}, {label:'Users', key:'unique_users'}
+        ]);
+        $('grades').innerHTML = table(data.grades, [
+          {label:'Grade', key:'grade'}, {label:'Count', key:'count'}, {label:'Users', key:'unique_users'}
+        ]);
+        $('paths').innerHTML = table(data.paths, [
+          {label:'Path', key:'source_path'}, {label:'Count', key:'count'}, {label:'Users', key:'unique_users'}
+        ]);
+        $('daily').innerHTML = table(data.daily, [
+          {label:'Day', key:'day'}, {label:'Event', render:r=>eventLabel(r.event_name)}, {label:'Count', key:'count'}, {label:'Users', key:'unique_users'}
+        ]);
+        $('recent').innerHTML = table(data.recent, [
+          {label:'Time', key:'created_at'}, {label:'Event', render:r=>eventLabel(r.event_name)}, {label:'Grade', key:'grade'}, {label:'Subject', key:'subject'}, {label:'Path', key:'source_path'}, {label:'Country', key:'country'}
+        ]);
+      } catch(e){
+        $('status').className = 'status error';
+        $('status').textContent = e.message || 'Failed to load usage data';
+      }
+    }
+    $('refresh').addEventListener('click', load);
+    $('days').addEventListener('change', load);
+    load();
+  </script>
+</body>
+</html>

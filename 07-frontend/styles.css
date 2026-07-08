@@ -441,6 +441,224 @@ a:hover { color: #1D4ED8; text-decoration: underline; }
 .nav__links > a:not(.btn):not(.nav__link) { font-size: 0.875rem; font-weight: 500; color: #475569; text-decoration: none; }
 .nav__links > a:not(.btn):not(.nav__link):hover { color: #0F172A; text-decoration: none; }
 
+/* === SECTION LABEL (section eyebrow text) === */
+.section-label {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #EA580C;
+  margin-bottom: 0.75rem;
+}
+.section-subtitle {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #64748B;
+  max-width: 640px;
+  margin: 1rem auto 3rem;
+  line-height: 1.7;
+}
+
+/* === ILAW FRAMEWORK === */
+.ilaw-framework {
+  padding: 4rem 0;
+  background: #F8FAFC;
+}
+.ilaw-framework__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.framework-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.framework-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 2rem 1.5rem 1.75rem;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.framework-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
+.framework-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 0 auto 1rem;
+}
+.framework-card__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #0F172A;
+}
+.framework-card__desc {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #64748B;
+}
+
+/* === CHOOSE YOUR PATH === */
+.choose-path {
+  padding: 4rem 0;
+  background: #FFFFFF;
+}
+.choose-path__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.path-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.path-card {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.path-card:hover {
+  transform: translateY(-3px);
+  border-color: #2563EB;
+}
+.path-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.path-card__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #0F172A;
+}
+.path-card__desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #64748B;
+  margin-bottom: 1.25rem;
+}
+
+/* === RESOURCE GRID === */
+.resource-grid {
+  padding: 4rem 0;
+  background: #F8FAFC;
+}
+.resource-grid__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.resource-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.resource-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 14px;
+  padding: 1.5rem 1.25rem;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.resource-card:hover {
+  transform: translateY(-2px);
+  border-color: #2563EB;
+  box-shadow: 0 8px 20px rgba(37,99,235,0.08);
+  text-decoration: none;
+}
+.resource-card__title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+.resource-card__desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #64748B;
+}
+.resource-card__icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.6rem;
+  line-height: 1;
+}
+
+/* === TIP CARD (donation) === */
+.final-cta__tip-card {
+  margin-top: 2rem;
+}
+.tip-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: linear-gradient(135deg, #FFF7ED, #FFFBEB);
+  border: 1px solid #FDE68A;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+.tip-card__emoji {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+.tip-card__content {
+  flex: 1;
+  min-width: 0;
+}
+.tip-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #92400E;
+  margin-bottom: 0.25rem;
+}
+.tip-card__desc {
+  font-size: 0.85rem;
+  color: #A16207;
+  line-height: 1.5;
+}
+.tip-card .btn--accent {
+  flex-shrink: 0;
+  background: #EA580C;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.tip-card .btn--accent:hover {
+  background: #C2410C;
+  text-decoration: none;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
   .hero__inner { grid-template-columns: 1fr; }
@@ -449,6 +667,10 @@ a:hover { color: #1D4ED8; text-decoration: underline; }
   .tool__preview { position: static; margin-top: 1.5rem; }
   .steps { flex-direction: column; align-items: center; }
   .steps__arrow { transform: rotate(90deg); padding: 0.5rem 0; }
+  .framework-cards { grid-template-columns: repeat(2, 1fr); }
+  .path-cards { grid-template-columns: 1fr; }
+  .resource-cards { grid-template-columns: repeat(2, 1fr); }
+  .tip-card { flex-direction: column; text-align: center; padding: 1.5rem; }
 }
 
 @media (max-width: 768px) {
@@ -479,4 +701,6 @@ a:hover { color: #1D4ED8; text-decoration: underline; }
 @media (max-width: 640px) {
   .hero__title { font-size: 1.5rem; }
   .section-title { font-size: 1.5rem; margin-bottom: 2rem; }
+  .framework-cards { grid-template-columns: 1fr; }
+  .resource-cards { grid-template-columns: 1fr; }
 }

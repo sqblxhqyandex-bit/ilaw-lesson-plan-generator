@@ -4,5 +4,7 @@ Disallow: /privacy
 Disallow: /terms
 Disallow: /refund
 Disallow: /contact
+Disallow: /support
+Disallow: /api/
 
 Sitemap: https://ilawlessonplan.net/sitemap.xml

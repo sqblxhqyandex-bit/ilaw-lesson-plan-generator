@@ -1,7 +1,16 @@
-// _middleware.js — Session + CORS for all API routes
+// _middleware.js — www→non-www redirect + Session + CORS
 export async function onRequest(context) {
   const { request, next } = context;
   const url = new URL(request.url);
+
+  // www → non-www redirect (before any other logic)
+  if (url.hostname.startsWith('www.')) {
+    const target = url.href.replace('://www.', '://');
+    return new Response(null, {
+      status: 301,
+      headers: { 'Location': target },
+    });
+  }
 
   // CORS headers for all responses
   const corsHeaders = {

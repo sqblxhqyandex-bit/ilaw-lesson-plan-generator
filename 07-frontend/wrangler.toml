@@ -7,12 +7,15 @@ binding = "ilaw_db"
 database_name = "ilaw-db"
 database_id = "fa9326c7-a659-4d5c-834f-7a10488fe760"
 
-# Environment variables (set via `wrangler secret put`)
+# Environment variables (set via `wrangler pages secret put`)
 # GOOGLE_CLIENT_ID         — Google OAuth Client ID
 # GOOGLE_CLIENT_SECRET     — Google OAuth Client Secret
 # PAYPAL_CLIENT_ID         — PayPal REST API Client ID
 # PAYPAL_CLIENT_SECRET     — PayPal REST API Secret
 # PAYPAL_MODE              — "sandbox" or "production" (default: production)
 # PAYPAL_WEBHOOK_ID        — PayPal Webhook ID (for production signature verification)
+# DEEPSEEK_API_KEY         — DeepSeek API key
+# DEEPSEEK_MODEL           — e.g. "deepseek-chat"
 # SESSION_SECRET           — Random string for session encryption
 # APP_URL                  — https://ilawlessonplan.net
+# ADMIN_EMAILS             — Comma-separated admin emails (optional)

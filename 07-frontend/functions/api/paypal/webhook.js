@@ -11,7 +11,7 @@
 //   PAYMENT.CAPTURE.DENIED     — mark payment as failed
 //   PAYMENT.CAPTURE.REFUNDED   — downgrade user plan
 
-import { getPayPalAccessToken, getPayPalApiBase } from '../../_paypal';
+import { getPayPalAccessToken, getPayPalApiBase, verifyPayPalWebhookSignature } from '../../_paypal';
 
 export async function onRequest(context) {
   const { request, env } = context;
@@ -33,17 +33,14 @@ export async function onRequest(context) {
   const resource = body.resource || {};
 
   // --- Verify webhook signature (optional in Sandbox, required in Production) ---
-  // For Sandbox testing, skip strict verification
-  const mode = env.PAYPAL_MODE || 'sandbox';
-  if (mode === 'production') {
-    const webhookId = env.PAYPAL_WEBHOOK_ID;
-    if (!webhookId) {
-      return new Response('Webhook not configured', { status: 500 });
+  try {
+    const { verified } = await verifyPayPalWebhookSignature(request, env, rawBody, body);
+    if (!verified) {
+      return new Response('Invalid webhook signature', { status: 400 });
     }
-    // Full verification requires: POST /v1/notifications/verify-webhook-signature
-    // with headers: paypal-auth-algo, paypal-cert-url, paypal-transmission-id,
-    //               paypal-transmission-sig, paypal-transmission-time
-    // For production, implement verifyWebhookSignature() here
+  } catch (e) {
+    console.error('Webhook signature verification error:', e);
+    return new Response('Webhook verification error', { status: 400 });
   }
 
   console.log(`PayPal webhook received: ${eventType}`);

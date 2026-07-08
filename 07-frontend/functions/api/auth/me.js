@@ -52,14 +52,27 @@ export async function onRequest(context) {
     avatar_url: sessionData.picture || null,
     plan: 'free',
     ad_free: 0,
+    ai_credits_remaining: 0,
+    free_trial_credits_remaining: 3,
   };
 
   try {
     const db = env.ilaw_db;
     if (!db) return jsonResponse({ user: fallbackUser, source: 'session' });
 
-    const user = await db.prepare('SELECT id, email, name, avatar_url, plan, ad_free FROM users WHERE email = ?')
-      .bind(sessionData.email).first();
+    let user;
+    try {
+      user = await db.prepare('SELECT id, email, name, avatar_url, plan, ad_free, ai_credits_remaining, free_trial_credits_remaining FROM users WHERE email = ?')
+        .bind(sessionData.email).first();
+    } catch (schemaError) {
+      // Backward compatibility before the v2 credit migration is applied.
+      user = await db.prepare('SELECT id, email, name, avatar_url, plan, ad_free FROM users WHERE email = ?')
+        .bind(sessionData.email).first();
+      if (user) {
+        user.ai_credits_remaining = 0;
+        user.free_trial_credits_remaining = 3;
+      }
+    }
 
     return jsonResponse({ user: user || fallbackUser, source: user ? 'db' : 'session' });
   } catch (e) {

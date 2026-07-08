@@ -965,7 +965,8 @@ if (typeof window !== "undefined") {
         <a href="/ilaw-lesson-plan-sample" class="nav__link">Samples</a>
         <a href="/budget-of-work" class="nav__link">Budget of Work</a>
         <a href="/api/auth/google" class="nav__link nav__link--login" id="loginBtn">Sign In</a>
-        <a href="/support" class="btn btn--accent nav__btn" id="subscribeBtn">Support This Tool</a>
+        <a href="/pricing" class="nav__link">Pricing</a>
+        <a href="/pricing" class="btn btn--accent nav__btn" id="subscribeBtn">Get AI Credits</a>
       </div>
       <button class="nav__hamburger" id="hamburger" aria-label="Menu">☰</button>
     </div>
@@ -1146,6 +1147,10 @@ if (typeof window !== "undefined") {
             <input type="text" class="form__input" id="lcCode" placeholder="e.g. EN4LC-Ia-1.1">
           </div>
           <div class="form__group">
+            <label class="form__label">Lesson Topic <span style="font-weight:400;color:#64748b;">(required for AI)</span></label>
+            <input type="text" class="form__input" id="lessonTopic" placeholder="e.g. Parts of a plant, one-sided limits, reading short /a/ words">
+          </div>
+          <div class="form__group">
             <label class="form__label">Learning Objectives</label>
             <textarea class="form__textarea" id="objectives" rows="3" placeholder="Enter 2-3 learning objectives..."></textarea>
           </div>
@@ -1161,8 +1166,15 @@ if (typeof window !== "undefined") {
               <label class="form__checkbox"><input type="checkbox" class="design-principle" value="Inclusion"> Inclusion</label>
             </div>
           </div>
+          <div class="ai-credit-banner" id="aiCreditBanner">
+            <span>Free Recipe generator is always available.</span>
+            <a href="/pricing">AI credits: sign in to check →</a>
+          </div>
           <button class="btn btn--primary btn--full" id="generateBtn">
-            🔄 Generate ILAW Plan
+            🔄 Generate Free Recipe Plan
+          </button>
+          <button class="btn btn--outline btn--full" id="aiGenerateBtn" style="margin-top:0.75rem;">
+            ✨ Generate with AI (3 free drafts after sign-in)
           </button>
         </div>
 
@@ -1357,7 +1369,7 @@ if (typeof window !== "undefined") {
             <h3 class="tip-card__title">Free for All Filipino Teachers</h3>
             <p class="tip-card__desc">I built this tool to help my fellow teachers save time on lesson planning. If it's helped you, a small tip keeps it running.</p>
           </div>
-          <a href="/support" class="btn btn--accent btn--sm">Buy Me a Coffee →</a>
+          <a href="/pricing" class="btn btn--accent btn--sm">Get AI Credits →</a>
         </div>
       </div>
     </div>
@@ -1424,6 +1436,8 @@ if (typeof window !== "undefined") {
     const editBtn = document.getElementById('editBtn');
     const wordBtn = document.getElementById('wordBtn');
     const pptBtn = document.getElementById('pptBtn');
+    const aiGenerateBtn = document.getElementById('aiGenerateBtn');
+    const aiCreditBanner = document.getElementById('aiCreditBanner');
 
     function showState(state) {
       [emptyState, loadingState, resultState, errorState].forEach(el => el.style.display = 'none');
@@ -1479,6 +1493,141 @@ if (typeof window !== "undefined") {
       } catch (e) {}
     }
 
+
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>"]/g, (ch) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+    }
+
+    function getSelectedFormData() {
+      const gradeSelect = document.getElementById('gradeLevel');
+      const subjectSelect = document.getElementById('subject');
+      return {
+        gradeLevel: gradeSelect.value,
+        gradeLabel: gradeSelect.options[gradeSelect.selectedIndex]?.text || '',
+        subject: subjectSelect.value,
+        subjectLabel: subjectSelect.options[subjectSelect.selectedIndex]?.text || '',
+        topic: document.getElementById('lessonTopic')?.value || '',
+        competency: document.getElementById('lcCode').value || '',
+        objectives: document.getElementById('objectives').value || '',
+        principles: [...document.querySelectorAll('.design-principle:checked')].map(c => c.value),
+      };
+    }
+
+    function renderStructuredPlan(data, meta = {}) {
+      const intention = data.intention || {};
+      const le = data.learningExperiences || {};
+      const assessment = data.assessment || {};
+      const ways = data.waysForward || {};
+      const principles = Array.isArray(le.designPrinciples) ? le.designPrinciples : [];
+      const principleHtml = principles.length ? `<p><strong>Learning Design Principles:</strong></p>${principles.map(p => `<p><strong>${escapeHtml(p.name)}:</strong> ${escapeHtml(p.application)}</p>`).join('')}` : '';
+      return `
+        <div class="preview-content">
+          <div class="preview-section">
+            <div class="preview-section__label">I — Intentions ${meta.ai ? '<span class="ai-badge">AI draft</span>' : ''}</div>
+            <div class="preview-section__body">
+              <p><strong>Grade:</strong> ${escapeHtml(intention.grade || meta.gradeLabel || '')}</p>
+              <p><strong>Subject:</strong> ${escapeHtml(intention.subject || meta.subjectLabel || '')}</p>
+              <p><strong>Learning Intention:</strong> ${escapeHtml(intention.learningIntention)}</p>
+              <p><strong>Success Criteria:</strong> ${escapeHtml(intention.successCriteria)}</p>
+              <p><strong>Focus:</strong> ${escapeHtml(intention.focus)}</p>
+              <p><strong>LC Code:</strong> ${escapeHtml(intention.lcCode || meta.competency || '')}</p>
+              <p><strong>Duration:</strong> ${escapeHtml(intention.duration || '45 minutes')}</p>
+            </div>
+          </div>
+          <div class="preview-section">
+            <div class="preview-section__label">L — Learning Experiences</div>
+            <div class="preview-section__body">
+              <p><strong>Opening:</strong> ${escapeHtml(le.opening)}</p>
+              <p><strong>Presentation:</strong> ${escapeHtml(le.presentation)}</p>
+              <p><strong>Guided Practice:</strong> ${escapeHtml(le.guidedPractice)}</p>
+              <p><strong>Independent Practice:</strong> ${escapeHtml(le.independentPractice)}</p>
+              <p><strong>Closing:</strong> ${escapeHtml(le.closing)}</p>
+              ${principleHtml}
+            </div>
+          </div>
+          <div class="preview-section">
+            <div class="preview-section__label">A — Assessment</div>
+            <div class="preview-section__body">
+              <p><strong>Formative Assessment:</strong> ${escapeHtml(assessment.formative)}</p>
+              <p><strong>Summative Assessment:</strong> ${escapeHtml(assessment.summative)}</p>
+              <p><strong>Differentiation:</strong> ${escapeHtml(assessment.differentiation)}</p>
+            </div>
+          </div>
+          <div class="preview-section">
+            <div class="preview-section__label">W — Ways Forward</div>
+            <div class="preview-section__body">
+              <p><strong>Remediation:</strong> ${escapeHtml(ways.remediation)}</p>
+              <p><strong>Enrichment:</strong> ${escapeHtml(ways.enrichment)}</p>
+              <p><strong>Reflection:</strong> ${escapeHtml(ways.reflection)}</p>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:1rem;padding:0.75rem 1rem;background:#EEF2FF;border:1px solid #C7D2FE;border-radius:8px;font-size:0.85rem;color:#3730A3;text-align:center;">
+          ✨ AI-generated draft. Teacher review required. ${meta.free_trial_remaining !== undefined ? `Free drafts left: ${meta.free_trial_remaining}.` : ''} ${meta.credits_remaining !== undefined ? `Paid credits left: ${meta.credits_remaining}.` : ''}
+        </div>`;
+    }
+
+    async function refreshCredits() {
+      try {
+        const res = await fetch('/api/user/credits', { credentials: 'include' });
+        const data = await res.json();
+        if (data.ok) {
+          aiCreditBanner.innerHTML = `<span>AI credits: ${data.credits_remaining} paid + ${data.free_trial_remaining} free trial</span><a href="/pricing">Buy credits →</a>`;
+        } else {
+          aiCreditBanner.innerHTML = `<span>Sign in to get 3 free AI drafts.</span><a href="/api/auth/google">Sign in →</a>`;
+        }
+      } catch(e) {}
+    }
+    refreshCredits();
+
+    aiGenerateBtn.addEventListener('click', async () => {
+      if (!validateForm()) return;
+      const form = getSelectedFormData();
+      if (!form.topic && !form.objectives) {
+        alert('Please enter a Lesson Topic or Learning Objectives before using AI generation.');
+        return;
+      }
+      try { plausible('AI Generate Click', { props: { grade: form.gradeLevel, subject: form.subject } }); } catch(e) {}
+      trackUsage('ai_generate_click', { grade: form.gradeLevel, subject: form.subject });
+      showState(loadingState);
+      aiGenerateBtn.disabled = true;
+      aiGenerateBtn.textContent = '✨ Generating with AI...';
+      try {
+        const res = await fetch('/api/ai/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify(form),
+        });
+        const payload = await res.json();
+        if (res.status === 401) {
+          resultState.innerHTML = `<div class="credits-empty"><p><strong>Sign in to try AI generation.</strong></p><p>New users get 3 free AI drafts.</p><a class="btn btn--primary" href="/api/auth/google">Sign in with Google →</a></div>`;
+          showState(resultState);
+          return;
+        }
+        if (res.status === 403 || payload.error === 'insufficient_credits') {
+          resultState.innerHTML = `<div class="credits-empty"><p><strong>You’ve used all your AI drafts.</strong></p><p>Pick a one-time pack to keep generating AI lesson plans.</p><a class="btn btn--primary" href="/pricing">View AI credit packs →</a><p style="font-size:.85rem;margin-top:.75rem;">Or keep using the free Recipe generator anytime.</p></div>`;
+          showState(resultState);
+          return;
+        }
+        if (!payload.ok) throw new Error(payload.message || payload.error || 'AI generation failed');
+        resultState.innerHTML = renderStructuredPlan(payload.data, { ...form, ai: true, credits_remaining: payload.credits_remaining, free_trial_remaining: payload.free_trial_remaining });
+        showState(resultState);
+        setPreviewEditMode(false);
+        editBtn.disabled = false;
+        wordBtn.disabled = false;
+        pptBtn.disabled = false;
+        refreshCredits();
+      } catch(e) {
+        console.error('AI generation error:', e);
+        errorState.querySelector('.tool__error-text').textContent = 'AI generation failed. Your credit is refunded automatically if the server fails.';
+        showState(errorState);
+      } finally {
+        aiGenerateBtn.disabled = false;
+        aiGenerateBtn.textContent = '✨ Generate with AI (uses 1 credit)';
+      }
+    });
+
     // Generate ILAW Plan (recipe engine — differentiated by grade × subject × principles)
     generateBtn.addEventListener('click', () => {
       if (!validateForm()) return;
@@ -1500,7 +1649,7 @@ if (typeof window !== "undefined") {
             // Fallback if script didn't load
             showState(errorState);
             generateBtn.disabled = false;
-            generateBtn.textContent = '🔄 Generate ILAW Plan';
+            generateBtn.textContent = '🔄 Generate Free Recipe Plan';
             return;
           }
 
@@ -1565,7 +1714,7 @@ if (typeof window !== "undefined") {
           showState(errorState);
         }
         generateBtn.disabled = false;
-        generateBtn.textContent = '🔄 Generate ILAW Plan';
+        generateBtn.textContent = '🔄 Generate Free Recipe Plan';
       }, 600);
     });
 
@@ -1612,6 +1761,9 @@ table td:first-child { background-color: #eff6ff; font-weight: 600; width: 30%; 
 p { margin: 4px 0; }
 ul, ol { margin: 4px 0; padding-left: 20px; }
 .footer { margin-top: 30px; font-size: 9pt; color: #6b7280; text-align: center; border-top: 1px solid #d1d5db; padding-top: 10px; }
+
+.ai-credit-banner{margin:0.75rem 0;padding:0.75rem 1rem;border:1px solid #BFDBFE;background:#EFF6FF;border-radius:12px;color:#1E3A8A;font-size:0.9rem;display:flex;gap:0.5rem;justify-content:space-between;align-items:center;flex-wrap:wrap}.ai-credit-banner a{color:#1D4ED8;font-weight:700}.upgrade-prompt,.credits-empty{margin-top:1rem;padding:1rem;border:1px solid #FED7AA;background:#FFF7ED;border-radius:12px;color:#7C2D12}.upgrade-prompt .btn,.credits-empty .btn{margin-top:.5rem}.ai-badge{display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .5rem;border-radius:999px;background:#EEF2FF;color:#3730A3;font-size:.75rem;font-weight:700;margin-left:.5rem}
+
 </style>
 </head>
 <body>

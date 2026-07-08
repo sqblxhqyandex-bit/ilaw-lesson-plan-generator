@@ -22,7 +22,17 @@
 
 ### 配置
 - **API Token** | `~/.wrangler/config.json` | 20260411 版 API Token
-- **D1 迁移脚本** | `migrations/002_credit_system.sql` (计划) | 积分系统表结构
+- **D1 migration** | `07-frontend/migrations/003_ai_credit_system.sql` | 已远端 apply：积分字段、购买记录、AI 生成审计表
+- **Cloudflare Pages secrets** | Cloudflare Dashboard | 已配置 `DEEPSEEK_API_KEY` 和 `DEEPSEEK_MODEL`
+
+### 实现
+- **DeepSeek AI API** | `07-frontend/functions/api/ai/generate.js`, `functions/_deepseek.js` | 登录用户使用 1 credit 生成 AI ILAW JSON，失败自动退回 credit
+- **Credits API** | `07-frontend/functions/api/user/credits.js`, `functions/_credits.js` | 查询积分、免费试用、购买记录、套餐定义
+- **PayPal credit packs** | `07-frontend/functions/api/paypal/create-credit-order.js`, `capture-credit-order.js` | 创建/捕获积分包订单并发放 credits
+- **Pricing page** | `07-frontend/pricing.html` | Free + Starter/Pro/Teacher 三档积分包页面
+- **Generator AI入口** | `07-frontend/index.html` | 免费 Recipe 保留，新增 Lesson Topic、AI Generate、积分状态、未登录/用尽提示
+- **法律页更新** | `07-frontend/privacy.html`, `terms.html`, `refund.html` | 积分包、AI provider、退款规则已落到线上页面
+- **QA报告** | `10-qa/qa-ai-credits-v2-2026-07-08.md` | AI API、PayPal 创建订单、Recipe 生成、Pricing 页面均已 smoke test
 
 ---
 

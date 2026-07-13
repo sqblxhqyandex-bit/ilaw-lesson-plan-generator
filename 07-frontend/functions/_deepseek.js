@@ -1,4 +1,6 @@
-const DEFAULT_MODEL = 'deepseek-chat';
+// `deepseek-chat` is only a compatibility alias and is retired on 2026-07-24.
+// Pin the non-thinking V4 Flash model explicitly so generation survives the cutoff.
+const DEFAULT_MODEL = 'deepseek-v4-flash';
 
 function safeText(value, max = 1200) {
   return String(value || '').replace(/[<>]/g, '').trim().slice(0, max);

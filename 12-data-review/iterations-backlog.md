@@ -13,7 +13,7 @@
 | P0-1 | Diagnose why real users don't try AI credits | ✅ Local implementation | AI value was weakly differentiated and absent from Recipe result context | Diagnosis implemented in activation copy and result CTA | AI + 云 |
 | P0-2 | Add AI upsell prompt inside free Recipe result | ✅ Local implementation | Free tool may be "good enough" | Contextual CTA shows on result; tracks `ai_upgrade_from_recipe` | AI |
 | P0-3 | Fix UTM persistence across Google OAuth | ✅ Deployed | Directory traffic cannot be attributed to conversion | Allowed UTM params survive OAuth state; external redirects rejected | AI |
-| P0-4 | Make AI value claims concrete and verifiable | ✅ Local implementation | Pricing described “AI-powered” without showing how output differs | All promised lesson/class inputs reach the prompt; incomplete JSON is rejected before credit consumption; result shows inputs used; pricing compares Recipe vs AI | AI |
+| P0-4 | Make AI value claims concrete and verifiable | ✅ Deployed | Pricing described “AI-powered” without showing how output differs | All promised lesson/class inputs reach the prompt; incomplete JSON is rejected before credit consumption; result shows inputs used; pricing compares Recipe vs AI | AI |
 
 ## P1 — High ROI (Do this week/next)
 
@@ -37,4 +37,5 @@
 ## Changelog
 
 - **2026-07-13:** Created from 12-data-review findings. Decision: Iterate. Top blockers: PayPal production, real transaction, UTM persistence.
-- **2026-07-14:** Implemented activation CTA, safe OAuth UTM persistence, low-commitment pricing, and pending-order credit snapshot protection. Awaiting deployment/live smoke test.
+- **2026-07-14:** Implemented activation CTA, safe OAuth UTM persistence, low-commitment pricing, and pending-order credit snapshot protection. Deployed and live-smoke-tested.
+- **2026-07-14:** Deployed AI value clarification and integrity fixes: full form-to-prompt field coverage (including term/week), AI JSON schema validation before credit consumption, visible “inputs used” summary, Recipe-vs-AI comparison, responsive pricing notes, and corrected refund thresholds.

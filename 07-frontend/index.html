@@ -1158,9 +1158,9 @@ if (typeof window !== "undefined") {
             <div class="ai-detail-panel__head">
               <div>
                 <div class="ai-detail-panel__label">AI Detailed Draft</div>
-                <p>For better AI output, add exact grade, actual competency, session length, and language. Uses 1 AI credit.</p>
+                <p>Get a draft tailored to your exact grade, topic, competency, class length, language, and learner needs. Uses 1 AI credit.</p>
               </div>
-              <span class="ai-detail-panel__badge">Optional until you use AI</span>
+              <span class="ai-detail-panel__badge">Tailored to your exact class</span>
             </div>
             <div class="form__row">
               <div class="form__group">
@@ -1568,7 +1568,7 @@ if (typeof window !== "undefined") {
         anonymous_id: getUsageAnonymousId(),
         grade: props.grade || document.getElementById('gradeLevel')?.value || '',
         subject: props.subject || document.getElementById('subject')?.value || '',
-        source_path: window.location.pathname,
+        source_path: window.location.pathname + window.location.search,
         referrer: document.referrer || ''
       };
       try {
@@ -1807,11 +1807,22 @@ if (typeof window !== "undefined") {
               </div>
             </div>
             <div style="margin-top:1rem;padding:0.75rem 1rem;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;font-size:0.85rem;color:#166534;text-align:center;">
-              ✅ Your ILAW lesson plan is ready! Need another subject or grade? Just change the options above and generate again.
+              ✅ Your free Recipe plan is ready. You can edit or export it now.
+            </div>
+            <div class="upgrade-prompt">
+              <p><strong>Want a lesson draft tailored to your exact class?</strong></p>
+              <p>AI uses your exact grade, topic, competency, objectives, class length, language, learner context, and materials—not just a reusable Recipe.</p>
+              <button type="button" class="btn btn--primary" id="recipeAiUpgradeBtn">✨ Try 3 AI drafts free</button>
+              <p style="font-size:.82rem;margin:.65rem 0 0;">Google sign-in required. No subscription or card needed.</p>
             </div>
           `;
 
           resultState.innerHTML = ilawHtml;
+          document.getElementById('recipeAiUpgradeBtn')?.addEventListener('click', () => {
+            try { plausible('AI Upsell Click', { props: { source: 'recipe_result' } }); } catch(e) {}
+            document.getElementById('aiDetailPanel')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            aiGenerateBtn.focus();
+          });
           showState(resultState);
           setPreviewEditMode(false);
           editBtn.disabled = false;

@@ -133,7 +133,7 @@ ILAW Lesson Plan Generator helps Filipino public school teachers create DepEd MA
 
 🤖 AI-Powered Drafts: Describe your topic and learning competency, and AI generates a tailored draft. Uses 1 credit per draft. New users get 3 free AI drafts.
 
-💳 Pricing: Free generator + one-time AI credit packs ($2.99 / $7.99 / $14.99). No subscription.
+💳 Pricing: Free generator + one-time AI credit packs ($0.99 / $2.99 / $5.99). No subscription.
 
 **Topics:** Education, AI, Productivity, Philippines, Teachers
 

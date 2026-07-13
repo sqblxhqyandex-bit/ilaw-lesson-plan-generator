@@ -44,9 +44,9 @@ Response 403 (out of credits):
     "error": "insufficient_credits",
     "credits_remaining": 0,
     "packs_available": [
-      { "sku": "starter_30", "price": 2.99, "credits": 30 },
-      { "sku": "pro_120", "price": 7.99, "credits": 120 },
-      { "sku": "teacher_350", "price": 14.99, "credits": 350 }
+      { "sku": "starter_30", "price": 0.99, "credits": 10 },
+      { "sku": "pro_120", "price": 2.99, "credits": 50 },
+      { "sku": "teacher_350", "price": 5.99, "credits": 150 }
     ]
   }
 
@@ -98,7 +98,7 @@ Response 200:
 
 Backend logic:
   1. Verify PayPal order status
-  2. Map SKU → credit amount (starter_30→30, pro_120→120, teacher_350→350)
+  2. Read the credit quantity frozen in the pending order (internal SKU names are legacy identifiers)
   3. INSERT into credit_purchases
   4. UPDATE users SET ai_credits_remaining = ai_credits_remaining + credits
   5. Return new balance

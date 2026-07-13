@@ -19,9 +19,9 @@
 
    | Pack | Price (USD) | Credits | Valid for |
    |---|---|---|---|
-   | AI Starter | $2.99 | 30 | 12 months |
-   | AI Pro | $7.99 | 120 | 12 months |
-   | AI Teacher Pack | $14.99 | 350 | 12 months |
+   | AI Starter | $0.99 | 10 | 12 months |
+   | AI Regular | $2.99 | 50 | 12 months |
+   | AI Teacher Pack | $5.99 | 150 | 12 months |
 
    Credits are valid for 12 months from the purchase date. Unused credits expire after 12 months.
 

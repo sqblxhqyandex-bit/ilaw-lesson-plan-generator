@@ -43,6 +43,12 @@ export async function onRequest(context) {
 
   const pack = getCreditPack(pending.sku);
   if (!pack) return jsonResponse({ ok: false, error: 'invalid_sku' }, { status: 400 });
+  // Freeze fulfillment to the order snapshot. This protects pending orders when
+  // a pack's public price or credit quantity changes after checkout begins.
+  const creditsToGrant = Number(pending.credits_purchased);
+  if (!Number.isInteger(creditsToGrant) || creditsToGrant <= 0) {
+    return jsonResponse({ ok: false, error: 'invalid_order_credits' }, { status: 400 });
+  }
 
   let accessToken;
   try {
@@ -72,13 +78,13 @@ export async function onRequest(context) {
     `UPDATE credit_purchases
      SET status = 'completed', credits_granted = ?, paypal_capture_id = ?, updated_at = ?
      WHERE paypal_order_id = ? AND status = 'pending'`
-  ).bind(pack.credits, captureId, now, orderId).run();
+  ).bind(creditsToGrant, captureId, now, orderId).run();
 
   await db.prepare(
     `UPDATE users
      SET ai_credits_remaining = COALESCE(ai_credits_remaining, 0) + ?, credits_updated_at = ?, updated_at = ?
      WHERE id = ?`
-  ).bind(pack.credits, now, now, sessionUser.id).run();
+  ).bind(creditsToGrant, now, now, sessionUser.id).run();
 
   const user = await db.prepare('SELECT ai_credits_remaining FROM users WHERE id = ?').bind(sessionUser.id).first();
 
@@ -87,7 +93,7 @@ export async function onRequest(context) {
     order_id: orderId,
     capture_id: captureId,
     sku: pack.sku,
-    credits_added: pack.credits,
+    credits_added: creditsToGrant,
     credits_remaining: Number(user?.ai_credits_remaining || 0),
   });
 }

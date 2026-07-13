@@ -38,7 +38,7 @@
 >
 > **Pricing:**
 > - Recipe generator: Always free
-> - AI credit packs: $2.99 (30 drafts), $7.99 (120 drafts), $14.99 (350 drafts) — one-time, no subscription
+> - AI credit packs: $0.99 (10 drafts), $2.99 (50 drafts), $5.99 (150 drafts) — one-time, no subscription
 
 ## 4. Tags / Keywords
 

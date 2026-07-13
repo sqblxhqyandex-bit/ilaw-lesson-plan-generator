@@ -1,8 +1,10 @@
 // Google OAuth — Redirect user to Google consent screen
+import { redirectFromRequest } from '../../_auth-redirect.js';
+
 export async function onRequest(context) {
   const { request, env } = context;
   const url = new URL(request.url);
-  const redirect = url.searchParams.get('redirect') || '/';
+  const redirect = redirectFromRequest(request);
 
   const clientId = env.GOOGLE_CLIENT_ID;
   if (!clientId) {

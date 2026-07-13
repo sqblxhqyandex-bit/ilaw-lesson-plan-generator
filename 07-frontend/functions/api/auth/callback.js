@@ -1,4 +1,5 @@
 // Google OAuth Callback — Exchange code for tokens, create/update user, set session
+import { sanitizeRedirect } from '../../_auth-redirect.js';
 
 export async function onRequest(context) {
   try {
@@ -68,7 +69,7 @@ export async function onRequest(context) {
     let redirectTo = '/';
     try {
       const parsed = JSON.parse(state || '{}');
-      redirectTo = parsed.redirect || '/';
+      redirectTo = sanitizeRedirect(parsed.redirect || '/');
     } catch (e) {
       // ignore
     }

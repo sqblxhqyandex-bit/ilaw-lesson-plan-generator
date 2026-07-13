@@ -70,7 +70,7 @@ Free Recipe Generator: Select grade and subject, fill in your lesson details, an
 
 AI-Powered Drafts: Describe your topic and learning competency, and AI generates a complete ILAW-format draft. Uses 1 AI credit per draft. New users get 3 free AI drafts.
 
-Credit packs: $2.99 (30 drafts), $7.99 (120 drafts), $14.99 (350 drafts) — one-time, no subscription, valid 12 months.
+Credit packs: $0.99 (10 drafts), $2.99 (50 drafts), $5.99 (150 drafts) — one-time, no subscription, valid 12 months.
 
 Tags: lesson plan generator, deped, ilaw format, matatag curriculum, teacher tools, philippines, ai education
 ```

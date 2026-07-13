@@ -12,7 +12,8 @@
 |---|---|---|---|---|---|
 | P0-1 | Diagnose why real users don't try AI credits | ✅ Local implementation | AI value was weakly differentiated and absent from Recipe result context | Diagnosis implemented in activation copy and result CTA | AI + 云 |
 | P0-2 | Add AI upsell prompt inside free Recipe result | ✅ Local implementation | Free tool may be "good enough" | Contextual CTA shows on result; tracks `ai_upgrade_from_recipe` | AI |
-| P0-3 | Fix UTM persistence across Google OAuth | ✅ Local implementation | Directory traffic cannot be attributed to conversion | Allowed UTM params survive OAuth state; external redirects rejected | AI |
+| P0-3 | Fix UTM persistence across Google OAuth | ✅ Deployed | Directory traffic cannot be attributed to conversion | Allowed UTM params survive OAuth state; external redirects rejected | AI |
+| P0-4 | Make AI value claims concrete and verifiable | ✅ Local implementation | Pricing described “AI-powered” without showing how output differs | All promised lesson/class inputs reach the prompt; incomplete JSON is rejected before credit consumption; result shows inputs used; pricing compares Recipe vs AI | AI |
 
 ## P1 — High ROI (Do this week/next)
 

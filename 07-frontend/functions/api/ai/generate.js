@@ -10,8 +10,12 @@ function sanitizeInput(input = {}) {
 
   return {
     gradeLevel: allowedGrades.has(gradeLevel) ? gradeLevel : gradeLevel.slice(0, 40),
+    gradeLabel: String(input.gradeLabel || '').trim().slice(0, 80),
     exactGrade: String(input.exactGrade || input.grade || '').trim().slice(0, 40),
     subject: allowedSubjects.has(subject) ? subject : subject.slice(0, 80),
+    subjectLabel: String(input.subjectLabel || '').trim().slice(0, 80),
+    term: String(input.term || '').trim().slice(0, 20),
+    week: String(input.week || '').trim().slice(0, 20),
     topic: String(input.topic || '').trim().slice(0, 220),
     competency: String(input.competency || input.targetCompetency || '').trim().slice(0, 700),
     lcCode: String(input.lcCode || '').trim().slice(0, 120),
@@ -108,7 +112,7 @@ export async function onRequest(context) {
       input.subject,
       input.topic,
       input.lcCode || input.competency,
-      env.DEEPSEEK_MODEL || 'deepseek-chat',
+      env.DEEPSEEK_MODEL || 'deepseek-v4-flash',
       debit.source,
       String(e.message || e).slice(0, 500),
       new Date().toISOString()

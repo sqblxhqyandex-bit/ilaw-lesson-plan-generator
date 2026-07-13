@@ -1597,6 +1597,8 @@ if (typeof window !== "undefined") {
         exactGrade: exactGradeEl?.value || '',
         subject: subjectSelect.value,
         subjectLabel: subjectSelect.options[subjectSelect.selectedIndex]?.text || '',
+        term: document.getElementById('term')?.value || '',
+        week: document.getElementById('week')?.value || '',
         topic: document.getElementById('lessonTopic')?.value || '',
         competency: document.getElementById('targetCompetency')?.value || '',
         lcCode: document.getElementById('lcCode').value || '',
@@ -1619,7 +1621,21 @@ if (typeof window !== "undefined") {
       const ways = data.waysForward || {};
       const principles = Array.isArray(le.designPrinciples) ? le.designPrinciples : [];
       const principleHtml = principles.length ? `<p><strong>Learning Design Principles:</strong></p>${principles.map(p => `<p><strong>${escapeHtml(p.name)}:</strong> ${escapeHtml(p.application)}</p>`).join('')}` : '';
+      const usedInputs = meta.ai ? [
+        meta.exactGrade,
+        meta.subjectLabel,
+        meta.term ? `Term ${meta.term}` : '',
+        meta.week ? `Week ${meta.week}` : '',
+        meta.topic,
+        meta.competency,
+        meta.sessionLength,
+        meta.language,
+        meta.learnerContext,
+        meta.materials,
+      ].filter(Boolean) : [];
+      const usedInputsHtml = usedInputs.length ? `<div class="ai-input-summary"><strong>✨ Built from your inputs</strong><div class="ai-input-summary__chips">${usedInputs.map(value => `<span>${escapeHtml(value)}</span>`).join('')}</div><p>The AI used these details to draft the activities and assessments below. Review and edit before use.</p></div>` : '';
       return `
+        ${usedInputsHtml}
         <div class="preview-content">
           <div class="preview-section">
             <div class="preview-section__label">I — Intentions ${meta.ai ? '<span class="ai-badge">AI draft</span>' : ''}</div>
@@ -1629,7 +1645,7 @@ if (typeof window !== "undefined") {
               <p><strong>Learning Intention:</strong> ${escapeHtml(intention.learningIntention)}</p>
               <p><strong>Success Criteria:</strong> ${escapeHtml(intention.successCriteria)}</p>
               <p><strong>Focus:</strong> ${escapeHtml(intention.focus)}</p>
-              <p><strong>LC Code:</strong> ${escapeHtml(intention.lcCode || meta.competency || '')}</p>
+              <p><strong>LC Code:</strong> ${escapeHtml(intention.lcCode || meta.lcCode || 'Not provided')}</p>
               <p><strong>Duration:</strong> ${escapeHtml(intention.duration || '45 minutes')}</p>
             </div>
           </div>

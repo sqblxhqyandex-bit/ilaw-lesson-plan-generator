@@ -9,7 +9,10 @@ function safeText(value, max = 1200) {
 export function buildIlawPrompt(input) {
   const exactGrade = safeText(input.exactGrade || input.grade || input.gradeLevel || '');
   const gradeBand = safeText(input.gradeLevel || '');
-  const subject = safeText(input.subject || '');
+  const gradeLabel = safeText(input.gradeLabel || '');
+  const subject = safeText(input.subjectLabel || input.subject || '');
+  const term = safeText(input.term || '', 20);
+  const week = safeText(input.week || '', 20);
   const topic = safeText(input.topic || '');
   const targetCompetency = safeText(input.competency || input.targetCompetency || '');
   const lcCode = safeText(input.lcCode || '');
@@ -32,8 +35,10 @@ export function buildIlawPrompt(input) {
     'Avoid generic statements. Use the specific topic and competency repeatedly and concretely.',
     '',
     `Exact grade level: ${exactGrade}`,
-    `Grade band fallback: ${gradeBand}`,
+    `Grade band: ${gradeLabel || gradeBand}`,
     `Subject / learning area: ${subject}`,
+    `School term: ${term ? `Term ${term}` : 'Not provided'}`,
+    `School week: ${week ? `Week ${week}` : 'Not provided'}`,
     `Lesson topic: ${topic || 'Not provided'}`,
     `Target learning competency: ${targetCompetency || 'Not provided'}`,
     `LC code: ${lcCode || 'Not provided'}`,
@@ -92,6 +97,29 @@ function extractJson(text) {
   }
 }
 
+export function validateIlawPlanData(data) {
+  const required = [
+    ['intention', 'grade'], ['intention', 'subject'],
+    ['intention', 'learningIntention'], ['intention', 'successCriteria'], ['intention', 'focus'],
+    ['learningExperiences', 'opening'], ['learningExperiences', 'presentation'],
+    ['learningExperiences', 'guidedPractice'], ['learningExperiences', 'independentPractice'],
+    ['learningExperiences', 'closing'],
+    ['assessment', 'formative'], ['assessment', 'summative'], ['assessment', 'differentiation'],
+    ['waysForward', 'remediation'], ['waysForward', 'enrichment'], ['waysForward', 'reflection'],
+  ];
+  const missing = required.filter(([section, field]) => {
+    const value = data?.[section]?.[field];
+    return typeof value !== 'string' || !value.trim();
+  });
+  if (missing.length) {
+    throw new Error(`invalid_ai_plan: missing ${missing.map((parts) => parts.join('.')).join(', ')}`);
+  }
+  if (data.learningExperiences.designPrinciples !== undefined && !Array.isArray(data.learningExperiences.designPrinciples)) {
+    throw new Error('invalid_ai_plan: learningExperiences.designPrinciples must be an array');
+  }
+  return data;
+}
+
 export async function generateIlawWithDeepSeek(env, input) {
   const apiKey = env.DEEPSEEK_API_KEY;
   if (!apiKey) {
@@ -125,7 +153,7 @@ export async function generateIlawWithDeepSeek(env, input) {
   }
 
   const content = payload?.choices?.[0]?.message?.content || '';
-  const data = extractJson(content);
+  const data = validateIlawPlanData(extractJson(content));
   return {
     data,
     usage: payload.usage || { prompt_tokens: 0, completion_tokens: 0 },

@@ -10,6 +10,31 @@
   <style>
     .pricing-hero{padding:7rem 1rem 3rem;background:linear-gradient(135deg,#EEF2FF,#F8FAFC);text-align:center}.pricing-hero__inner{max-width:880px;margin:0 auto}.pricing-kicker{font-weight:800;color:#4F46E5;text-transform:uppercase;letter-spacing:.08em}.pricing-title{font-size:clamp(2rem,5vw,4rem);line-height:1.05;margin:.5rem 0;color:#0F172A}.pricing-subtitle{font-size:1.15rem;color:#475569;max-width:720px;margin:0 auto}.status-card{max-width:780px;margin:1.5rem auto 0;padding:1rem 1.25rem;border:1px solid #CBD5E1;background:#fff;border-radius:16px;color:#334155;display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}.pricing-grid{max-width:1180px;margin:0 auto;padding:3rem 1rem;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}.price-card{background:#fff;border:1px solid #E2E8F0;border-radius:20px;padding:1.4rem;box-shadow:0 18px 45px rgba(15,23,42,.06);position:relative;display:flex;flex-direction:column}.price-card--featured{border:2px solid #4F46E5;transform:translateY(-8px)}.badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#4F46E5;color:#fff;font-size:.72rem;font-weight:800;border-radius:999px;padding:.35rem .75rem;white-space:nowrap}.price-card h2{margin:.5rem 0;color:#0F172A}.price{font-size:2.3rem;font-weight:900;color:#0F172A}.price-note{color:#64748B}.credits{font-weight:800;color:#1D4ED8;margin:1rem 0}.feature-list{list-style:none;padding:0;margin:1rem 0;display:grid;gap:.65rem;color:#334155}.feature-list li:before{content:'✓';color:#16A34A;font-weight:800;margin-right:.5rem}.price-card .btn{margin-top:auto}.fineprint{max-width:900px;margin:0 auto 4rem;padding:0 1rem;color:#64748B}.fineprint strong{color:#334155}.pricing-alert{max-width:780px;margin:1rem auto 0;padding:1rem;border-radius:12px;background:#F0FDF4;border:1px solid #BBF7D0;color:#166534}.pricing-alert--error{background:#FEF2F2;border-color:#FECACA;color:#991B1B}@media(max-width:980px){.pricing-grid{grid-template-columns:repeat(2,1fr)}.price-card--featured{transform:none}}@media(max-width:640px){.pricing-grid{grid-template-columns:1fr}.status-card{align-items:flex-start}}
   </style>
+  <style>
+    .pricing-hero{padding:clamp(3.75rem,7vw,6rem) 1rem 2.5rem}
+    .pricing-subtitle{max-width:800px;line-height:1.7}
+    .ai-value{max-width:1180px;margin:-1rem auto 0;padding:0 1rem 1rem}
+    .ai-value__panel{background:#0F172A;color:#fff;border-radius:24px;padding:clamp(1.5rem,4vw,2.5rem);box-shadow:0 24px 60px rgba(15,23,42,.18)}
+    .ai-value__eyebrow{color:#93C5FD;font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem}
+    .ai-value h2{color:#fff;font-size:clamp(1.5rem,3vw,2.25rem);margin:.45rem 0 .65rem}
+    .ai-value__intro{color:#CBD5E1;max-width:780px;line-height:1.65}
+    .ai-value__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.5rem}
+    .ai-value__item{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:1.1rem}
+    .ai-value__item strong{display:block;color:#fff;margin-bottom:.35rem}.ai-value__item p{color:#CBD5E1;font-size:.92rem;line-height:1.55}
+    .recipe-vs-ai{max-width:1180px;margin:1rem auto 0;padding:0 1rem;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .comparison-card{border:1px solid #E2E8F0;border-radius:18px;padding:1.25rem;background:#fff}
+    .comparison-card--ai{border-color:#A5B4FC;background:#EEF2FF}.comparison-card h3{margin-bottom:.5rem}.comparison-card p{color:#475569;line-height:1.6}
+    .pricing-grid{grid-template-columns:repeat(4,minmax(0,1fr));padding-top:2rem;align-items:stretch}
+    .price-card{min-width:0}.price-card--featured{transform:none}.unit-price{font-size:.84rem;color:#64748B;margin-top:.25rem}.card-use{min-height:3rem;color:#475569;line-height:1.5;margin:.85rem 0 0}
+    .pricing-notes{max-width:1180px;margin:0 auto 4rem;padding:1.5rem;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:20px}
+    .pricing-notes>h2{font-size:1.3rem;margin-bottom:1rem;color:#0F172A}.pricing-notes__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .pricing-note{padding:1rem;background:#fff;border:1px solid #E2E8F0;border-radius:14px}.pricing-note h3{font-size:1rem;margin-bottom:.45rem;color:#0F172A}.pricing-note p{font-size:.9rem;color:#475569;line-height:1.65}
+    .pricing-notes__disclaimer{margin-top:1rem;padding-top:1rem;border-top:1px solid #CBD5E1;color:#64748B;font-size:.85rem;line-height:1.6}
+    .ai-input-summary{margin:0 0 1rem;padding:1rem;background:#EEF2FF;border:1px solid #C7D2FE;border-radius:12px;color:#312E81}.ai-input-summary__chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.65rem 0}.ai-input-summary__chips span{background:#fff;border:1px solid #C7D2FE;border-radius:999px;padding:.25rem .55rem;font-size:.78rem;color:#3730A3}.ai-input-summary p{font-size:.82rem;line-height:1.5}
+    @media(max-width:1100px){.pricing-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.price-card--featured{transform:none}}
+    @media(max-width:760px){.ai-value__grid,.recipe-vs-ai,.pricing-notes__grid{grid-template-columns:1fr}.pricing-hero{text-align:left}.status-card{flex-direction:column;align-items:stretch}.status-card .btn{width:100%}.pricing-notes{margin-inline:1rem}.nav__brand img{width:32px;height:32px}}
+    @media(max-width:640px){.pricing-grid{grid-template-columns:1fr;padding:1.5rem 1rem}.price-card{padding:1.25rem}.price-card .btn{width:100%}.ai-value{margin-top:0}.pricing-title{font-size:2.1rem}}
+  </style>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Product","name":"ILAW Lesson Plan Generator AI Credits","offers":[{"@type":"Offer","name":"AI Starter Pack","price":"0.99","priceCurrency":"USD"},{"@type":"Offer","name":"AI Regular Pack","price":"2.99","priceCurrency":"USD"},{"@type":"Offer","name":"AI Teacher Pack","price":"5.99","priceCurrency":"USD"}]}
   </script>
@@ -17,29 +42,48 @@
 <body>
   <nav class="nav">
     <div class="nav__inner">
-      <a href="/" class="nav__brand"><img src="/logo.svg" alt="ILAWPlan" class="nav__logo"><span>ILAWPlan</span></a>
-      <div class="nav__links">
+      <a href="/" class="nav__brand"><img src="/logo.svg" alt="ILAWPlan" style="width:32px;height:32px"><span>ILAWPlan</span></a>
+      <div class="nav__links" id="pricingNav">
         <a href="/#tool-section" class="nav__link">Generator</a>
         <a href="/ilaw-format" class="nav__link">What is ILAW?</a>
         <a href="/ilaw-lesson-plan-template" class="nav__link">Templates</a>
         <a href="/pricing" class="nav__link">Pricing</a>
         <a href="/api/auth/google?redirect=/pricing" class="nav__link nav__link--login" id="loginLink">Sign In</a>
       </div>
+      <button class="nav__hamburger" id="pricingHamburger" aria-label="Open navigation" aria-expanded="false" aria-controls="pricingNav">☰</button>
     </div>
   </nav>
 
   <main>
     <section class="pricing-hero">
       <div class="pricing-hero__inner">
-        <p class="pricing-kicker">Free Recipe + AI Credits</p>
-        <h1 class="pricing-title">Simple, one-time packs for AI-powered ILAW lesson planning</h1>
-        <p class="pricing-subtitle">The Recipe generator stays free. AI generation uses credits — buy a pack only when you need drafts tailored to your exact topic, LC code, and objectives.</p>
+        <p class="pricing-kicker">Free structured Recipe or topic-specific AI draft</p>
+        <h1 class="pricing-title">Build an ILAW draft around your competency—not a generic outline</h1>
+        <p class="pricing-subtitle">Enter your exact grade, subject, topic, target competency, objectives, class length, language, learner context, and available materials. AI drafts the ILAW sections for you to review, edit, and export.</p>
         <div class="status-card" id="creditStatus">
           <span>Checking your AI credit balance...</span>
           <a class="btn btn--outline btn--sm" href="/api/auth/google?redirect=/pricing">Sign in for 3 free AI drafts</a>
         </div>
         <div id="pricingMessage"></div>
       </div>
+    </section>
+
+    <section class="ai-value" aria-labelledby="ai-value-title">
+      <div class="ai-value__panel">
+        <p class="ai-value__eyebrow">What the AI actually changes</p>
+        <h2 id="ai-value-title">Your lesson details shape the draft</h2>
+        <p class="ai-value__intro">Instead of returning the same reusable Recipe, the AI sends the lesson details you enter to DeepSeek‑V4‑Flash and builds a teacher-review draft around them.</p>
+        <div class="ai-value__grid">
+          <article class="ai-value__item"><strong>Specific to your lesson</strong><p>Uses the exact grade, subject, topic, competency, LC code, term, week, and objectives you provide.</p></article>
+          <article class="ai-value__item"><strong>Specific to your classroom</strong><p>Adjusts to session length, language, learner context, available materials, and selected learning principles.</p></article>
+          <article class="ai-value__item"><strong>More than a blank outline</strong><p>Drafts teacher actions, learner activities, and checks for understanding—plus assessment, differentiation, remediation, and enrichment.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="recipe-vs-ai" aria-label="Free Recipe versus AI draft">
+      <article class="comparison-card"><h3>Free Recipe</h3><p>A reusable ILAW structure selected from 32 Recipe variants. Best when you want a quick framework and prefer to write the lesson-specific details yourself.</p></article>
+      <article class="comparison-card comparison-card--ai"><h3>AI Detailed Draft</h3><p>A first draft built from the topic, competency, objectives, class context, and materials you enter—ready for teacher review and editing.</p></article>
     </section>
 
     <section class="pricing-grid" aria-label="Pricing plans">
@@ -50,7 +94,7 @@
         <p class="credits">Recipe-based generation</p>
         <ul class="feature-list">
           <li>32 differentiated Recipe variants</li>
-          <li>Word (.docx) export</li>
+          <li>Word-compatible (.doc) export</li>
           <li>PowerPoint (.pptx) export</li>
           <li>Use it whenever you plan lessons</li>
         </ul>
@@ -62,56 +106,79 @@
         <div class="price">$0.99</div>
         <p class="price-note">one-time pack</p>
         <p class="credits">10 AI-powered lesson drafts</p>
+        <p class="unit-price">$0.099 per draft</p>
+        <p class="card-use">Try AI on up to 10 lesson drafts.</p>
         <ul class="feature-list">
-          <li>AI adapts to your topic + LC</li>
-          <li>Word + PPT export</li>
-          <li>Valid for 12 months</li>
+          <li>Uses your topic, competency, and LC code</li>
+          <li>Drafts activities and assessments</li>
+          <li>Word-compatible + PPT export</li>
           <li>No subscription</li>
         </ul>
         <button class="btn btn--primary buy-btn" data-sku="starter_30">Try 10 AI drafts — $0.99</button>
       </article>
 
-      <article class="price-card price-card--featured">
-        <span class="badge">BEST VALUE</span>
+      <article class="price-card">
         <h2>🌟 AI Regular</h2>
         <div class="price">$2.99</div>
         <p class="price-note">one-time pack</p>
         <p class="credits">50 AI-powered lesson drafts</p>
+        <p class="unit-price">$0.060 per draft</p>
+        <p class="card-use">For a unit or several weeks of planning.</p>
         <ul class="feature-list">
-          <li>Best for regular classroom use</li>
-          <li>AI adapts to objectives</li>
-          <li>Word + PPT export</li>
-          <li>Valid for 12 months</li>
+          <li>Builds around your stated objectives</li>
+          <li>Uses your class context and materials</li>
+          <li>Word-compatible + PPT export</li>
           <li>No subscription</li>
         </ul>
         <button class="btn btn--primary buy-btn" data-sku="pro_120">Get 50 AI drafts — $2.99</button>
       </article>
 
-      <article class="price-card">
+      <article class="price-card price-card--featured">
+        <span class="badge">LOWEST COST PER DRAFT</span>
         <h2>📚 AI Teacher Pack</h2>
         <div class="price">$5.99</div>
         <p class="price-note">one-time pack</p>
         <p class="credits">150 AI-powered lesson drafts</p>
+        <p class="unit-price">$0.040 per draft</p>
+        <p class="card-use">Keep more credits available for frequent planning.</p>
         <ul class="feature-list">
-          <li>Best value for full year</li>
-          <li>AI adapts to topic + LC</li>
-          <li>Word + PPT export</li>
-          <li>Valid for 12 months</li>
+          <li>Uses all lesson and classroom inputs</li>
+          <li>Drafts ILAW activities and next steps</li>
+          <li>Word-compatible + PPT export</li>
           <li>No subscription</li>
         </ul>
         <button class="btn btn--primary buy-btn" data-sku="teacher_350">Get 150 AI drafts — $5.99</button>
       </article>
     </section>
 
-    <section class="fineprint">
-      <p><strong>Credit rule:</strong> Each new AI-generated ILAW draft uses 1 credit. Exporting an existing draft does not use extra credits.</p>
-      <p><strong>Refund note:</strong> Credit packs are digital AI generation access. Refunds are available within 7 days if fewer than 10% of credits have been used. See our <a href="/refund">Refund Policy</a>.</p>
-      <p><strong>Teacher review required:</strong> AI-generated lesson plans are drafts. Teachers must review and adapt them for their learners and school requirements. ILAWPlan is independent and not affiliated with DepEd.</p>
+    <section class="pricing-notes" aria-labelledby="pricing-notes-title">
+      <h2 id="pricing-notes-title">Before you buy</h2>
+      <div class="pricing-notes__grid">
+        <article class="pricing-note">
+          <h3>How credits work</h3>
+          <p>One new AI-generated draft uses one credit. Editing or exporting an existing draft uses no additional credit.</p>
+        </article>
+        <article class="pricing-note">
+          <h3>Refund eligibility</h3>
+          <p>Request within 7 days if fewer than 10% of the pack's credits were used. See the <a href="/refund">Refund Policy</a> for exact thresholds.</p>
+        </article>
+        <article class="pricing-note">
+          <h3>Teacher review required</h3>
+          <p>AI output is a draft. Review and adapt it for your learners, curriculum, and school requirements before use.</p>
+        </article>
+      </div>
+      <p class="pricing-notes__disclaimer">ILAWPlan uses the lesson details you provide; it does not verify official DepEd alignment or guarantee school acceptance. ILAWPlan is independent and is not affiliated with DepEd.</p>
     </section>
   </main>
 
   <script>
     const message = document.getElementById('pricingMessage');
+    const pricingHamburger = document.getElementById('pricingHamburger');
+    const pricingNav = document.getElementById('pricingNav');
+    pricingHamburger?.addEventListener('click', () => {
+      const open = pricingNav.classList.toggle('nav__links--open');
+      pricingHamburger.setAttribute('aria-expanded', String(open));
+    });
     function showMessage(text, error=false){ message.innerHTML = `<div class="pricing-alert ${error ? 'pricing-alert--error' : ''}">${text}</div>`; }
 
     function currentAttributionRedirect(){
@@ -156,7 +223,8 @@
         const res = await fetch('/api/paypal/capture-credit-order', { method:'POST', headers:{'Content-Type':'application/json'}, credentials:'include', body: JSON.stringify({ orderId: token }) });
         const data = await res.json();
         if (data.ok) {
-          showMessage(`Payment complete. ${data.credits_added} AI credits added. Current balance: ${data.credits_remaining}.`);
+          const addedText = Number.isFinite(Number(data.credits_added)) ? `${data.credits_added} AI credits added. ` : '';
+          showMessage(`Payment complete. ${addedText}Current balance: ${data.credits_remaining}.`);
           history.replaceState({}, '', '/pricing');
           refreshCredits();
         } else {

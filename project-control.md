@@ -1,6 +1,6 @@
 # 项目控制板 — ILAW Lesson Plan Generator
 **创建日期：** 2026-06-22
-**项目状态：** 🟢 01-Research DONE（已补全）
+**项目状态：** 🟢 10-QA DONE → 11-Launch ⏳
 
 ---
 
@@ -31,9 +31,9 @@
 | 07-Frontend | ✅ **DONE** | `index.html`, `ilaw-format.html`, `ilaw-lesson-plan-template.html`, `free-ilaw-template.html`, `how-to-make-ilaw-lesson-plan.html`, `deped-order-16-s2026.html`, `ilaw-lesson-plan-sample.html`, `ilaw-lesson-plan-grade-4.html`, `dll-generator-ilaw.html`, `privacy.html`, `terms.html`, `refund.html`, `contact.html`, `styles.css`, `_redirects`, `_headers`, `sitemap.xml`, `robots.txt`, `logo.svg`, `functions/`, `assets/og-image.svg` | 14 页 HTML + SEO + Cloudflare 部署完成。另含 Sitemap/robots 域名修正、9 页 schema/OG/Twitter Cards、GSC meta 部署。线上：https://ilawlessonplan.net |
 | 08-Backend | ✅ **DONE** | `architecture.md`, `api-contract.md`, `data-contract.json`, `wrangler.toml`, `migrations/001_create_tables.sql`, D1 remote migration 完成, functions/api/auth/*.js (5 endpoints), functions/api/paypal/*.js (3 endpoints), functions/_middleware.js, functions/_paypal.js, functions/_utils.js | Google OAuth + PayPal + D1 全流程代码已部署，secrets 已写入，Google OAuth 回调已验证生效
 | 09-SEO | ✅ **DONE** | `stage-handoff.md` | 9 页 SEO 复核通过：schema/OG/Twitter/sitemap/robots/canonical 全部到位。GSC/Bing 提交归属 11-Launch |
-| 10-QA | 🟡 REPAIRING | `systematic-audit-2026-06-26.md` | P0 修复完成；P1 修复中 |
-| 11-Launch | ⏳ 待启动 | — | — |
-| 12-Data-Review | ⏳ 待启动 | — | — |
+|| 10-QA | ✅ **DONE** | `systematic-audit-2026-06-26.md`, `qa-ai-credits-v2-2026-07-08.md`, `qa-ai-detailed-draft-form-v2.1-2026-07-08.md`, `ahrefs-audit-2026-07-13.md` | 全部P0/P1修复完。Ahrefs审计P0上线。PayPal沙箱测试通过。Get AI Credits跳转bug修完。 |
+|| 11-Launch | ⏳ 待启动 | — | 需要你确认4项后解锁 |
+|| 12-Data-Review | ⏳ 待启动 | — | — |
 
 ---
 

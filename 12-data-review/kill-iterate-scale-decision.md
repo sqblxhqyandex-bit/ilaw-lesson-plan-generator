@@ -54,8 +54,8 @@ It has not validated:
 
 | # | Task | Why | Owner | ETA |
 |---|---|---|---|---|
-| 1 | Switch PayPal from sandbox to production | Real conversions cannot happen in sandbox | 云 | 1-2 days |
-| 2 | Verify real user can purchase AI credits | End-to-end payment flow is unproven | 云 | 1 day after P0-1 |
+| 1 | Understand why free users don't try AI credits | 0 real AI generations despite live PayPal | AI + 云 | 1-2 days |
+| 2 | Add AI upsell prompt inside free Recipe result | Increase AI feature awareness | AI | 2-3 days |
 | 3 | Fix UTM persistence across Google OAuth redirect | Directory traffic cannot be tracked to conversion | AI | 1 day |
 
 ### P1 — High ROI Iterations
@@ -63,7 +63,7 @@ It has not validated:
 | # | Task | Expected Impact | Owner | ETA |
 |---|---|---|---|---|
 | 4 | Submit AI tool directories (Futurepedia, Dang.ai, AI Parabellum) | Backlinks + faster Google indexing | 云 | This week |
-| 5 | Add AI feature upsell inside free Recipe result | Increase AI credit awareness | AI | 2-3 days |
+| 5 | Adjust AI credit pricing / free trial for Filipino market | Improve value perception | 云 + AI | 2-3 days |
 | 6 | Add Google Search Console and verify indexing | Close Google traffic data gap | 云 | 1 day |
 | 7 | Write 2-3 more subject/grade SEO content pages | Capture more long-tail keywords | AI | 1 week |
 

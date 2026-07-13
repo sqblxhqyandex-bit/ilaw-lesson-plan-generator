@@ -71,3 +71,13 @@
 If another project hits the same situation (profile A analyzes, profile B cannot see), add a step to the `site-data-review-iteration` skill:
 
 > "After analysis, always write the weekly review + Kill/Iterate/Scale decision + backlog + lessons-learned into the project's `12-data-review/` directory and update `project-control.md` before ending the session."
+
+## 6. Do not assume the previous profile's conclusion is still true
+
+**What happened:**
+- The `datareview` profile analysis was valid at the moment it ran, but the user later updated PayPal to production mode.
+- I continued to report "PayPal sandbox" as the blocker without confirming current state.
+
+**Fix:**
+- Always re-verify blocker status before writing conclusions.
+- Treat cross-profile handoffs as a snapshot, not a live system state.

@@ -31,8 +31,8 @@ ILAW is in **early traction with organic traffic from Bing and Yahoo**. Real use
 | **Generate plan events** | 83 | Core free tool usage |
 | **Word download events** | 20 | 24% of generation events |
 | **PPT download events** | 7 | 8% of generation events |
-| **AI credit generations (real users)** | 0 | All 4 AI generations were QA tests |
-| **Real paid transactions** | 0 | PayPal sandbox mode |
+| **AI credit generations (real users)** | 0 | All 4 AI generations were QA tests. Not a payment-block issue — PayPal is now production. |
+| **Real paid transactions** | 0 | User confirmed PayPal is in production mode; root cause is likely product/activation, not payment infrastructure. |
 
 ---
 
@@ -115,7 +115,14 @@ ILAW is in **early traction with organic traffic from Bing and Yahoo**. Real use
 1. **Product-market fit signal is weak but positive.** Teachers are finding the site, generating plans, and exporting. No one has paid yet — but payment is literally impossible right now.
 2. **SEO is working on Bing/Yahoo.** Without any Google-focused submission, Bing is already the #2 traffic source. This validates the content-page strategy.
 3. **AI credits are not compelling enough to convert.** Or users never reach the AI feature because the free Recipe satisfies them.
-4. **The biggest lever is switching PayPal to production.** Real transactions cannot happen in sandbox.
+4. **Biggest lever is no longer payment activation.** PayPal is in production. The gap is now: users are not motivated or not aware enough to switch from free Recipe to AI credits.
+
+Possible reasons:
+1. Free Recipe output is "good enough" for most teachers.
+2. AI feature is not visible / not explained clearly in the result flow.
+3. Price/value perception is off for Filipino teacher purchasing power.
+4. Users hit a free quota wall too late or too softly.
+5. Trust/social proof is insufficient to make a first payment.
 
 ---
 

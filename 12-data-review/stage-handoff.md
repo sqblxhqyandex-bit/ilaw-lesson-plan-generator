@@ -34,11 +34,11 @@
 
 ## Open Items / Blockers
 
-- [ ] PayPal production mode switch (P0-1)
-- [ ] Verify a real payment transaction (P0-2)
+- [ ] Understand why free users don't try AI credits (P0-1)
+- [ ] Add AI upsell prompt inside free Recipe result (P0-2)
 - [ ] Fix UTM persistence across Google OAuth (P0-3)
 - [ ] Submit AI tool directories (P1-1)
-- [ ] Add AI upsell prompt (P1-2)
+- [ ] Adjust AI credit pricing / free trial for Filipino market (P1-2)
 - [ ] Verify Google Search Console (P1-3)
 - [ ] Publish 2-3 more SEO content pages (P1-4)
 

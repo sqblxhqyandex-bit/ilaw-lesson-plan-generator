@@ -1,6 +1,6 @@
 # 项目控制板 — ILAW Lesson Plan Generator
 **创建日期：** 2026-06-22
-**项目状态：** 🟢 10-QA DONE → 11-Launch ⏳
+**项目状态：** 🟢 11-Launch DONE → 12-Data-Review DONE → Iterations ⏳
 
 ---
 
@@ -32,8 +32,8 @@
 | 08-Backend | ✅ **DONE** | `architecture.md`, `api-contract.md`, `data-contract.json`, `wrangler.toml`, `migrations/001_create_tables.sql`, D1 remote migration 完成, functions/api/auth/*.js (5 endpoints), functions/api/paypal/*.js (3 endpoints), functions/_middleware.js, functions/_paypal.js, functions/_utils.js | Google OAuth + PayPal + D1 全流程代码已部署，secrets 已写入，Google OAuth 回调已验证生效
 | 09-SEO | ✅ **DONE** | `stage-handoff.md` | 9 页 SEO 复核通过：schema/OG/Twitter/sitemap/robots/canonical 全部到位。GSC/Bing 提交归属 11-Launch |
 || 10-QA | ✅ **DONE** | `systematic-audit-2026-06-26.md`, `qa-ai-credits-v2-2026-07-08.md`, `qa-ai-detailed-draft-form-v2.1-2026-07-08.md`, `ahrefs-audit-2026-07-13.md` | 全部P0/P1修复完。Ahrefs审计P0上线。PayPal沙箱测试通过。Get AI Credits跳转bug修完。 |
-|| 11-Launch | ⏳ 待启动 | — | 需要你确认4项后解锁 |
-|| 12-Data-Review | ⏳ 待启动 | — | — |
+||| 11-Launch | ✅ DONE | `launch-asset-pack.md`, `directory-submission-list.md`, `utm-link-table.md`, `manual-submission-copy-paste.md`, `stage-handoff.md` | 素材、目录清单、UTM、提交文案已准备；实际提交需用户手动完成 |
+||| 12-Data-Review | ✅ DONE | `weekly-review-2026-07-13.md`, `kill-iterate-scale-decision.md`, `iterations-backlog.md`, `lessons-learned.md`, `stage-handoff.md` | 决策：Iterate；核心结论：Bing/Yahoo已有真实流量，0付费因PayPal沙箱 |
 
 ---
 

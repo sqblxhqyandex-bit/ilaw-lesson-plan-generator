@@ -1,5 +1,19 @@
 # 外部资源推荐提交记录
 
+## 2026-11-04 — ToolVerity
+
+- Owner 授权“再发一个外链看看”；本轮仅新增一次正式提交，查重无历史 ToolVerity 记录。
+- 入口：https://toolverity.com/submit
+- 项目：ILAW Lesson Plan Generator；官方链接：https://ilawlessonplan.net/ （未加 UTM；后续可观察 toolverity.com referrer，但不保证完整归因）。
+- 分类 Education；定价 Freemium；关系 Project owner；使用项目已有业务邮箱。
+- 文案：ILAW Lesson Plan Generator helps Filipino teachers turn a lesson topic, grade and learning competency into an editable teaching draft. It offers a free, no-account Recipe generator and optional AI-generated lesson plans after sign-in. Outputs follow Intentions, Learning Experiences, Assessment and Ways Forward, with Word and PowerPoint exports. New users receive three free AI drafts; one-time credit packs start at $0.99 for 10 drafts. This is an independent tool, not affiliated with DepEd. Teachers should review and adapt every draft before classroom use.
+- 费用 $0；无需 backlink、账号或付款。没有选择任何赞助套餐。
+- 提交结果：页面显示 Submission received；参考号 **TVS-E692E653**。
+- 页面预期审核：3–5 business days，是平台目标而非保证。建议 2026-11-11 起人工查看业务邮箱/公开收录，无自动提醒。
+- 状态 submission_received / editorial_review_pending；公开收录 URL=unknown、live=unknown、rel=unknown、indexed=unknown。不可重复提交或记为公开外链已上线。
+- 凭证：2026-11-04-toolverity-receipt.jpg。
+- 本轮检查但未提交：Aitoolnet 收费 $9.9；ToolPilot 免费项要求站内 badge/backlink（未改本站）；AIxploria 已取消免费收录。未付费、未改生产代码。
+
 ## 2026-11-04 — TeachersFirst
 
 - Owner 明确授权：今天免费提交 1 条；另明确同意完成 CAPTCHA 并提交。

@@ -41,6 +41,8 @@
 
 ### 2026-11-04 — 三个月经营复盘
 
+- 第二次单条授权：ToolVerity 免费提交成功，参考号 TVS-E692E653，3–5 business days 目标审核期；公开收录 unknown。查重规则同样适用；凭证与内容见提交台账。
+
 - 后续 Owner 授权今天免费外部提交 1 条：TeachersFirst 联系表单已成功发送资源推荐，待编辑回复；未验证公开收录外链。证据见 `11-launch/directory-submission-log.md` 与提交截图。
 
 - 当前事实源：[经营复盘](12-data-review/business-review-2026-11-04.md)，覆盖 8 月 4 日至 11 月 4 日。

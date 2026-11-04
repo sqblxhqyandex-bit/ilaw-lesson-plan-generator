@@ -7,6 +7,8 @@
 
 ## 外部提交前必须查重
 
+- 对外联系邮箱（Owner 于 2026-11-04 指定）：`support@ilawlessonplan.net`。今后外链/目录提交、投稿和相关对外联系统一使用该地址；Owner 说明其转发至 `sqblxhqyandex@gmail.com`，转发行为未独立测试。不要对外披露转发目的邮箱。历史已提交邮箱保持原始事实，不自动修改平台记录。
+
 1. 先读取完整提交台账，按站点主域名、平台品牌、目标站点和提交类型查重；将 www、http/https、改名与跳转域名作为可能的同一平台检查。TeachersFirst 的 teachersfirst.com 与 teachersfirst.org 是同一平台。
 2. `submission_sent`、待审核、已收录或状态不明的历史提交一律先跟进核实，不重复提交。未收到回复不等于没有提交。
 3. 今日 TeachersFirst 已发送推荐，待编辑评估；不能记为公开外链已上线，不得再次提交同一推荐。后续状态变更更新原记录并保留历史。

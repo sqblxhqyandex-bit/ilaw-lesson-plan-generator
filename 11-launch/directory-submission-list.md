@@ -88,7 +88,7 @@ Tags: lesson plan generator, deped, ilaw format, matatag curriculum, teacher too
 | **Screenshot / OG Image** | `https://ilawlessonplan.net/assets/og-image.svg` |
 | **Pricing** | Freemium (free generator + paid AI credits) |
 | **Twitter / X** | — |
-| **Founder Email** | sqblxhqyandex@gmail.com |
+| **Contact Email** | support@ilawlessonplan.net |
 | **Founded Year** | 2026 |
 
 ---

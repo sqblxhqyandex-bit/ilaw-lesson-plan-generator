@@ -151,7 +151,7 @@ ILAW Lesson Plan Generator helps Filipino public school teachers create DepEd MA
 ## Founder Info (if asked)
 
 - **Name:** [Your name or leave blank]
-- **Email:** sqblxhqyandex@gmail.com
+- **Email:** support@ilawlessonplan.net
 - **Twitter / X:** [Leave blank until you have an account]
 - **Founded:** 2026
 - **Location:** Philippines

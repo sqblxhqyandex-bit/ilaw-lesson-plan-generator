@@ -1,5 +1,11 @@
 # 外部资源推荐提交记录
 
+## 当前联系邮箱规则（2026-11-04 起）
+
+- Owner 指定后续外链提交统一使用 `support@ilawlessonplan.net`；Owner 说明该邮箱转发至其 Gmail，未独立验证转发。
+- 此规则生效前的 TeachersFirst 和 ToolVerity 提交实际使用项目原 Gmail 联系邮箱；保留历史，不冒充已使用新地址。
+- 新会话先遵守 AGENTS.md 联系邮箱规则，不从历史提交复用旧邮箱。
+
 ## 2026-11-04 — ToolVerity
 
 - Owner 授权“再发一个外链看看”；本轮仅新增一次正式提交，查重无历史 ToolVerity 记录。

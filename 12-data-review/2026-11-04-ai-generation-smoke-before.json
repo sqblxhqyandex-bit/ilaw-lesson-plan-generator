@@ -1,0 +1,43 @@
+{
+  "started_at": "2026-11-04T12:45:47.289Z",
+  "scope": "Production generator module; direct DeepSeek request; no login, credits or production database writes",
+  "input": {
+    "gradeLevel": "g4-6",
+    "gradeLabel": "Grades 4-6",
+    "exactGrade": "Grade 5",
+    "subject": "science",
+    "subjectLabel": "Science",
+    "term": "2",
+    "week": "4",
+    "topic": "Parts of a plant and their functions",
+    "competency": "Identify roots, stems, leaves and flowers and explain how each helps a plant survive.",
+    "objectives": "Label four plant parts and explain one function of each.",
+    "sessionLength": "45 minutes",
+    "sessions": "1",
+    "language": "English",
+    "learnerContext": "Mixed reading levels in a class of 35 learners",
+    "materials": "A local plant sample, paper and pencils",
+    "principles": []
+  },
+  "http_status": 200,
+  "model": "deepseek-flash",
+  "usage": {
+    "prompt_tokens": 494,
+    "completion_tokens": 1800,
+    "total_tokens": 2294,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1256
+    },
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 494
+  },
+  "finish_reason": "length",
+  "content_length": 2682,
+  "reasoning_content_length": 6170,
+  "success": false,
+  "error": "Expected ',' or '}' after property value in JSON at position 595",
+  "finished_at": "2026-11-04T12:46:00.254Z"
+}

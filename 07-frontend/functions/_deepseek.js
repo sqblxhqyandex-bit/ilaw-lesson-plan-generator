@@ -137,7 +137,7 @@ export async function generateIlawWithDeepSeek(env, input) {
     body: JSON.stringify({
       model,
       temperature: 0.65,
-      max_tokens: 1800,
+      max_tokens: 8192,
       response_format: { type: 'json_object' },
       messages: [
         { role: 'system', content: 'You generate structured ILAW lesson plan JSON for Filipino teachers.' },
@@ -152,7 +152,14 @@ export async function generateIlawWithDeepSeek(env, input) {
     throw new Error(message);
   }
 
-  const content = payload?.choices?.[0]?.message?.content || '';
+  const choice = payload?.choices?.[0];
+  if (choice?.finish_reason === 'length') {
+    throw new Error('AI output reached the length limit. Please try a shorter lesson request.');
+  }
+  const content = choice?.message?.content || '';
+  if (!content.trim()) {
+    throw new Error('AI returned an empty lesson. Please try again.');
+  }
   const data = validateIlawPlanData(extractJson(content));
   return {
     data,

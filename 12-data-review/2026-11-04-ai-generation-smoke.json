@@ -1,0 +1,81 @@
+{
+  "started_at": "2026-11-04T12:49:20.434Z",
+  "scope": "Production generator module; direct DeepSeek request; no login, credits or production database writes",
+  "input": {
+    "gradeLevel": "g4-6",
+    "gradeLabel": "Grades 4-6",
+    "exactGrade": "Grade 5",
+    "subject": "science",
+    "subjectLabel": "Science",
+    "term": "2",
+    "week": "4",
+    "topic": "Parts of a plant and their functions",
+    "competency": "Identify roots, stems, leaves and flowers and explain how each helps a plant survive.",
+    "objectives": "Label four plant parts and explain one function of each.",
+    "sessionLength": "45 minutes",
+    "sessions": "1",
+    "language": "English",
+    "learnerContext": "Mixed reading levels in a class of 35 learners",
+    "materials": "A local plant sample, paper and pencils",
+    "principles": []
+  },
+  "http_status": 200,
+  "model": "deepseek-flash",
+  "usage": {
+    "prompt_tokens": 494,
+    "completion_tokens": 3549,
+    "total_tokens": 4043,
+    "prompt_tokens_details": {
+      "cached_tokens": 256
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2464
+    },
+    "prompt_cache_hit_tokens": 256,
+    "prompt_cache_miss_tokens": 238
+  },
+  "finish_reason": "stop",
+  "content_length": 5339,
+  "reasoning_content_length": 11991,
+  "success": true,
+  "plan": {
+    "intention": {
+      "grade": "Grade 5",
+      "subject": "Science",
+      "learningIntention": "Identify roots, stems, leaves, and flowers and explain how each part helps a plant survive; label four plant parts and explain one function of each.",
+      "successCriteria": "I can label the roots, stem, leaf, and flower on a plant diagram. I can write or say one function of each part and connect it to how the plant survives.",
+      "focus": "Parts of a plant and their functions: roots, stems, leaves, flowers",
+      "lcCode": "Not provided",
+      "duration": "45 minutes"
+    },
+    "learningExperiences": {
+      "opening": "5 min: Teacher shows the local plant sample and asks, 'What parts can you see, and which part helps this plant stay alive?' Teacher writes learner responses beside the plant. Learner: observes the sample, points to visible parts, and shares one idea with a partner. Check: Teacher listens for names such as roots, stem, leaf, flower and notes misconceptions about plant parts for correction during the lesson.",
+      "presentation": "10 min: Teacher uses the local plant sample and a simple board sketch to name roots, stem, leaves, and flowers. Teacher explains one survival function for each: roots absorb water and anchor the plant; stem supports the plant and transports water; leaves make food using sunlight; flowers make seeds for new plants. Learner: repeats the part names, matches each part to a function using hand signals, and points to the part on the sample or sketch. Check: Teacher asks, 'Which part transports water?' and 'Which part makes seeds?' and asks learners to point to evidence on the plant sample.",
+      "guidedPractice": "15 min: Teacher organizes the 35 learners into 7 groups of 5 and gives each group a paper task card with sentence frames such as 'Roots help the plant by ___.' Groups examine the local plant sample or a paper diagram and label roots, stem, leaf, and flower. Mixed reading levels are supported through group roles: reader, recorder, presenter, and materials manager. Learner: labels the plant diagram, writes one function per part using sentence frames, and prepares one sentence to explain a function. Check: Teacher circulates with a checklist for correct labels and one accurate function per part, then asks one learner per group to explain how a chosen part helps the plant survive.",
+      "independentPractice": "10 min: Teacher gives each learner a paper-and-pencil plant outline and asks them to label roots, stem, leaf, and flower and write one function for each in their own words. Sentence starters remain on the board for learners who need reading and writing support. Learner: completes an individual labeled diagram and writes one function sentence per plant part. Check: Teacher collects 3-5 quick samples and uses a checklist to see whether the four labels and part-function explanations match, noting learners who need remediation on roots, stems, leaves, or flowers.",
+      "closing": "5 min: Teacher returns to the local plant sample and asks learners to answer an exit ticket: 'Choose one plant part; name it and explain how it helps the plant survive.' Learner: writes or says the exit ticket response and shares it with a partner. Check: Teacher scans exit tickets for a correct part-function link and clarifies misconceptions, such as leaves making food versus flowers making seeds.",
+      "designPrinciples": [
+        {
+          "name": "Concrete-to-abstract learning",
+          "application": "The local plant sample is used before the paper diagram so Grade 5 learners see and touch plant parts before labeling roots, stems, leaves, and flowers."
+        },
+        {
+          "name": "Scaffolded literacy in Science",
+          "application": "Sentence frames, group reading roles, and board sentence starters support mixed reading levels while learners explain one function of each plant part."
+        }
+      ]
+    },
+    "assessment": {
+      "formative": "Guided practice checklist: learner labels roots, stem, leaf, and flower correctly and gives one accurate function for each; teacher also uses questioning during the plant sample presentation and scans exit tickets for part-function understanding.",
+      "summative": "End-of-lesson individual paper task: a labeled plant diagram with roots, stem, leaf, and flower plus one written function per part, scored with a simple rubric for 4 correct labels and 4 accurate survival functions.",
+      "differentiation": "For learners needing reading support, provide sentence frames, paired reading of task cards, and teacher modeling with the local plant sample. For advanced learners, ask them to explain how two parts work together, such as roots absorbing water and the stem transporting it. With 35 learners, use 7 groups of 5 with clear roles so all learners handle the plant sample and paper task."
+    },
+    "waysForward": {
+      "remediation": "Re-teach one confused part-function pair using the local plant sample, then have learners match root, stem, leaf, and flower cards to function cards such as 'absorbs water,' 'supports the plant,' 'makes food,' and 'makes seeds.'",
+      "enrichment": "Learners compare two local plants and make a short 'plant survival' poster showing how roots, stems, leaves, and flowers help each plant survive.",
+      "reflection": "Teacher reviews exit tickets and the guided practice checklist to identify which plant part-function links need next-day review, then asks learners to name one plant part they can now explain confidently."
+    },
+    "teacherNote": "AI-generated draft. Teacher review required."
+  },
+  "finished_at": "2026-11-04T12:49:42.870Z"
+}

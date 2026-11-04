@@ -1,5 +1,15 @@
 # 📝 Iterations Backlog — ILAW Lesson Plan Generator
 
+## 2026-11-04 当前优先级（覆盖下方历史优先级）
+
+详见 `business-review-2026-11-04.md`。状态 NEEDS_REVIEW，Owner 尚未批准下一轮执行。
+
+1. 可靠性与真实漏斗：完整登录/AI/Word 验收、补齐白名单与状态事件、独立检查 session 签名；连续 30 次合格生产生成成功率≥95%。8192 上限与截断提示已经部署。
+2. 价值与回访：同输入 Recipe/AI 对照、5 位自愿目标教师反馈、观察跨日再用；保持现价和试用不变。对外联系先确认。
+3. 商业验证：30 天（最多 60 天），至少 30 位独立成功 AI 用户；≥3 位真实买家且≥5 位跨日再用才继续；具体分支与止损规则见报告。先补 GSC 证据，不批量扩页。
+
+下方为历史 backlog，不能将历史 Local implementation 或旧断言当作当前已验收事实。
+
 **Backlog Date:** 2026-07-13  
 **Derived from:** 12-data-review/kill-iterate-scale-decision.md  
 **Decision:** Iterate (not Kill, not Scale)

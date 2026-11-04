@@ -1,5 +1,7 @@
 # ILAW Lesson Plan Generator — 项目根 README
 
+> 新会话先读 `AGENTS.md` 和 `project-control.md`。外链提交前必须查阅 `11-launch/directory-submission-log.md`，待审核也算已提交，不重复发送。下方阶段表为历史记录，当前状态以控制板为准。
+
 **项目名称：** ILAW Lesson Plan Generator
 **状态：** 🟢 01-Research ✅ Done → 待进入 02-PRD
 **创建日期：** 2026-06-22

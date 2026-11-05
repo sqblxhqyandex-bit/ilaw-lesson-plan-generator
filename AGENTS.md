@@ -4,6 +4,7 @@
 - 先读 `project-control.md`，再按任务读取阶段资料。README 中历史阶段表可能过时，当前状态以控制板及日期最新证据为准。
 - 经营判断：`12-data-review/business-review-2026-11-04.md`。
 - 外链/渠道提交唯一台账：`11-launch/directory-submission-log.md`；候选目录清单不代表已提交或仍然免费。
+- 共用候选库：`../_research/backlink-library/README.md` 与 `shortlist.md`；其中970条来源记录不是本站已提交记录，按 `matching-policy.md` 核验主题/站规后才选用。完整第三方备份只存本地，不自动上传本站公开仓库。
 
 ## 外部提交前必须查重
 

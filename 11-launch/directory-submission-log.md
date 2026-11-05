@@ -1,5 +1,26 @@
 # 外部资源推荐提交记录
 
+## 2026-11-05 — AI Tool Finder（今日第3条）
+
+- Owner 明确授权今日第3条；本轮唯一实际提交。入口：https://aitoolfinder.org/submit
+- 名称/联系人 ILAW Lesson Plan Generator；网址 https://ilawlessonplan.net/；邮箱 support@ilawlessonplan.net。
+- 分类 Writing & Content；请求类型 Free editorial consideration — no fee, no promised date。没有选择$99 profile或赞助报价。
+- 描述：Editable ILAW lesson drafts for Filipino teachers. The free Recipe generator creates a structured starting point without sign-in, with Word and PowerPoint exports. Optional AI drafts use the grade, subject, topic and competency supplied by the teacher to draft Intentions, Learning Experiences, Assessment and Ways Forward. New users receive three free AI drafts after sign-in. This is an independent tool, not affiliated with DepEd; teachers must review and adapt outputs before use.
+- Pricing：Freemium: free Recipe generator; 3 free AI drafts after sign-in; one-time packs from $0.99 for 10 AI drafts. Pricing: https://ilawlessonplan.net/pricing
+- Demo：https://ilawlessonplan.net/#tool-section
+- 成功确认 Received for editorial review；编号 2fbd8edc-6e58-4cbb-8eab-d6d2c438c269。
+- 状态 submission_received / editorial_review_pending；平台明确申请不等于收录，没有承诺时间、排名或链接属性。费用$0，公开URL/live/rel/indexed均unknown。
+- 凭证：2026-11-05-aitoolfinder-receipt.jpg；未加UTM，来源可观察aitoolfinder.org referrer，完整归因不保证。
+- 建议2026-11-12人工检查公开目录/联系邮箱，无自动提醒。不能重复提交。
+- 先核验名单但未提交：Submito免费需backlink、域龄>2个月、Ahrefs DR>2且限周四；Smol List需登录。没有修改本站、注册或付款。ListAi打开时浏览器标签中断，未填表/提交。
+
+## 2026-11-05 — 昨日提交跟进（只读，未重复提交）
+
+- ToolVerity：公开首页目录 Search tools 搜索 ILAW，显示 0 tools / Nothing here yet。当前未发现公开收录；保留 editorial_review_pending，不推断被拒。昨日页面目标为 3–5 business days，尚未到目标窗口。
+- TeachersFirst：本次浏览器访问 https://teachersfirst.org/ 返回 403 Forbidden，无法完成站内查询。搜索引擎限定 site:teachersfirst.org 和精确域名 ilawlessonplan.net 未找到结果；不能凭此认定未收录或被拒。
+- ToolVerity 的搜索引擎限定域名查询也没有结果；站内查询比未收录搜索结果更直接，但仍不等于后台审核状态。
+- 两条均仅能确认昨日提交成功；公开 live/rel/indexed 保持 unknown。未访问项目邮箱、未取得编辑回复，未发送催审或新增表单。
+
 ## 2026-11-05 — Forward Future
 
 - Owner 授权“继续发一条外链”；本轮新增 1 次免费提交，台账无重复；平台 forwardfuture.com（关联品牌联系域名 forwardfuture.ai）。

@@ -1,5 +1,19 @@
 # 外部资源推荐提交记录
 
+## 2026-11-05 — Future Tools
+
+- Owner 授权今天继续发外链；本轮只新增 1 条免费提交，完整台账查重无重复。
+- 平台域名 futuretools.io / www.futuretools.io 为同一平台。
+- 提交入口与成功确认页：https://futuretools.io/submit-a-tool
+- 工具与提交者名：ILAW Lesson Plan Generator；目标：https://ilawlessonplan.net/；类别 Education；定价 Freemium。
+- 联系邮箱：support@ilawlessonplan.net。未订阅可选 newsletter，未付款。
+- 实际描述：ILAW Lesson Plan Generator helps Filipino teachers create editable lesson drafts organized into Intentions, Learning Experiences, Assessment and Ways Forward. The free Recipe generator works without an account and exports to Word and PowerPoint. Optional AI drafts use the teacher’s grade, subject, topic and learning competency; sign-in includes three free AI drafts, followed by one-time credit packs from $0.99 for 10 drafts. Independent of DepEd; teachers should review and adapt all output before use.
+- 确认文字：Tool Submitted! Thanks for submitting your tool. Matt will review it and, if approved, it will appear in the database soon.
+- 状态 submission_received / editorial_review_pending；编号 unknown（页面未提供）；审核时间 unknown（未承诺具体日期）。公开收录 URL/live/rel/indexed 均 unknown；不是已上线外链，不可重复提交。
+- 凭证：2026-11-05-futuretools-receipt.jpg；来源可观察 futuretools.io referrer，未加 UTM，完整归因不保证。
+- 建议跟进日 2026-11-12，人工检查 support 收件与公开收录；未创建自动提醒。
+- 本轮未提交的平台：Toolfitr（仅打开邮件客户端）、ToolScout（需登录）、AZN8（需注册/登录）、BuildWay（免费需 backlink）。均未创建账号、发送邮件或修改本站。
+
 ## 当前联系邮箱规则（2026-11-04 起）
 
 - Owner 指定后续外链提交统一使用 `support@ilawlessonplan.net`；Owner 说明该邮箱转发至其 Gmail，未独立验证转发。

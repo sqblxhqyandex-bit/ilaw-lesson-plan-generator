@@ -39,6 +39,11 @@
 
 ## 关键决策记录
 
+### 2026-11-05 — 免费目录提交
+
+- Future Tools 免费提交成功，使用 support@ilawlessonplan.net；Education / Freemium。平台显示 Tool Submitted，待人工审核，公开外链 unknown。
+- 今日新增 1 条；总计台账 3 次已收到提交，不能称为 3 条已上线外链。详情和凭证见 `11-launch/directory-submission-log.md`。
+
 ### 2026-11-04 — 三个月经营复盘
 
 - 第二次单条授权：ToolVerity 免费提交成功，参考号 TVS-E692E653，3–5 business days 目标审核期；公开收录 unknown。查重规则同样适用；凭证与内容见提交台账。

@@ -1,5 +1,20 @@
 # 外部资源推荐提交记录
 
+## 2026-11-05 — Forward Future
+
+- Owner 授权“继续发一条外链”；本轮新增 1 次免费提交，台账无重复；平台 forwardfuture.com（关联品牌联系域名 forwardfuture.ai）。
+- 入口与确认页：https://forwardfuture.com/tools/submit
+- 名称 ILAW Lesson Plan Generator；目标 https://ilawlessonplan.net/；Pricing Freemium；Industry Education & E-learning；Profession Educators & Trainers；tag education。
+- 描述：ILAW Lesson Plan Generator helps Filipino teachers prepare editable lesson drafts in the ILAW format. It combines a free, no-account Recipe generator with optional AI drafts based on grade, subject, topic and learning competency, plus Word and PowerPoint exports. This independent tool is not affiliated with DepEd, and teachers should review all output before use.
+- Features：Four-part ILAW structure: Intentions, Learning Experiences, Assessment and Ways Forward; free Recipe generation without an account; personalized AI drafts after sign-in; editable Word and PowerPoint exports; three free AI drafts for new users and one-time credit packs from $0.99 for 10 drafts.
+- Use cases：Draft a topic-specific lesson for a Filipino classroom; prepare an editable ILAW-format Word plan; outline classroom activities and assessment; adapt a draft to a specific grade and learning competency.
+- 该提交表单没有联系邮箱字段；没有提交邮箱，也没有把 support 邮箱填到 newsletter。未订阅、未付款、未注册。
+- 页面确认：Tool submitted. We'll review it shortly. Your submission is now under review.
+- 状态 submission_received / editorial_review_pending；提交编号、公开 URL、审核日期、live/rel/indexed 均 unknown。不可重复提交，不能当作已上线外链。
+- 凭证：2026-11-05-forwardfuture-receipt.jpg。来源以 forwardfuture.com referrer 观察，未加 UTM，完整归因不保证。
+- 建议人工跟进 2026-11-12 查询公开目录；没有邮箱回执承诺，无自动提醒。
+- 本轮曾检查 insanelycooltools.com，跳转 /lander、无可用表单，未提交。
+
 ## 2026-11-05 — Future Tools
 
 - Owner 授权今天继续发外链；本轮只新增 1 条免费提交，完整台账查重无重复。

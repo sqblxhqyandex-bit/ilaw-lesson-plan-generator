@@ -41,6 +41,8 @@
 
 ### 2026-11-05 — 免费目录提交
 
+- 后续单条授权：Forward Future 免费推荐提交成功，页面显示 under review；无邮箱字段。今日累计 2 次、台账总计 4 次已收到提交，公开收录均未验证；凭证见提交台账。
+
 - Future Tools 免费提交成功，使用 support@ilawlessonplan.net；Education / Freemium。平台显示 Tool Submitted，待人工审核，公开外链 unknown。
 - 今日新增 1 条；总计台账 3 次已收到提交，不能称为 3 条已上线外链。详情和凭证见 `11-launch/directory-submission-log.md`。
 

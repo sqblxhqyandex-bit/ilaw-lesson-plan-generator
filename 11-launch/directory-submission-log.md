@@ -107,3 +107,10 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 回执 https://github.com/kbmjj123/aifindr.org/pull/100
 - 状态已提交、待审核。目录公开 URL、上线时间和链接属性 unknown。
 - 投稿格式无邮箱字段。提交使用 GitHub fork，未使用 Edge。
+
+## 2026-11-09 — ToolMango（今日第2条）
+
+- 免费审核入口 https://toolmango.com/submit-tool 。使用该公开表单的 JSON 提交接口，未操作 Edge。
+- 产品 ILAW Lesson Plan Generator，网址 https://ilawlessonplan.net/ ，分类 Education and lesson planning。联系邮箱 support@ilawlessonplan.net。
+- 介绍免费 Recipe、Word/PPT 导出、可选的登录后 AI 草稿、定价和 DepEd 非隶属说明。附五年级科学主题的免费试用步骤以及定价、隐私、条款页面。
+- 回执 HTTP 200，JSON ok=true，slug ilaw-lesson-plan-generator。状态已收到、待编辑审核，公开 URL、上线时间、rel、indexed 均 unknown。不得重复提交。

@@ -100,3 +100,10 @@ The free Recipe tool helps Filipino teachers structure lesson plans into Intenti
 The tool is independent and is not affiliated with DepEd. Teachers should review and adapt every draft before classroom use.
 
 If this fits your resource collection, please consider reviewing it. Thank you for your time.
+
+## 2026-11-09 — aifindr
+
+- 免费 Education 目录投稿，官方 GitHub PR 流程。条目目标 https://ilawlessonplan.net/，定价 freemium。
+- 回执 https://github.com/kbmjj123/aifindr.org/pull/100
+- 状态已提交、待审核。目录公开 URL、上线时间和链接属性 unknown。
+- 投稿格式无邮箱字段。提交使用 GitHub fork，未使用 Edge。

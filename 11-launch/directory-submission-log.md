@@ -114,3 +114,11 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 产品 ILAW Lesson Plan Generator，网址 https://ilawlessonplan.net/ ，分类 Education and lesson planning。联系邮箱 support@ilawlessonplan.net。
 - 介绍免费 Recipe、Word/PPT 导出、可选的登录后 AI 草稿、定价和 DepEd 非隶属说明。附五年级科学主题的免费试用步骤以及定价、隐私、条款页面。
 - 回执 HTTP 200，JSON ok=true，slug ilaw-lesson-plan-generator。状态已收到、待编辑审核，公开 URL、上线时间、rel、indexed 均 unknown。不得重复提交。
+
+## 2026-11-10 — Ignlab Launch
+
+- 免费目录投稿，入口 https://launch.ignlab.net/submit.html；目标 https://ilawlessonplan.net/，无 UTM（平台要求首页 URL）。
+- ILAW Lesson Plan Generator；Productivity / Freemium；标签 education, lesson planning, teaching；邮箱 support@ilawlessonplan.net。
+- 文案介绍面向菲律宾教师的 ILAW 教案、免费免登录 Recipe、Word/PPT 导出、可选 AI 草稿和 DepEd 非隶属说明。
+- Owner 已确认算术验证及提交。内置浏览器回执标题 Submitted — Ignlab Launch；页面提示发布前会审核。私有编辑链接不写入仓库。
+- 状态 submission_received / editorial_review_pending；公开 URL、live、rel、indexed 均 unknown。建议 2026-11-17 检查公开目录；不重复提交。

@@ -122,3 +122,9 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 文案介绍面向菲律宾教师的 ILAW 教案、免费免登录 Recipe、Word/PPT 导出、可选 AI 草稿和 DepEd 非隶属说明。
 - Owner 已确认算术验证及提交。内置浏览器回执标题 Submitted — Ignlab Launch；页面提示发布前会审核。私有编辑链接不写入仓库。
 - 状态 submission_received / editorial_review_pending；公开 URL、live、rel、indexed 均 unknown。建议 2026-11-17 检查公开目录；不重复提交。
+
+## 2026-11-10 — aitoolslist.io
+
+- 免费编辑审核投稿 https://aitoolslist.io/submit-ai-tool/（官方 Tally 表单）。目标 https://ilawlessonplan.net/，分类 Education / Lesson Planning，联系邮箱 support@ilawlessonplan.net。
+- 文案介绍菲律宾教师备课、免登录 Recipe、Word/PPT 导出和可选 AI 草稿，并说明独立于 DepEd。
+- 回执 Form submitted / Thanks for completing this form!；费用 $0，无回链要求。状态 submission_received / editorial_review_pending，公开 URL、live、rel、indexed 均 unknown。建议 2026-11-17 检查目录，不重复提交。

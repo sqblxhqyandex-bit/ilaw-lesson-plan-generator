@@ -134,3 +134,9 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 免费目录审核 https://www.thetoolbus.ai/ai-tools/submit 。ILAW Lesson Plan Generator，目标 https://ilawlessonplan.net/（无 UTM），AI Tools / Freemium，联系邮箱 support@ilawlessonplan.net。
 - 介绍面向菲律宾教师的可编辑 ILAW 草稿、免登录 Recipe、Word/PPT 导出和可选 AI 草稿。
 - 页面回执 Tool submitted，平台表示将审核并回复。费用 $0，无回链要求。状态 submission_received / editorial_review_pending；公开 URL、live、rel、indexed 均 unknown。建议 2026-11-19 核查目录。
+
+## 2026-11-12 — 阮一峰《科技爱好者周刊》（今日第 2 条）
+
+- 官方 GitHub Issue 投稿 https://github.com/ruanyf/weekly/issues/13334 。目标 https://ilawlessonplan.net/?utm_source=ruanyf_weekly&utm_medium=referral&utm_campaign=resource_submission 。费用 $0，无回链要求或邮箱字段。
+- 中文工具推荐，介绍菲律宾教师备课、五年级科学水循环试用、免费 Recipe、Word/PPT 和可选 AI。
+- 公开 Issue 已创建，周刊正文入选待定；周刊正文 URL、live、rel、indexed 均 unknown。建议 2026-11-26 复核。

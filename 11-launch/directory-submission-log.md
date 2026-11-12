@@ -128,3 +128,9 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 免费编辑审核投稿 https://aitoolslist.io/submit-ai-tool/（官方 Tally 表单）。目标 https://ilawlessonplan.net/，分类 Education / Lesson Planning，联系邮箱 support@ilawlessonplan.net。
 - 文案介绍菲律宾教师备课、免登录 Recipe、Word/PPT 导出和可选 AI 草稿，并说明独立于 DepEd。
 - 回执 Form submitted / Thanks for completing this form!；费用 $0，无回链要求。状态 submission_received / editorial_review_pending，公开 URL、live、rel、indexed 均 unknown。建议 2026-11-17 检查目录，不重复提交。
+
+## 2026-11-12 — TheToolBus
+
+- 免费目录审核 https://www.thetoolbus.ai/ai-tools/submit 。ILAW Lesson Plan Generator，目标 https://ilawlessonplan.net/（无 UTM），AI Tools / Freemium，联系邮箱 support@ilawlessonplan.net。
+- 介绍面向菲律宾教师的可编辑 ILAW 草稿、免登录 Recipe、Word/PPT 导出和可选 AI 草稿。
+- 页面回执 Tool submitted，平台表示将审核并回复。费用 $0，无回链要求。状态 submission_received / editorial_review_pending；公开 URL、live、rel、indexed 均 unknown。建议 2026-11-19 核查目录。

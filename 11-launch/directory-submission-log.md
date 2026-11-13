@@ -140,3 +140,14 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 官方 GitHub Issue 投稿 https://github.com/ruanyf/weekly/issues/13334 。目标 https://ilawlessonplan.net/?utm_source=ruanyf_weekly&utm_medium=referral&utm_campaign=resource_submission 。费用 $0，无回链要求或邮箱字段。
 - 中文工具推荐，介绍菲律宾教师备课、五年级科学水循环试用、免费 Recipe、Word/PPT 和可选 AI。
 - 公开 Issue 已创建，周刊正文入选待定；周刊正文 URL、live、rel、indexed 均 unknown。建议 2026-11-26 复核。
+
+## 2026-11-12 — 已提交渠道公开核查
+
+- GitHub：ruanyf/weekly Issue #13334 为 OPEN，正文含指向本站的 UTM 链接；未搜到周刊正文收录。aifindr PR #100 为 OPEN、mergedAt=null；未搜到目录公开条目。
+- TeachersFirst、ToolVerity、Future Tools、Forward Future、AI Tool Finder、ToolMango、Ignlab Launch、aitoolslist.io、TheToolBus：按平台域名及 ilawlessonplan.net 检索，未找到公开收录页。公开 URL、live、rel、indexed 保持 unknown；搜索结果不足以判断审核结论。未检查邮箱或引荐数据。
+
+## 2026-11-13 — TipSeason
+
+- 免费表单 https://www.tipseason.com/ai-tools/submit-free ，Education / Freemium，联系人 support@ilawlessonplan.net，未选广告。
+- 目标 https://ilawlessonplan.net/?utm_source=tipseason&utm_medium=referral&utm_campaign=directory_listing 。文案介绍菲律宾教师备课、免费 Recipe、Word/PPT 导出与可选 AI 草稿。
+- 回执 https://www.tipseason.com/ai-tools/submit-free/success 明示已收到，但免费队列已满，目前仅接受付费收录。状态 submission_received / free_review_unconfirmed；费用 $0，公开 URL、live、rel、indexed 均 unknown。避免重复投稿。

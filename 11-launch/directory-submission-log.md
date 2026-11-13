@@ -151,3 +151,9 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 免费表单 https://www.tipseason.com/ai-tools/submit-free ，Education / Freemium，联系人 support@ilawlessonplan.net，未选广告。
 - 目标 https://ilawlessonplan.net/?utm_source=tipseason&utm_medium=referral&utm_campaign=directory_listing 。文案介绍菲律宾教师备课、免费 Recipe、Word/PPT 导出与可选 AI 草稿。
 - 回执 https://www.tipseason.com/ai-tools/submit-free/success 明示已收到，但免费队列已满，目前仅接受付费收录。状态 submission_received / free_review_unconfirmed；费用 $0，公开 URL、live、rel、indexed 均 unknown。避免重复投稿。
+
+## 2026-11-13 — YAATD（今日第 2 条）
+
+- 免费目录投稿 https://yaatd.com/submit/form/ 。联系人 support@ilawlessonplan.net，上传公开 Logo。文案介绍菲律宾教师备课、免费模板、可选 AI 和 Word/PPT 导出。
+- 目标 https://ilawlessonplan.net/?utm_source=yaatd&utm_medium=referral&utm_campaign=directory_listing 。
+- 平台显示 Approved by editorial，选择免费后回执 Free listing queued，slug ilawlessonplan-net。费用 $0，预计约 154 天，平台说明将使用 nofollow。公开 URL、live、实际 rel、indexed 均 unknown。建议 2027-04-16 复查，不重复提交。

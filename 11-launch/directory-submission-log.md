@@ -157,3 +157,9 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 免费目录投稿 https://yaatd.com/submit/form/ 。联系人 support@ilawlessonplan.net，上传公开 Logo。文案介绍菲律宾教师备课、免费模板、可选 AI 和 Word/PPT 导出。
 - 目标 https://ilawlessonplan.net/?utm_source=yaatd&utm_medium=referral&utm_campaign=directory_listing 。
 - 平台显示 Approved by editorial，选择免费后回执 Free listing queued，slug ilawlessonplan-net。费用 $0，预计约 154 天，平台说明将使用 nofollow。公开 URL、live、实际 rel、indexed 均 unknown。建议 2027-04-16 复查，不重复提交。
+
+## 2026-11-13 — Unloc
+
+- 免费投稿入口 https://unloc.tools/submit 。表单填写 ILAW Lesson Plan Generator，Productivity & Notes，Free options，联系邮箱 support@ilawlessonplan.net。
+- 表单目标 https://ilawlessonplan.net/?utm_source=unloc&utm_medium=referral&utm_campaign=directory_listing 。介绍面向菲律宾教师的免费教案模板、可选 AI 草稿和 Word/PPT 导出。
+- Owner 完成人机验证及最终提交。确认页 https://unloc.tools/submit/thanks 显示 Received 和 pending review。费用 $0；公开 URL、live、rel、indexed 均 unknown。建议 2026-11-20 复查，不重复提交。

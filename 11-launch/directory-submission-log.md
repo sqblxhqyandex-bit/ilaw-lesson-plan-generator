@@ -163,3 +163,9 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 免费投稿入口 https://unloc.tools/submit 。表单填写 ILAW Lesson Plan Generator，Productivity & Notes，Free options，联系邮箱 support@ilawlessonplan.net。
 - 表单目标 https://ilawlessonplan.net/?utm_source=unloc&utm_medium=referral&utm_campaign=directory_listing 。介绍面向菲律宾教师的免费教案模板、可选 AI 草稿和 Word/PPT 导出。
 - Owner 完成人机验证及最终提交。确认页 https://unloc.tools/submit/thanks 显示 Received 和 pending review。费用 $0；公开 URL、live、rel、indexed 均 unknown。建议 2026-11-20 复查，不重复提交。
+
+## 2026-11-14 — AI Tools Up
+
+- 官方免费投稿页 https://aitoolsup.com/submit-tool/ ，表单 https://tally.so/r/nPpyBV 。教育、教案、教师工具，Freemium，联系邮箱 support@ilawlessonplan.net，附公开 Logo。
+- 目标 https://ilawlessonplan.net/?utm_source=aitoolsup&utm_medium=referral&utm_campaign=directory_listing 。介绍菲律宾教师备课、免费 Recipe、Word/PPT 和可选 AI。
+- 回执 Form submitted；费用 $0，无回链要求。状态已收到、待审核，公开 URL、live、rel、indexed 均 unknown。建议 2026-12-14 复查；不重复提交。

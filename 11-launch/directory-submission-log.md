@@ -169,3 +169,12 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 官方免费投稿页 https://aitoolsup.com/submit-tool/ ，表单 https://tally.so/r/nPpyBV 。教育、教案、教师工具，Freemium，联系邮箱 support@ilawlessonplan.net，附公开 Logo。
 - 目标 https://ilawlessonplan.net/?utm_source=aitoolsup&utm_medium=referral&utm_campaign=directory_listing 。介绍菲律宾教师备课、免费 Recipe、Word/PPT 和可选 AI。
 - 回执 Form submitted；费用 $0，无回链要求。状态已收到、待审核，公开 URL、live、rel、indexed 均 unknown。建议 2026-12-14 复查；不重复提交。
+
+## 2026-11-17 — The Tool Directory
+
+- Owner 授权继续发外链；本轮只提交 1 条。完整台账按平台名和主域名查重，未找到此前提交；也未找到本站公开收录结果。
+- 免费投稿入口 https://thetooldirectory.com/submit-a-tool/ 。ILAW Lesson Plan Generator；Research & Education / Free / paid plans；联系邮箱 support@ilawlessonplan.net。
+- 提交目标 https://ilawlessonplan.net/?utm_source=thetooldirectory&utm_medium=referral&utm_campaign=directory_listing 。文案介绍菲律宾 K–12 教师备课、免登录 Recipe、Word/PPT 导出、可选 AI 草稿及独立于 DepEd；已填写归因参数，目录发布时是否保留 unknown。
+- 官方免费表单返回 HTTP 200，确认页 https://thetooldirectory.com/submit-a-tool/?submitted=1 显示 “Thanks — your listing was submitted for review.” 费用 $0，没有要求回链，未选择付费推广。
+- 状态 submission_received / editorial_review_pending。公开条目 URL、live、rel、indexed 和确认编号均 unknown；确认页为通用回执，不是公开条目。建议 2026-11-24 复查，不重复投稿。
+- 本轮 AISO Tools 的投稿入口访问未完成，未提交。

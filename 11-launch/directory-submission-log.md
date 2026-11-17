@@ -178,3 +178,11 @@ If this fits your resource collection, please consider reviewing it. Thank you f
 - 官方免费表单返回 HTTP 200，确认页 https://thetooldirectory.com/submit-a-tool/?submitted=1 显示 “Thanks — your listing was submitted for review.” 费用 $0，没有要求回链，未选择付费推广。
 - 状态 submission_received / editorial_review_pending。公开条目 URL、live、rel、indexed 和确认编号均 unknown；确认页为通用回执，不是公开条目。建议 2026-11-24 复查，不重复投稿。
 - 本轮 AISO Tools 的投稿入口访问未完成，未提交。
+
+## 2026-11-17 — ByTask AI（今日第 2 条）
+
+- Owner 授权提交今日第 2 条。已查项目提交台账和平台公开搜索索引，未找到重复提交或公开条目。
+- 免费投稿入口 https://bytaskai.com/submit/ 。ILAW Lesson Plan Generator，Education / Free + paid，联系邮箱 support@ilawlessonplan.net，附件为由本站现有 SVG 转出的 PNG Logo。
+- 提交目标 https://ilawlessonplan.net/?utm_source=bytaskai&utm_medium=referral&utm_campaign=directory_listing 。文案介绍菲律宾 K–12 教师备课、免登录 Recipe、可选 AI 草稿、Word/PPT 导出和 DepEd 非隶属说明。公开链接是否保留 UTM 为 unknown。
+- 官方表单返回 HTTP 200、ok=true，并提示 “Submission saved for manual review.” 平台返回私有进度链接，确认邮件进入发送队列，送达未确认。费用 $0，无回链要求。
+- 状态 submission_received / editorial_review_pending。公开 URL、live、rel、indexed 均 unknown。建议 2026-11-24 查看审核邮件和公开目录，不重复提交。

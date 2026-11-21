@@ -1,5 +1,13 @@
 # 外部资源推荐提交记录
 
+## 2026-11-21 — 全部历史投稿公开状态核验
+
+- 已核对 17 次投稿。AI Tool Finder、ToolMango、The Tool Directory、ByTask AI、Ignlab Launch 已有公开目录条目，均 HTTP 200，已核验指向本站的直接链接或重定向。
+- AI Tool Finder 为普通 HTML 外链。ByTask AI 为 rel="noopener noreferrer"，发布时去掉了投稿 UTM。The Tool Directory 为 nofollow，并保留 UTM。ToolMango 为 sponsored 按钮，经 HTTP 302 跳到本站首页，费用仍为 $0。
+- Ignlab Launch 官方站内搜索返回本站，公开页 https://launch.ignlab.net/t/ilaw-lesson-plan-generator 的外链为 rel="noopener nofollow ugc"，直接指向本站首页。
+- 阮一峰周刊 GitHub Issue #13334 公开链接仍在，nofollow、保留 UTM，Issue Open，周刊正文收录 unknown。aifindr PR #100 仍 Open，尚未合并。
+- 其余 11 项目录收录未确认，详情与查询边界见 `2026-11-21-backlink-audit.md`。没有核验真实点击、转化和排名，均 unknown。继续对历史投稿去重。
+
 ## 2026-11-05 — AI Tool Finder（今日第3条）
 
 - Owner 明确授权今日第3条；本轮唯一实际提交。入口：https://aitoolfinder.org/submit
